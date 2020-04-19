@@ -29,3 +29,10 @@ def test(message):
     bot.messages_send(user_id=message['from_id'], random_id=time.time(), message=message['test'])
     print(message)
 ```
+
+### Планы по поводу этой библиотеки
+- [x] Cделать то
+- [ ] Cделать се
+- [ ] Cделать то самое
+- [ ] Cделать это самое
+
