@@ -1,4 +1,4 @@
-from easy_vk import VK
+from .easy_vk import VK
 # from bots_types import Message
 import requests
 import re
