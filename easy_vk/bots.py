@@ -1,7 +1,34 @@
 from .easy_vk import VK
-# from bots_types import Message
+from .vk_types import get_update_type, Message, Message_typing_state
 import requests
 import re
+
+
+class Message_handler:
+    def __init__(self, h_filters: list, function):
+        # h_filters = [('regexp', '123'), ('has_attachments', 'False'), ('fwd_messages', True), ('geo', True)]
+        self.h_filters = h_filters
+        self.function = function
+
+    def check_filter(self, h_filter, message: Message):
+        test_cases = {
+            'regexp': lambda msg: msg.text and re.search(h_filter[1], msg.text),
+            'has_attachments': lambda msg: len(msg.attachments) != 0,
+            'has_fwd_messages': lambda msg: (msg.fwd_messages is not None) == h_filter[1],
+            'geo': lambda msg: (msg.geo is not None) == h_filter[1],
+            # 'action': ''
+        }
+        return test_cases[h_filter[0]](message)
+
+    def is_valid(self, message):
+        for h_filter in self.h_filters:
+            if not self.check_filter(h_filter, message):
+                return False
+        return True
+
+    def notify(self, message):
+        if self.is_valid(message):
+            self.function(message)
 
 
 class Bot(VK):
@@ -9,20 +36,20 @@ class Bot(VK):
         super().__init__(access_token, v)
         self.group_id = group_id
 
-        lp = self.get_lp()
+        lp = self._get_lp()
         self.key = lp['key']
         self.server = lp['server']
         self.ts = lp['ts']
 
-        self.message_new_handlers = []
+        self.message_handlers = []
 
         self.listening = False
 
-    def get_lp(self):
+    def _get_lp(self):
         lp = self.groups_getLongPollServer(self.group_id)
         return lp
 
-    def check(self, wait=25):
+    def _check(self, wait=25):
         params = {'act': 'a_check',
                   'key': self.key,
                   'ts': self.ts,
@@ -32,7 +59,7 @@ class Bot(VK):
             if response['failed'] == 1:
                 self.ts = response['ts']
             else:
-                lp = self.get_lp()
+                lp = self._get_lp()
                 self.key = lp['key']
                 self.server = lp['server']
             response = requests.get(self.server, params=params).json()
@@ -41,7 +68,7 @@ class Bot(VK):
     def listen(self):
         self.listening = True
         while self.listening:
-            r = self.check()
+            r = self._check()
 
             self.ts = r['ts']
             updates = r['updates']
@@ -51,35 +78,19 @@ class Bot(VK):
 
     def run(self):
         for update in self.listen():
-            self.process_handlers(update)
+            self._process_handlers(get_update_type(update))
 
-    def process_handlers(self, update):
-        if update['type'] == 'message_new':
-            self.notify_message_new_handlers(update['object'])
-        else:
-            pass
+    def _process_handlers(self, update):
+        if update.type == 'message_new':
+            print(update)
+            for handler in self.message_handlers:
+                handler.notify(update)
 
-    def notify_message_new_handlers(self, message):
-        for handler in self.message_new_handlers:
-            if self.check_message_new_handler(handler, message):
-                self.exec_handler(handler, message)
-
-    def check_message_new_handler(self, handler, message):
-        for handler_filter, value in handler['filters']:
-            test_cases = {
-                'regexp': lambda msg: 'text' in msg and re.search(value, msg['text'])
-            }
-            if not test_cases[handler_filter](message):
-                return False
-        return True
-
-    def exec_handler(self, handler, message):
-        handler['function'](message)
-
-    def message_new_handler(self, regexp=None):
+    def message_handler(self, regexp=None, has_attachments=None, fwd_messages=None, geo=None):
+        h_filters = locals()
+        h_filters.pop('self')
+        h_filters = [(f, h_filters[f]) for f in h_filters if h_filters[f] is not None]
         def wrapper(function):
-            self.message_new_handlers.append({'filters': [('regexp', regexp)],
-                                              'function': function})
+            self.message_handlers.append(Message_handler(h_filters, function))
             return function
-
         return wrapper
