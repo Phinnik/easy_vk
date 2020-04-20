@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
+
 from .easy_vk import VK
 from .vk_types import get_update_type, Message, Message_typing_state
-import requests
+import  requests
 import re
 
 
@@ -82,7 +84,6 @@ class Bot(VK):
 
     def _process_handlers(self, update):
         if update.type == 'message_new':
-            print(update)
             for handler in self.message_handlers:
                 handler.notify(update)
 

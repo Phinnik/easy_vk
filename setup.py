@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from setuptools import setup, find_packages
 
 with open('readme.md', 'r', encoding='utf-8') as f:
@@ -5,7 +7,7 @@ with open('readme.md', 'r', encoding='utf-8') as f:
 
 setup(
     name="easy_vk",
-    version="0.0.3",
+    version="0.0.5",
     author="Phinnik",
     author_email="elecdron@gmail.com",
     description="Обертка для VK api",
@@ -19,4 +21,5 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=['requests']
 )

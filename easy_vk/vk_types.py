@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 def get_update_type(update):
     update_type = update.get('type')
     if update_type in ['message_new', 'message_reply']:
@@ -6,6 +8,7 @@ def get_update_type(update):
         return Message_typing_state(update['object'])
     else:
         print(update)
+
 
 class Message:
     def __init__(self, j, type):
@@ -29,7 +32,8 @@ class Message:
         self.group_id = j.get('group_id')
 
     def __repr__(self):
-        string = '___Message___\nfrom_id: {}\ntext: {}\nattachments: {}\ngeo: {}'.format(self.from_id, self.text, self.attachments, self.geo)
+        string = '___Message___\nfrom_id: {}\ntext: {}\nattachments: {}\ngeo: {}'.format(self.from_id, self.text,
+                                                                                         self.attachments, self.geo)
         return string
 
 
@@ -43,13 +47,13 @@ class Message_typing_state:
         self.event_id = j.get('event_id')
 
 
-
 #####################
 
 def get_attachment_type(attachment):
     attachment_type = attachment.get('type')
     if attachment_type == 'photo':
         return Photo(attachment['photo'])
+
 
 class Photo:
     def __init__(self, photo):
