@@ -6,7 +6,7 @@
 
 ### Использование
 ```python
-from easy_vk.easy_vk import VK
+from easy_vk import VK
 
 access_token = 'YOUR ACCESS_TOKEN'
 vk = VK(access_token=access_token)
@@ -19,7 +19,7 @@ vk.friends_get(user_id=1, count=1)
 ```python
 # Пример простого эхобота
 
-from easy_vk.bots import Bot
+from easy_vk import Bot
 import time
 
 bot = Bot(access_token='GROUP ACCESS_TOKEN', group_id='GROUP_ID')
