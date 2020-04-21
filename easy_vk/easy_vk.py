@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
+from .vk_types import *
 import requests
 
 

@@ -4,3 +4,5 @@
 /.idea/
 /build/
 /dist/
+/easy_vk.egg-info/
+/helper.py

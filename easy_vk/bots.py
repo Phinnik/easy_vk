@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 
 from .easy_vk import VK
-from .vk_types import get_update_type, Message, Message_typing_state
-import  requests
+from .vk_types import *
+from .group_events import *
+import requests
 import re
 
 
 class Message_handler:
     def __init__(self, h_filters: list, function):
-        # h_filters = [('regexp', '123'), ('has_attachments', 'False'), ('fwd_messages', True), ('geo', True)]
         self.h_filters = h_filters
         self.function = function
 
     def check_filter(self, h_filter, message: Message):
         test_cases = {
-            'regexp': lambda msg: msg.text and re.search(h_filter[1], msg.text),
+            'regexp': lambda msg: msg.text and re.search('{}'.format(h_filter[1]), msg.text),
             'has_attachments': lambda msg: len(msg.attachments) != 0,
             'has_fwd_messages': lambda msg: (msg.fwd_messages is not None) == h_filter[1],
             'geo': lambda msg: (msg.geo is not None) == h_filter[1],
@@ -31,6 +31,24 @@ class Message_handler:
     def notify(self, message):
         if self.is_valid(message):
             self.function(message)
+
+
+class App_step:
+    def __init__(self, name):
+        self.name = name
+        self.parent = None
+        self.children = []
+        self.reply_handler = None
+
+    def set_parent(self, parent):
+        self.parent = parent
+
+    def add_children(self, child):
+        self.children.append(child)
+
+    def set_reply_handler(self, function):
+        self.reply_handler = function
+
 
 
 class Bot(VK):
@@ -80,12 +98,16 @@ class Bot(VK):
 
     def run(self):
         for update in self.listen():
-            self._process_handlers(get_update_type(update))
+            self._process_handlers(update)
 
     def _process_handlers(self, update):
-        if update.type == 'message_new':
+        update_type = update.get('type')
+        if update_type == 'message_new':
+            message = Message(update['object'])
             for handler in self.message_handlers:
-                handler.notify(update)
+                handler.notify(message)
+        if update_type == 'message_edit':
+            pass
 
     def message_handler(self, regexp=None, has_attachments=None, fwd_messages=None, geo=None):
         h_filters = locals()
