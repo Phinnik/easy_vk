@@ -4,7 +4,7 @@
 ## Оглавление
 1. [Установка библиотеки](https://github.com/Phinnik/easy_vk#установка-библиотеки)
 1. [Примеры спользования](https://github.com/Phinnik/easy_vk#Примеры-спользования)
-    - [Для пользователя](https://github.com/Phinnik/easy_vk#Для-пользователя)
+    - [Для пользователей](https://github.com/Phinnik/easy_vk#Для-пользователей)
     - [Для ботов](https://github.com/Phinnik/easy_vk#Для-ботов)
 1. [Планы на будущее](https://github.com/Phinnik/easy_vk#Планы-на-будущее)
 1. [Мем](https://github.com/Phinnik/easy_vk#Мем)
@@ -44,7 +44,7 @@ def test(message):
 bot.run()
 ```
 
-## Планы по поводу этой библиотеки
+## Планы на будущее
 - [ ] Зафигачить классные штуки дрюки для парсинга
 - [ ] Намутить Сallback api
 - [ ] Забабахать очень крутые приколямбы для чат-ботов
