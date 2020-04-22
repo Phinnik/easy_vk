@@ -10,7 +10,7 @@
 1. [Мем](https://github.com/Phinnik/easy_vk#Мем)
 
 
-### Установка библиотеки:
+## Установка библиотеки:
 ```shell script
 pip install easy_vk
 ```
