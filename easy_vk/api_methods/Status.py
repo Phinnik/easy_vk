@@ -1,4 +1,4 @@
-from ApiMethod import ApiMethod
+from .ApiMethod import ApiMethod
 
 
 class Status(ApiMethod):

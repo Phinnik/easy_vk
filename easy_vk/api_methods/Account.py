@@ -1,4 +1,5 @@
-from ApiMethod import ApiMethod
+from .ApiMethod import ApiMethod
+
 
 class Account(ApiMethod):
     def __init__(self, access_token, v, session, calls_per_second):

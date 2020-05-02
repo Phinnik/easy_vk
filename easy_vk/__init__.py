@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from VK import VK
+from .VK import VK

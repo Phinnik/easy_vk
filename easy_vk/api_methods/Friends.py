@@ -1,6 +1,6 @@
-from ApiMethod import ApiMethod
+from .ApiMethod import ApiMethod
 from typing import List, Union, Dict
-from vk_objects import User
+from .vk_objects import User
 
 
 class Friends(ApiMethod):

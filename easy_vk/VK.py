@@ -1,5 +1,5 @@
 import requests
-from api_methods import *
+from .api_methods import *
 
 
 class VK:
