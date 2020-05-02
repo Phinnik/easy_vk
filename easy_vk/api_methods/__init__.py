@@ -13,7 +13,7 @@ from .Gifts import *
 from .Groups import *
 from .LeadForms import *
 from .Leads import *
-from Likes import *
+from .Likes import *
 from .Market import *
 from .Newsfeed import *
 from .Notes import *
@@ -33,7 +33,7 @@ from .Stories import *
 from .Streaming import *
 from .Users import *
 from .Utils import *
-from Video import *
+from .Video import *
 from .Wall import *
 from .Widgets import *
 

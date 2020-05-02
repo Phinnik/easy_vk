@@ -70,6 +70,7 @@ class User:
         self.verified = json_dict.get('verified')
         self.wall_default = json_dict.get('wall_default')
 
+
 class Media:
     def __init__(self):
         pass

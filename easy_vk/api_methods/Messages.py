@@ -1,5 +1,5 @@
 from .ApiMethod import ApiMethod
-from vk_objects import Media
+# from .vk_objects import Media
 from typing import List, Dict, Union, Optional
 import time
 
