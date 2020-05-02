@@ -22,32 +22,26 @@ from easy_vk import VK
 
 access_token = 'YOUR ACCESS_TOKEN'
 vk = VK(access_token=access_token)
-vk.friends_get(user_id=1, count=1)
+vk.friends.get(user_id=1, count=1)
 
 # >>> {'count': 0, 'items': []} 
 ```
 
 ### Для ботов:
 ```python
-# Пример простого эхобота
-
-from easy_vk import Bot
-import time
-
-bot = Bot(access_token='GROUP ACCESS_TOKEN', group_id='GROUP_ID')
-
-@bot.message_new_handler(regexp='')
-def test(message):
-    bot.messages_send(user_id=message['from_id'], random_id=time.time(), message=message['test'])
-    print(message)
-
-bot.run()
+# Модуль для ботов удален из-за угрозы восстания машин
+"""
+Прошу прощения за неудобства у всех людей, коих бесчисленное 
+количество, за предоставленные неудобства
+""" 
 ```
 
 ## Планы на будущее
+- [ ] Сделать аннотирование типов
+- [ ] Написать классы для объектов
+- [ ] Написать классы для медиа
 - [ ] Зафигачить классные штуки дрюки для парсинга
-- [ ] Намутить Сallback api
-- [ ] Забабахать очень крутые приколямбы для чат-ботов
+- [ ] Намутить штуки для ботов
 - [ ] Хорошенечко отдохнуть
 
 ## Мем
