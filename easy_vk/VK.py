@@ -11,6 +11,8 @@ class VK:
         else:
             calls_per_second = 3
 
+        self.access_token = access_token
+
         self.account = Account(access_token, v, session, calls_per_second)
         self.ads = Ads(access_token, v, session, calls_per_second)
         self.appWidgets = AppWidgets(access_token, v, session, calls_per_second)

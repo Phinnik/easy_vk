@@ -45,11 +45,13 @@ vk.friends.get(user_id=1, count=1)
 from easy_vk import VK, Parser
 
 
-vk = VK(access_token='YOUR ACCESS_TOKEN')
-parser = Parser()
+accounts = ['1YOUR ACCESS_TOKEN1']
+
+vk = VK(access_token=accounts[0])
 my_friends = vk.friends.get()['items']
-parsing_method = '[API.friends.get({"user_id": items[i]})["items"]]'
-friends_friends = parser.process_parsing(vk, parsing_method, my_friends)
+parser = Parser(accounts)
+method = '[API.friends.get({"user_id": items[i]})["items"]]'
+friends_friends = parser.parse(method, my_friends)
 friends_friends = {friend: friends_friends[i] for i, friend in enumerate(my_friends)}
 
 """
@@ -67,14 +69,14 @@ friends_friends = {
 
 from easy_vk import VK, Parser
 
-vk = VK('ACCESS_TOKEN_1')
-vk1 = VK('ACCESS_TOKEN_2')
+accounts = ['1YOUR ACCESS_TOKEN1', '2YOUR ACCESS_TOKEN2']
 
-parser = Parser([vk, vk1])
+vk = VK(accounts[0])
 group_members_count = vk.groups.getMembers(group_id=84926122)['count']
 offsets = list(range(0, group_members_count, 1000))
-parsing_method = 'API.groups.getMembers({"group_id": 84926122, "count": 1000, "offset": items[i]})["items"]'
-group_members = parser.parse_threaded(parsing_method, offsets)
+parser = Parser(accounts)
+method = 'API.groups.getMembers({"group_id": 84926122, "count": 1000, "offset": items[i]})["items"]'
+group_members = parser.parse(method, offsets)
 
 # group_members = [1, 223434, 2341, 23432, ...]
 # group_members_count = 233677

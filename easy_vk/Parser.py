@@ -1,7 +1,8 @@
 import threading
 from typing import List
-from .VK import VK
-import concurrent.futures
+import asyncio
+import aiohttp
+import time
 import math
 
 
@@ -10,92 +11,59 @@ class Parser:
     Класс для удобного парсинга данных
     """
 
-    def __init__(self, vk_accounts: List[VK] = []):
-        """
-        :param vk_accounts: список классов VK. Нужен для парсинга несколькими аккаунтами.
-        """
+    def __init__(self, tokens: List[str], v='5.101'):
+        self.tokens = tokens
+        self.v = v
 
-        self.accounts = vk_accounts
+    async def call(self, token, code):
+        ts = time.time()
 
-    @staticmethod
-    def form_packs(items: list, pack_size: int = 25) -> List[list]:
-        """
-        Преобразует список items в список списков List[List], каждый длиной pack_size или меньше
+        url = 'https://api.vk.com/method/execute'
+        params = {'access_token': token, 'code': code, 'v': self.v}
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url=url, params=params) as resp:
+                response = await resp.json()
 
-        :param items: список объектов
-        :param pack_size: размер внутренних массивов
+        delay = 1 / 2.9 - (time.time() - ts)
+        if delay > 0:
+            await asyncio.sleep(delay)
+        return response['response']
 
-        :example:
-        >>> p = Parser()
-        >>> p.form_packs([1,2,3,4,5], 2)
-        [[1,2], [3,4], [5]]
-        """
-
-        packs = [items[i:i+pack_size] for i in range(0, len(items), pack_size)]
-        return packs
-
-    @staticmethod
-    def _parse_one_pack(vk: VK, method: str, pack: list = []):
-        code = '''var i = 0;
-        var items = {};
+    async def parse_pack(self, token, method, pack):
+        code = """var items = {};
+        var i = 0;
         var result = [];
-        
         while ((i < 25) && (i < items.length)) {{
             result = result + {};
             i = i + 1;
         }}
         return result;
-        '''.format(pack, method)
+        """.format(pack, method)
+        return await self.call(token, code)
 
-        return vk.execute(code=code)
+    def form_packs(self, items, pack_size=25):
+        packs = [items[i:i+pack_size] for i in range(0, len(items), pack_size)]
+        return packs
 
-    def parse_single_iter(self, vk: VK, method: str, packs: List[list]):
-        """
-        Использует один аккаунт для парсинга
-
-        :param vk: класс VK
-        :param method:
-        :param packs:
-        :return:
-
-        :example:
-        >>> vk = VK('access_token')
-        >>> p = Parser()
-        >>> friends = vk.friends.get()['items']
-        >>> packs = p.form_packs(friends, 25)
-        >>> results = []
-        >>> for r in p.parse_single_iter(vk, "API.friends.get('user_id': items[i])", packs):
-        >>>     results.append(r)
-        """
-        for p in packs:
-            yield self._parse_one_pack(vk, method, p)
-
-    def parse_single(self, vk: VK, method: str, packs: List[list]):
+    async def parse_items(self, token, method, items):
+        packs = self.form_packs(items)
         result = []
-        for r in self.parse_single_iter(vk, method, packs):
+        for p in packs:
+            r = await self.parse_pack(token, method, p)
             result.extend(r)
         return result
 
-    def process_parsing(self, vk: VK, method: str, items: list, pack_size: int = 25):
-        packs = self.form_packs(items, pack_size)
-        result = self.parse_single(vk, method, packs)
-        return result
+    def parse(self, method, items):
+        items_per_acc = math.ceil(len(items) / len(self.tokens))
+        account_items = [items[i:i+items_per_acc] for i in range(0, len(items), items_per_acc)]
 
-    def parse_threaded(self, method, items: list, pack_size: int = 25):
-        items_per_account = math.ceil(len(items) / len(self.accounts))
-        account_items = [items[items_per_account*i:items_per_account*(i+1)] for i in range(len(self.accounts))]
+
+        ioloop = asyncio.new_event_loop()
+        tasks = [ioloop.create_task(self.parse_items(t, method, i)) for t, i in zip(self.tokens, account_items)]
+        ioloop.run_until_complete(asyncio.wait(tasks))
+        ioloop.close()
 
         result = []
-
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            results = [executor.submit(self.process_parsing,
-                                       a,
-                                       method,
-                                       account_items[i],
-                                       pack_size) for i, a in enumerate(self.accounts)]
-
-        for f in concurrent.futures.as_completed(results):
-            result.extend(f.result())
-
+        for t in tasks:
+            result.extend(t.result())
         return result
-
