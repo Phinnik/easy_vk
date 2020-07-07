@@ -9,14 +9,15 @@ class ApiMethod:
         self._v = v
         self._requests_per_s = requests_per_s
 
-    def call(self, method_name, method_locals, param_alias_dict=None):
+    def call(self, method_name, method_locals):
         time_start = time.time()
 
         api_url = f'https://api.vk.com/method/{method_name}'
 
         params = method_locals
-        if param_alias_dict in params:
-            for alias in params[param_alias_dict]:
+        param_alias_dict = params.get('param_alias_dict')
+        if param_alias_dict:
+            for alias in param_alias_dict:
                 params[param_alias_dict[alias]] = params.pop(alias)
             params.pop('param_alias_dict')
 
