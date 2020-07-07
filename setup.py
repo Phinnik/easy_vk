@@ -7,7 +7,7 @@ with open('readme.md', 'r', encoding='utf-8') as f:
 
 setup(
     name="easy_vk",
-    version="0.0.18",
+    version="0.0.19",
     author="Phinnik",
     author_email="elecdron@gmail.com",
     description="Обертка для VK api",
@@ -20,6 +20,6 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
-    install_requires=['requests', 'aiohttp']
+    python_requires='>=3.6, <3.8',
+    install_requires=['requests', 'aiohttp', 'pydantic']
 )

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
-
-from .VK import VK
-from .Parser import Parser
+import exceptions
+from user import User
+from .parser import Parser

@@ -1,10 +1,8 @@
-/test.py
 /config.py
 /venv/
+/venv37/
 /.idea/
 /build/
 /dist/
 /easy_vk.egg-info/
-/helper.py
-/tests/config.py
-/api_parser.py
+/tests/

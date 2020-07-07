@@ -19,7 +19,8 @@ pip install easy_vk
 ## Примеры спользования
 ### Для пользователей
 ```python
-from easy_vk import VK
+
+import VK
 
 access_token = 'YOUR ACCESS_TOKEN'
 vk = VK(access_token=access_token)
@@ -42,7 +43,8 @@ vk.friends.get(user_id=1, count=1)
 ```python
 # Быстро получить всех друзей своих друзей:
 
-from easy_vk import VK, Parser
+from easy_vk import  Parser
+import VK
 
 
 accounts = ['1YOUR ACCESS_TOKEN1']
@@ -67,7 +69,8 @@ friends_friends = {
 ```python
 # Быстро получить всех участников группы с помощью нескольких аккаунтов
 
-from easy_vk import VK, Parser
+from easy_vk import  Parser
+import VK
 
 accounts = ['1YOUR ACCESS_TOKEN1', '2YOUR ACCESS_TOKEN2']
 
