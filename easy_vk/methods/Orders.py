@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -15,7 +15,7 @@ class Orders(ApiMethod):
         """
     
         method_name = 'orders.cancelSubscription'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def change_state(self, order_id: int, action: str, app_order_id: int = None, test_mode: bool = None):
         """
@@ -28,7 +28,7 @@ class Orders(ApiMethod):
         """
     
         method_name = 'orders.changeState'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, offset: int = None, count: int = None, test_mode: bool = None):
         """
@@ -40,7 +40,7 @@ class Orders(ApiMethod):
         """
     
         method_name = 'orders.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_amount(self, user_id: int, votes: List[str]):
         """
@@ -53,7 +53,7 @@ class Orders(ApiMethod):
             votes = ','.join(votes)
         
         method_name = 'orders.getAmount'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_id(self, order_id: int = None, order_ids: List[int] = None, test_mode: bool = None):
         """
@@ -69,7 +69,7 @@ class Orders(ApiMethod):
             order_ids = ','.join(order_ids)
         
         method_name = 'orders.getById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_user_subscription_by_id(self, user_id: int, subscription_id: int):
         """
@@ -79,7 +79,7 @@ class Orders(ApiMethod):
         """
     
         method_name = 'orders.getUserSubscriptionById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_user_subscriptions(self, user_id: int):
         """
@@ -88,7 +88,7 @@ class Orders(ApiMethod):
         """
     
         method_name = 'orders.getUserSubscriptions'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def update_subscription(self, user_id: int, subscription_id: int, price: int):
         """
@@ -99,5 +99,5 @@ class Orders(ApiMethod):
         """
     
         method_name = 'orders.updateSubscription'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

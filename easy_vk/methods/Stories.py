@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -18,7 +18,7 @@ class Stories(ApiMethod):
             owners_ids = ','.join(owners_ids)
         
         method_name = 'stories.banOwner'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete(self, owner_id: int, story_id: int):
         """
@@ -29,7 +29,7 @@ class Stories(ApiMethod):
         """
     
         method_name = 'stories.delete'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, owner_id: int = None, extended: bool = None, fields: List[str] = None):
         """
@@ -44,7 +44,7 @@ class Stories(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'stories.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_banned(self, extended: bool = None, fields: List[str] = None):
         """
@@ -58,7 +58,7 @@ class Stories(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'stories.getBanned'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_id(self, stories: List[str], extended: bool = None, fields: List[str] = None):
         """
@@ -75,7 +75,7 @@ class Stories(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'stories.getById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_photo_upload_server(self, add_to_news: bool = None, user_ids: List[int] = None, reply_to_story: str = None, link_text: str = None, link_url: str = None, group_id: int = None, clickable_stickers: str = None):
         """
@@ -95,7 +95,7 @@ class Stories(ApiMethod):
             user_ids = ','.join(user_ids)
         
         method_name = 'stories.getPhotoUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_replies(self, owner_id: int, story_id: int, access_key: str = None, extended: bool = None, fields: List[str] = None):
         """
@@ -112,7 +112,7 @@ class Stories(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'stories.getReplies'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_stats(self, owner_id: int, story_id: int):
         """
@@ -123,7 +123,7 @@ class Stories(ApiMethod):
         """
     
         method_name = 'stories.getStats'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_video_upload_server(self, add_to_news: bool = None, user_ids: List[int] = None, reply_to_story: str = None, link_text: str = None, link_url: str = None, group_id: int = None, clickable_stickers: str = None):
         """
@@ -143,7 +143,7 @@ class Stories(ApiMethod):
             user_ids = ','.join(user_ids)
         
         method_name = 'stories.getVideoUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_viewers(self, owner_id: int, story_id: int, count: int = None, offset: int = None, extended: bool = None):
         """
@@ -157,7 +157,7 @@ class Stories(ApiMethod):
         """
     
         method_name = 'stories.getViewers'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def hide_all_replies(self, owner_id: int, group_id: int = None):
         """
@@ -168,7 +168,7 @@ class Stories(ApiMethod):
         """
     
         method_name = 'stories.hideAllReplies'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def hide_reply(self, owner_id: int, story_id: int):
         """
@@ -179,7 +179,7 @@ class Stories(ApiMethod):
         """
     
         method_name = 'stories.hideReply'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def search(self, q: str = None, place_id: int = None, latitude: float = None, longitude: float = None, radius: int = None, mentioned_id: int = None, count: int = None, extended: bool = None, fields: List[str] = None):
         """
@@ -199,7 +199,7 @@ class Stories(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'stories.search'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def unban_owner(self, owners_ids: List[int]):
         """
@@ -213,5 +213,5 @@ class Stories(ApiMethod):
             owners_ids = ','.join(owners_ids)
         
         method_name = 'stories.unbanOwner'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

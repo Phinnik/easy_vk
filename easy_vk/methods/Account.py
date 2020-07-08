@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -13,7 +13,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.ban'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def change_password(self, new_password: str, restore_sid: str = None, change_password_hash: str = None, old_password: str = None):
         """
@@ -26,7 +26,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.changePassword'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_active_offers(self, offset: int = None, count: int = None):
         """
@@ -37,7 +37,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.getActiveOffers'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_app_permissions(self, user_id: int):
         """
@@ -47,7 +47,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.getAppPermissions'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_banned(self, offset: int = None, count: int = None):
         """
@@ -58,7 +58,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.getBanned'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_counters(self, filter_: List[str] = None):
         """
@@ -72,7 +72,7 @@ class Account(ApiMethod):
         
         param_alias_dict = {'filter_': 'filter'}
         method_name = 'account.getCounters'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_info(self, fields: List[str] = None):
         """
@@ -85,7 +85,7 @@ class Account(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'account.getInfo'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_profile_info(self):
         """
@@ -94,7 +94,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.getProfileInfo'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_push_settings(self, device_id: str = None):
         """
@@ -104,7 +104,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.getPushSettings'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def register_device(self, token: str, device_id: str, device_model: str = None, device_year: int = None, system_version: str = None, settings: str = None, sandbox: bool = None):
         """
@@ -120,7 +120,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.registerDevice'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save_profile_info(self, first_name: str = None, last_name: str = None, maiden_name: str = None, screen_name: str = None, cancel_request_id: int = None, sex: int = None, relation: int = None, relation_partner_id: int = None, bdate: str = None, bdate_visibility: int = None, home_town: str = None, country_id: int = None, city_id: int = None, status: str = None):
         """
@@ -143,7 +143,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.saveProfileInfo'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_info(self, name: str = None, value: str = None):
         """
@@ -154,7 +154,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.setInfo'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_name_in_menu(self, user_id: int, name: str = None):
         """
@@ -165,7 +165,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.setNameInMenu'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_offline(self):
         """
@@ -174,7 +174,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.setOffline'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_online(self, voip: bool = None):
         """
@@ -184,7 +184,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.setOnline'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_push_settings(self, device_id: str, settings: str = None, key: str = None, value: List[str] = None):
         """
@@ -200,7 +200,7 @@ class Account(ApiMethod):
             value = ','.join(value)
         
         method_name = 'account.setPushSettings'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_silence_mode(self, device_id: str = None, time: int = None, peer_id: int = None, sound: int = None):
         """
@@ -213,7 +213,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.setSilenceMode'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def unban(self, owner_id: int = None):
         """
@@ -222,7 +222,7 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.unban'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def unregister_device(self, device_id: str = None, sandbox: bool = None):
         """
@@ -233,5 +233,5 @@ class Account(ApiMethod):
         """
     
         method_name = 'account.unregisterDevice'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

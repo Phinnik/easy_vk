@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -16,7 +16,7 @@ class Database(ApiMethod):
         """
     
         method_name = 'database.getChairs'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_cities(self, country_id: int, region_id: int = None, q: str = None, need_all: bool = None, offset: int = None, count: int = None):
         """
@@ -31,7 +31,7 @@ class Database(ApiMethod):
         """
     
         method_name = 'database.getCities'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_cities_by_id(self, city_ids: List[int] = None):
         """
@@ -45,7 +45,7 @@ class Database(ApiMethod):
             city_ids = ','.join(city_ids)
         
         method_name = 'database.getCitiesById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_countries(self, need_all: bool = None, code: str = None, offset: int = None, count: int = None):
         """
@@ -58,7 +58,7 @@ class Database(ApiMethod):
         """
     
         method_name = 'database.getCountries'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_countries_by_id(self, country_ids: List[int] = None):
         """
@@ -72,7 +72,7 @@ class Database(ApiMethod):
             country_ids = ','.join(country_ids)
         
         method_name = 'database.getCountriesById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_faculties(self, university_id: int, offset: int = None, count: int = None):
         """
@@ -84,7 +84,7 @@ class Database(ApiMethod):
         """
     
         method_name = 'database.getFaculties'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_metro_stations(self, city_id: int, offset: int = None, count: int = None, extended: bool = None):
         """
@@ -97,7 +97,7 @@ class Database(ApiMethod):
         """
     
         method_name = 'database.getMetroStations'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_metro_stations_by_id(self, station_ids: List[int] = None):
         """
@@ -111,7 +111,7 @@ class Database(ApiMethod):
             station_ids = ','.join(station_ids)
         
         method_name = 'database.getMetroStationsById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_regions(self, country_id: int, q: str = None, offset: int = None, count: int = None):
         """
@@ -124,7 +124,7 @@ class Database(ApiMethod):
         """
     
         method_name = 'database.getRegions'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_school_classes(self, country_id: int = None):
         """
@@ -134,7 +134,7 @@ class Database(ApiMethod):
         """
     
         method_name = 'database.getSchoolClasses'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_schools(self, city_id: int, q: str = None, offset: int = None, count: int = None):
         """
@@ -147,7 +147,7 @@ class Database(ApiMethod):
         """
     
         method_name = 'database.getSchools'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_universities(self, q: str = None, country_id: int = None, city_id: int = None, offset: int = None, count: int = None):
         """
@@ -161,5 +161,5 @@ class Database(ApiMethod):
         """
     
         method_name = 'database.getUniversities'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

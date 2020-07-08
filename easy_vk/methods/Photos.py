@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -16,7 +16,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.confirmTag'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def copy(self, owner_id: int, photo_id: int, access_key: str = None):
         """
@@ -28,7 +28,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.copy'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create_album(self, title: str, group_id: int = None, description: str = None, privacy_view: List[str] = None, privacy_comment: List[str] = None, upload_by_admins_only: bool = None, comments_disabled: bool = None):
         """
@@ -49,7 +49,7 @@ class Photos(ApiMethod):
             privacy_comment = ','.join(privacy_comment)
         
         method_name = 'photos.createAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create_comment(self, photo_id: int, owner_id: int = None, message: str = None, attachments: List[str] = None, from_group: bool = None, reply_to_comment: int = None, sticker_id: int = None, access_key: str = None, guid: str = None):
         """
@@ -70,7 +70,7 @@ class Photos(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'photos.createComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete(self, photo_id: int, owner_id: int = None):
         """
@@ -81,7 +81,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.delete'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_album(self, album_id: int, group_id: int = None):
         """
@@ -92,7 +92,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.deleteAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_comment(self, comment_id: int, owner_id: int = None):
         """
@@ -103,7 +103,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.deleteComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit(self, photo_id: int, owner_id: int = None, caption: str = None, latitude: float = None, longitude: float = None, place_str: str = None, foursquare_id: str = None, delete_place: bool = None):
         """
@@ -120,7 +120,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.edit'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_album(self, album_id: int, title: str = None, description: str = None, owner_id: int = None, privacy_view: List[str] = None, privacy_comment: List[str] = None, upload_by_admins_only: bool = None, comments_disabled: bool = None):
         """
@@ -142,7 +142,7 @@ class Photos(ApiMethod):
             privacy_comment = ','.join(privacy_comment)
         
         method_name = 'photos.editAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_comment(self, comment_id: int, owner_id: int = None, message: str = None, attachments: List[str] = None):
         """
@@ -158,7 +158,7 @@ class Photos(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'photos.editComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, owner_id: int = None, album_id: str = None, photo_ids: List[str] = None, rev: bool = None, extended: bool = None, feed_type: str = None, feed: int = None, photo_sizes: bool = None, offset: int = None, count: int = None):
         """
@@ -180,7 +180,7 @@ class Photos(ApiMethod):
             photo_ids = ','.join(photo_ids)
         
         method_name = 'photos.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_albums(self, owner_id: int = None, album_ids: List[int] = None, offset: int = None, count: int = None, need_system: bool = None, need_covers: bool = None, photo_sizes: bool = None):
         """
@@ -200,7 +200,7 @@ class Photos(ApiMethod):
             album_ids = ','.join(album_ids)
         
         method_name = 'photos.getAlbums'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_albums_count(self, user_id: int = None, group_id: int = None):
         """
@@ -211,7 +211,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getAlbumsCount'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_all(self, owner_id: int = None, extended: bool = None, offset: int = None, count: int = None, photo_sizes: bool = None, no_service_albums: bool = None, need_hidden: bool = None, skip_hidden: bool = None):
         """
@@ -228,7 +228,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getAll'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_all_comments(self, owner_id: int = None, album_id: int = None, need_likes: bool = None, offset: int = None, count: int = None):
         """
@@ -242,7 +242,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getAllComments'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_id(self, photos: List[str], extended: bool = None, photo_sizes: bool = None):
         """
@@ -257,7 +257,7 @@ class Photos(ApiMethod):
             photos = ','.join(photos)
         
         method_name = 'photos.getById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_chat_upload_server(self, chat_id: int, crop_x: int = None, crop_y: int = None, crop_width: int = None):
         """
@@ -270,7 +270,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getChatUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_comments(self, photo_id: int, owner_id: int = None, need_likes: bool = None, start_comment_id: int = None, offset: int = None, count: int = None, sort: str = None, access_key: str = None, extended: bool = None, fields: List[str] = None):
         """
@@ -292,7 +292,7 @@ class Photos(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'photos.getComments'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_market_album_upload_server(self, group_id: int):
         """
@@ -302,7 +302,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getMarketAlbumUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_market_upload_server(self, group_id: int, main_photo: bool = None, crop_x: int = None, crop_y: int = None, crop_width: int = None):
         """
@@ -316,7 +316,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getMarketUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_messages_upload_server(self, peer_id: int = None):
         """
@@ -326,7 +326,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getMessagesUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_new_tags(self, offset: int = None, count: int = None):
         """
@@ -337,7 +337,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getNewTags'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_owner_cover_photo_upload_server(self, group_id: int, crop_x: int = None, crop_y: int = None, crop_x2: int = None, crop_y2: int = None):
         """
@@ -351,7 +351,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getOwnerCoverPhotoUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_owner_photo_upload_server(self, owner_id: int = None):
         """
@@ -361,7 +361,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getOwnerPhotoUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_tags(self, photo_id: int, owner_id: int = None, access_key: str = None):
         """
@@ -373,7 +373,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getTags'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_upload_server(self, group_id: int = None, album_id: int = None):
         """
@@ -384,7 +384,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_user_photos(self, user_id: int = None, offset: int = None, count: int = None, extended: bool = None, sort: str = None):
         """
@@ -398,7 +398,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getUserPhotos'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_wall_upload_server(self, group_id: int = None):
         """
@@ -408,7 +408,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.getWallUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def make_cover(self, photo_id: int, owner_id: int = None, album_id: int = None):
         """
@@ -420,7 +420,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.makeCover'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def move(self, target_album_id: int, photo_id: int, owner_id: int = None):
         """
@@ -432,7 +432,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.move'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def put_tag(self, photo_id: int, user_id: int, owner_id: int = None, x: float = None, y: float = None, x2: float = None, y2: float = None):
         """
@@ -448,7 +448,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.putTag'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def remove_tag(self, photo_id: int, tag_id: int, owner_id: int = None):
         """
@@ -460,7 +460,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.removeTag'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def reorder_albums(self, album_id: int, owner_id: int = None, before: int = None, after: int = None):
         """
@@ -473,7 +473,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.reorderAlbums'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def reorder_photos(self, photo_id: int, owner_id: int = None, before: int = None, after: int = None):
         """
@@ -486,7 +486,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.reorderPhotos'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def report(self, owner_id: int, photo_id: int, reason: int = None):
         """
@@ -498,7 +498,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.report'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def report_comment(self, owner_id: int, comment_id: int, reason: int = None):
         """
@@ -510,7 +510,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.reportComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def restore(self, photo_id: int, owner_id: int = None):
         """
@@ -521,7 +521,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.restore'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def restore_comment(self, comment_id: int, owner_id: int = None):
         """
@@ -532,7 +532,7 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.restoreComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save(self, album_id: int = None, group_id: int = None, server: int = None, photos_list: str = None, hash_: str = None, latitude: float = None, longitude: float = None, caption: str = None):
         """
@@ -550,7 +550,7 @@ class Photos(ApiMethod):
     
         param_alias_dict = {'hash_': 'hash'}
         method_name = 'photos.save'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save_market_album_photo(self, group_id: int, photo: str, server: int, hash_: str):
         """
@@ -564,7 +564,7 @@ class Photos(ApiMethod):
     
         param_alias_dict = {'hash_': 'hash'}
         method_name = 'photos.saveMarketAlbumPhoto'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save_market_photo(self, photo: str, server: int, hash_: str, group_id: int = None, crop_data: str = None, crop_hash: str = None):
         """
@@ -580,7 +580,7 @@ class Photos(ApiMethod):
     
         param_alias_dict = {'hash_': 'hash'}
         method_name = 'photos.saveMarketPhoto'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save_messages_photo(self, photo: str, server: int = None, hash_: str = None):
         """
@@ -593,7 +593,7 @@ class Photos(ApiMethod):
     
         param_alias_dict = {'hash_': 'hash'}
         method_name = 'photos.saveMessagesPhoto'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save_owner_cover_photo(self, hash_: str, photo: str):
         """
@@ -605,7 +605,7 @@ class Photos(ApiMethod):
     
         param_alias_dict = {'hash_': 'hash'}
         method_name = 'photos.saveOwnerCoverPhoto'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save_owner_photo(self, server: str = None, hash_: str = None, photo: str = None):
         """
@@ -618,7 +618,7 @@ class Photos(ApiMethod):
     
         param_alias_dict = {'hash_': 'hash'}
         method_name = 'photos.saveOwnerPhoto'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save_wall_photo(self, photo: str, user_id: int = None, group_id: int = None, server: int = None, hash_: str = None, latitude: float = None, longitude: float = None, caption: str = None):
         """
@@ -636,7 +636,7 @@ class Photos(ApiMethod):
     
         param_alias_dict = {'hash_': 'hash'}
         method_name = 'photos.saveWallPhoto'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def search(self, q: str = None, lat: float = None, long: float = None, start_time: int = None, end_time: int = None, sort: int = None, offset: int = None, count: int = None, radius: int = None):
         """
@@ -654,5 +654,5 @@ class Photos(ApiMethod):
         """
     
         method_name = 'photos.search'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -24,5 +24,5 @@ class Search(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'search.getHints'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

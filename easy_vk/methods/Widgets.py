@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -23,7 +23,7 @@ class Widgets(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'widgets.getComments'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_pages(self, widget_api_id: int = None, order: str = None, period: str = None, offset: int = None, count: int = None):
         """
@@ -37,5 +37,5 @@ class Widgets(ApiMethod):
         """
     
         method_name = 'widgets.getPages'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

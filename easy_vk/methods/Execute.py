@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -13,5 +13,5 @@ class Execute(ApiMethod):
         """
     
         method_name = 'execute'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -13,7 +13,7 @@ class Fave(ApiMethod):
         """
     
         method_name = 'fave.addArticle'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_link(self, link: str):
         """
@@ -23,7 +23,7 @@ class Fave(ApiMethod):
         """
     
         method_name = 'fave.addLink'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_page(self, user_id: int = None, group_id: int = None):
         """
@@ -33,7 +33,7 @@ class Fave(ApiMethod):
         """
     
         method_name = 'fave.addPage'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_post(self, owner_id: int, id_: int, access_key: str = None):
         """
@@ -45,7 +45,7 @@ class Fave(ApiMethod):
     
         param_alias_dict = {'id_': 'id'}
         method_name = 'fave.addPost'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_product(self, owner_id: int, id_: int, access_key: str = None):
         """
@@ -57,7 +57,7 @@ class Fave(ApiMethod):
     
         param_alias_dict = {'id_': 'id'}
         method_name = 'fave.addProduct'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_tag(self, name: str = None, position: str = None):
         """
@@ -67,7 +67,7 @@ class Fave(ApiMethod):
         """
     
         method_name = 'fave.addTag'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_video(self, owner_id: int, id_: int, access_key: str = None):
         """
@@ -79,7 +79,7 @@ class Fave(ApiMethod):
     
         param_alias_dict = {'id_': 'id'}
         method_name = 'fave.addVideo'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_tag(self, id_: int, name: str):
         """
@@ -90,7 +90,7 @@ class Fave(ApiMethod):
     
         param_alias_dict = {'id_': 'id'}
         method_name = 'fave.editTag'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, extended: bool = None, item_type: str = None, tag_id: int = None, offset: int = None, count: int = None, fields: str = None, is_from_snackbar: bool = None):
         """
@@ -105,7 +105,7 @@ class Fave(ApiMethod):
         """
     
         method_name = 'fave.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_pages(self, offset: int = None, count: int = None, type_: str = None, fields: List[str] = None, tag_id: int = None):
         """
@@ -122,7 +122,7 @@ class Fave(ApiMethod):
         
         param_alias_dict = {'type_': 'type'}
         method_name = 'fave.getPages'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_tags(self):
         """
@@ -130,7 +130,7 @@ class Fave(ApiMethod):
         """
     
         method_name = 'fave.getTags'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def mark_seen(self):
         """
@@ -138,7 +138,7 @@ class Fave(ApiMethod):
         """
     
         method_name = 'fave.markSeen'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def remove_article(self, owner_id: int, article_id: int):
         """
@@ -148,7 +148,7 @@ class Fave(ApiMethod):
         """
     
         method_name = 'fave.removeArticle'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def remove_link(self, link_id: str = None, link: str = None):
         """
@@ -159,7 +159,7 @@ class Fave(ApiMethod):
         """
     
         method_name = 'fave.removeLink'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def remove_page(self, user_id: int = None, group_id: int = None):
         """
@@ -169,7 +169,7 @@ class Fave(ApiMethod):
         """
     
         method_name = 'fave.removePage'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def remove_post(self, owner_id: int, id_: int):
         """
@@ -180,7 +180,7 @@ class Fave(ApiMethod):
     
         param_alias_dict = {'id_': 'id'}
         method_name = 'fave.removePost'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def remove_product(self, owner_id: int, id_: int):
         """
@@ -191,7 +191,7 @@ class Fave(ApiMethod):
     
         param_alias_dict = {'id_': 'id'}
         method_name = 'fave.removeProduct'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def remove_tag(self, id_: int):
         """
@@ -201,7 +201,7 @@ class Fave(ApiMethod):
     
         param_alias_dict = {'id_': 'id'}
         method_name = 'fave.removeTag'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def reorder_tags(self, ids: List[int]):
         """
@@ -214,7 +214,7 @@ class Fave(ApiMethod):
             ids = ','.join(ids)
         
         method_name = 'fave.reorderTags'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_page_tags(self, user_id: int = None, group_id: int = None, tag_ids: List[int] = None):
         """
@@ -229,7 +229,7 @@ class Fave(ApiMethod):
             tag_ids = ','.join(tag_ids)
         
         method_name = 'fave.setPageTags'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_tags(self, item_type: str = None, item_owner_id: int = None, item_id: int = None, tag_ids: List[int] = None, link_id: str = None, link_url: str = None):
         """
@@ -247,7 +247,7 @@ class Fave(ApiMethod):
             tag_ids = ','.join(tag_ids)
         
         method_name = 'fave.setTags'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def track_page_interaction(self, user_id: int = None, group_id: int = None):
         """
@@ -257,5 +257,5 @@ class Fave(ApiMethod):
         """
     
         method_name = 'fave.trackPageInteraction'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

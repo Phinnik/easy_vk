@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -21,7 +21,7 @@ class Notifications(ApiMethod):
             filters = ','.join(filters)
         
         method_name = 'notifications.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def mark_as_viewed(self):
         """
@@ -30,7 +30,7 @@ class Notifications(ApiMethod):
         """
     
         method_name = 'notifications.markAsViewed'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def send_message(self, user_ids: List[int], message: str, fragment: str = None, group_id: int = None):
         """
@@ -46,5 +46,5 @@ class Notifications(ApiMethod):
             user_ids = ','.join(user_ids)
         
         method_name = 'notifications.sendMessage'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

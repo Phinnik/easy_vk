@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -16,7 +16,7 @@ class Secure(ApiMethod):
         """
     
         method_name = 'secure.addAppEvent'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def check_token(self, token: str = None, ip: str = None):
         """
@@ -27,7 +27,7 @@ class Secure(ApiMethod):
         """
     
         method_name = 'secure.checkToken'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_app_balance(self):
         """
@@ -36,7 +36,7 @@ class Secure(ApiMethod):
         """
     
         method_name = 'secure.getAppBalance'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_sm_shistory(self, user_id: int = None, date_from: int = None, date_to: int = None, limit: int = None):
         """
@@ -49,7 +49,7 @@ class Secure(ApiMethod):
         """
     
         method_name = 'secure.getSMSHistory'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_transactions_history(self, type_: int = None, uid_from: int = None, uid_to: int = None, date_from: int = None, date_to: int = None, limit: int = None):
         """
@@ -65,7 +65,7 @@ class Secure(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'secure.getTransactionsHistory'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_user_level(self, user_ids: List[int]):
         """
@@ -79,7 +79,7 @@ class Secure(ApiMethod):
             user_ids = ','.join(user_ids)
         
         method_name = 'secure.getUserLevel'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def give_event_sticker(self, user_ids: List[int], achievement_id: int):
         """
@@ -94,7 +94,7 @@ class Secure(ApiMethod):
             user_ids = ','.join(user_ids)
         
         method_name = 'secure.giveEventSticker'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def send_notification(self, message: str, user_ids: List[int] = None, user_id: int = None):
         """
@@ -110,7 +110,7 @@ class Secure(ApiMethod):
             user_ids = ','.join(user_ids)
         
         method_name = 'secure.sendNotification'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def send_sm_snotification(self, user_id: int, message: str):
         """
@@ -121,7 +121,7 @@ class Secure(ApiMethod):
         """
     
         method_name = 'secure.sendSMSNotification'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_counter(self, counters: List[str] = None, user_id: int = None, counter: int = None, increment: bool = None):
         """
@@ -137,5 +137,5 @@ class Secure(ApiMethod):
             counters = ','.join(counters)
         
         method_name = 'secure.setCounter'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

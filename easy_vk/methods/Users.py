@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -21,7 +21,7 @@ class Users(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'users.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_followers(self, user_id: int = None, offset: int = None, count: int = None, fields: List[str] = None, name_case: str = None):
         """
@@ -38,7 +38,7 @@ class Users(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'users.getFollowers'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_subscriptions(self, user_id: int = None, extended: bool = None, offset: int = None, count: int = None, fields: List[str] = None):
         """
@@ -55,7 +55,7 @@ class Users(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'users.getSubscriptions'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def report(self, user_id: int, type_: str, comment: str = None):
         """
@@ -68,7 +68,7 @@ class Users(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'users.report'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def search(self, q: str = None, sort: int = None, offset: int = None, count: int = None, fields: List[str] = None, city: int = None, country: int = None, hometown: str = None, university_country: int = None, university: int = None, university_year: int = None, university_faculty: int = None, university_chair: int = None, sex: int = None, status: int = None, age_from: int = None, age_to: int = None, birth_day: int = None, birth_month: int = None, birth_year: int = None, online: bool = None, has_photo: bool = None, school_country: int = None, school_city: int = None, school_class: int = None, school: int = None, school_year: int = None, religion: str = None, company: str = None, position: str = None, group_id: int = None, from_list: List[str] = None):
         """
@@ -114,5 +114,5 @@ class Users(ApiMethod):
             from_list = ','.join(from_list)
         
         method_name = 'users.search'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

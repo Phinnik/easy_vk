@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -16,7 +16,7 @@ class Friends(ApiMethod):
         """
     
         method_name = 'friends.add'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_list(self, name: str, user_ids: List[int] = None):
         """
@@ -31,7 +31,7 @@ class Friends(ApiMethod):
             user_ids = ','.join(user_ids)
         
         method_name = 'friends.addList'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def are_friends(self, user_ids: List[int], need_sign: bool = None):
         """
@@ -46,7 +46,7 @@ class Friends(ApiMethod):
             user_ids = ','.join(user_ids)
         
         method_name = 'friends.areFriends'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete(self, user_id: int = None):
         """
@@ -56,7 +56,7 @@ class Friends(ApiMethod):
         """
     
         method_name = 'friends.delete'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_all_requests(self):
         """
@@ -65,7 +65,7 @@ class Friends(ApiMethod):
         """
     
         method_name = 'friends.deleteAllRequests'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_list(self, list_id: int):
         """
@@ -75,7 +75,7 @@ class Friends(ApiMethod):
         """
     
         method_name = 'friends.deleteList'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit(self, user_id: int, list_ids: List[int] = None):
         """
@@ -90,7 +90,7 @@ class Friends(ApiMethod):
             list_ids = ','.join(list_ids)
         
         method_name = 'friends.edit'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_list(self, list_id: int, name: str = None, user_ids: List[int] = None, add_user_ids: List[int] = None, delete_user_ids: List[int] = None):
         """
@@ -114,7 +114,7 @@ class Friends(ApiMethod):
             delete_user_ids = ','.join(delete_user_ids)
         
         method_name = 'friends.editList'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, user_id: int = None, order: str = None, list_id: int = None, count: int = None, offset: int = None, fields: List[str] = None, name_case: str = None, ref: str = None):
         """
@@ -134,7 +134,7 @@ class Friends(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'friends.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_app_users(self):
         """
@@ -143,7 +143,7 @@ class Friends(ApiMethod):
         """
     
         method_name = 'friends.getAppUsers'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_phones(self, phones: List[str] = None, fields: List[str] = None):
         """
@@ -159,7 +159,7 @@ class Friends(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'friends.getByPhones'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_lists(self, user_id: int = None, return_system: bool = None):
         """
@@ -170,7 +170,7 @@ class Friends(ApiMethod):
         """
     
         method_name = 'friends.getLists'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_mutual(self, source_uid: int = None, target_uid: int = None, target_uids: List[int] = None, order: str = None, count: int = None, offset: int = None):
         """
@@ -189,7 +189,7 @@ class Friends(ApiMethod):
             target_uids = ','.join(target_uids)
         
         method_name = 'friends.getMutual'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_online(self, user_id: int = None, list_id: int = None, online_mobile: bool = None, order: str = None, count: int = None, offset: int = None):
         """
@@ -204,7 +204,7 @@ class Friends(ApiMethod):
         """
     
         method_name = 'friends.getOnline'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_recent(self, count: int = None):
         """
@@ -214,7 +214,7 @@ class Friends(ApiMethod):
         """
     
         method_name = 'friends.getRecent'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_requests(self, offset: int = None, count: int = None, extended: bool = None, need_mutual: bool = None, out: bool = None, sort: int = None, need_viewed: bool = None, suggested: bool = None, ref: str = None, fields: List[str] = None):
         """
@@ -236,7 +236,7 @@ class Friends(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'friends.getRequests'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_suggestions(self, filter_: List[str] = None, count: int = None, offset: int = None, fields: List[str] = None, name_case: str = None):
         """
@@ -256,7 +256,7 @@ class Friends(ApiMethod):
         
         param_alias_dict = {'filter_': 'filter'}
         method_name = 'friends.getSuggestions'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def search(self, user_id: int, q: str = None, fields: List[str] = None, name_case: str = None, offset: int = None, count: int = None):
         """
@@ -274,5 +274,5 @@ class Friends(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'friends.search'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

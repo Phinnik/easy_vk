@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -21,7 +21,7 @@ class Polls(ApiMethod):
             answer_ids = ','.join(answer_ids)
         
         method_name = 'polls.addVote'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create(self, question: str = None, is_anonymous: bool = None, is_multiple: bool = None, end_date: int = None, owner_id: int = None, add_answers: str = None, photo_id: int = None, background_id: str = None):
         """
@@ -38,7 +38,7 @@ class Polls(ApiMethod):
         """
     
         method_name = 'polls.create'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_vote(self, poll_id: int, answer_id: int, owner_id: int = None, is_board: bool = None):
         """
@@ -51,7 +51,7 @@ class Polls(ApiMethod):
         """
     
         method_name = 'polls.deleteVote'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit(self, poll_id: int, owner_id: int = None, question: str = None, add_answers: str = None, edit_answers: str = None, delete_answers: str = None, end_date: int = None, photo_id: int = None, background_id: str = None):
         """
@@ -69,7 +69,7 @@ class Polls(ApiMethod):
         """
     
         method_name = 'polls.edit'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_id(self, poll_id: int, owner_id: int = None, is_board: bool = None, extended: bool = None, friends_count: int = None, fields: List[str] = None, name_case: str = None):
         """
@@ -88,7 +88,7 @@ class Polls(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'polls.getById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_voters(self, poll_id: int, answer_ids: List[int], owner_id: int = None, is_board: bool = None, friends_only: bool = None, offset: int = None, count: int = None, fields: List[str] = None, name_case: str = None):
         """
@@ -112,5 +112,5 @@ class Polls(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'polls.getVoters'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -15,7 +15,7 @@ class Status(ApiMethod):
         """
     
         method_name = 'status.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set(self, text: str = None, group_id: int = None):
         """
@@ -26,5 +26,5 @@ class Status(ApiMethod):
         """
     
         method_name = 'status.set'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

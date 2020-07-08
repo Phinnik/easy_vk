@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -27,7 +27,7 @@ class Stats(ApiMethod):
             stats_groups = ','.join(stats_groups)
         
         method_name = 'stats.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_post_reach(self, owner_id: str, post_ids: List[int]):
         """
@@ -42,7 +42,7 @@ class Stats(ApiMethod):
             post_ids = ','.join(post_ids)
         
         method_name = 'stats.getPostReach'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def track_visitor(self, id_: str):
         """
@@ -52,5 +52,5 @@ class Stats(ApiMethod):
     
         param_alias_dict = {'id_': 'id'}
         method_name = 'stats.trackVisitor'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

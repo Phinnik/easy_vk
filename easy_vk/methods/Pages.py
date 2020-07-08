@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -14,7 +14,7 @@ class Pages(ApiMethod):
         """
     
         method_name = 'pages.clearCache'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, owner_id: int = None, page_id: int = None, global_: bool = None, site_preview: bool = None, title: str = None, need_source: bool = None, need_html: bool = None):
         """
@@ -31,7 +31,7 @@ class Pages(ApiMethod):
     
         param_alias_dict = {'global_': 'global'}
         method_name = 'pages.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_history(self, page_id: int, group_id: int = None, user_id: int = None):
         """
@@ -43,7 +43,7 @@ class Pages(ApiMethod):
         """
     
         method_name = 'pages.getHistory'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_titles(self, group_id: int = None):
         """
@@ -53,7 +53,7 @@ class Pages(ApiMethod):
         """
     
         method_name = 'pages.getTitles'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_version(self, version_id: int, group_id: int = None, user_id: int = None, need_html: bool = None):
         """
@@ -66,7 +66,7 @@ class Pages(ApiMethod):
         """
     
         method_name = 'pages.getVersion'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def parse_wiki(self, text: str, group_id: int = None):
         """
@@ -77,7 +77,7 @@ class Pages(ApiMethod):
         """
     
         method_name = 'pages.parseWiki'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save(self, text: str = None, page_id: int = None, group_id: int = None, user_id: int = None, title: str = None):
         """
@@ -91,7 +91,7 @@ class Pages(ApiMethod):
         """
     
         method_name = 'pages.save'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save_access(self, page_id: int, group_id: int = None, user_id: int = None, view: int = None, edit: int = None):
         """
@@ -105,5 +105,5 @@ class Pages(ApiMethod):
         """
     
         method_name = 'pages.saveAccess'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -16,5 +16,5 @@ class Appwidgets(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'appWidgets.update'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

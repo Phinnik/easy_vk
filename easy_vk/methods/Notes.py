@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -22,7 +22,7 @@ class Notes(ApiMethod):
             privacy_comment = ','.join(privacy_comment)
         
         method_name = 'notes.add'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create_comment(self, note_id: int, message: str, owner_id: int = None, reply_to: int = None, guid: str = None):
         """
@@ -36,7 +36,7 @@ class Notes(ApiMethod):
         """
     
         method_name = 'notes.createComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete(self, note_id: int):
         """
@@ -46,7 +46,7 @@ class Notes(ApiMethod):
         """
     
         method_name = 'notes.delete'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_comment(self, comment_id: int, owner_id: int = None):
         """
@@ -57,7 +57,7 @@ class Notes(ApiMethod):
         """
     
         method_name = 'notes.deleteComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit(self, note_id: int, title: str, text: str, privacy_view: List[str] = None, privacy_comment: List[str] = None):
         """
@@ -76,7 +76,7 @@ class Notes(ApiMethod):
             privacy_comment = ','.join(privacy_comment)
         
         method_name = 'notes.edit'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_comment(self, comment_id: int, message: str, owner_id: int = None):
         """
@@ -88,7 +88,7 @@ class Notes(ApiMethod):
         """
     
         method_name = 'notes.editComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, note_ids: List[int] = None, user_id: int = None, offset: int = None, count: int = None, sort: int = None):
         """
@@ -106,7 +106,7 @@ class Notes(ApiMethod):
             note_ids = ','.join(note_ids)
         
         method_name = 'notes.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_id(self, note_id: int, owner_id: int = None, need_wiki: bool = None):
         """
@@ -118,7 +118,7 @@ class Notes(ApiMethod):
         """
     
         method_name = 'notes.getById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_comments(self, note_id: int, owner_id: int = None, sort: int = None, offset: int = None, count: int = None):
         """
@@ -132,7 +132,7 @@ class Notes(ApiMethod):
         """
     
         method_name = 'notes.getComments'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def restore_comment(self, comment_id: int, owner_id: int = None):
         """
@@ -143,5 +143,5 @@ class Notes(ApiMethod):
         """
     
         method_name = 'notes.restoreComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

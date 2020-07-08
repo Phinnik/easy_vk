@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -13,7 +13,7 @@ class Apps(ApiMethod):
         """
     
         method_name = 'apps.deleteAppRequests'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, app_id: int = None, app_ids: List[str] = None, platform: str = None, extended: bool = None, return_friends: bool = None, fields: List[str] = None, name_case: str = None):
         """
@@ -34,7 +34,7 @@ class Apps(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'apps.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_catalog(self, count: int, sort: str = None, offset: int = None, platform: str = None, extended: bool = None, return_friends: bool = None, fields: List[str] = None, name_case: str = None, q: str = None, genre_id: int = None, filter_: str = None):
         """
@@ -58,7 +58,7 @@ class Apps(ApiMethod):
         
         param_alias_dict = {'filter_': 'filter'}
         method_name = 'apps.getCatalog'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_friends_list(self, extended: bool = None, count: int = None, offset: int = None, type_: str = None, fields: List[str] = None):
         """
@@ -76,7 +76,7 @@ class Apps(ApiMethod):
         
         param_alias_dict = {'type_': 'type'}
         method_name = 'apps.getFriendsList'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_leaderboard(self, type_: str, global_: bool = None, extended: bool = None):
         """
@@ -89,7 +89,7 @@ class Apps(ApiMethod):
     
         param_alias_dict = {'type_': 'type', 'global_': 'global'}
         method_name = 'apps.getLeaderboard'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_scopes(self, type_: str = None):
         """
@@ -100,7 +100,7 @@ class Apps(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'apps.getScopes'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_score(self, user_id: int):
         """
@@ -110,7 +110,7 @@ class Apps(ApiMethod):
         """
     
         method_name = 'apps.getScore'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def promo_has_active_gift(self, promo_id: int, user_id: int = None):
         """
@@ -120,7 +120,7 @@ class Apps(ApiMethod):
         """
     
         method_name = 'apps.promoHasActiveGift'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def promo_use_gift(self, promo_id: int, user_id: int = None):
         """
@@ -130,7 +130,7 @@ class Apps(ApiMethod):
         """
     
         method_name = 'apps.promoUseGift'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def send_request(self, user_id: int, text: str = None, type_: str = None, name: str = None, key: str = None, separate: bool = None):
         """
@@ -146,5 +146,5 @@ class Apps(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'apps.sendRequest'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

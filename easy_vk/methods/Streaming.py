@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -13,7 +13,7 @@ class Streaming(ApiMethod):
         """
     
         method_name = 'streaming.getServerUrl'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_settings(self, monthly_tier: str = None):
         """
@@ -22,5 +22,5 @@ class Streaming(ApiMethod):
         """
     
         method_name = 'streaming.setSettings'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

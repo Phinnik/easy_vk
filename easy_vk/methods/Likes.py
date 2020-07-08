@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -18,7 +18,7 @@ class Likes(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'likes.add'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete(self, type_: str, item_id: int, owner_id: int = None, access_key: str = None):
         """
@@ -32,7 +32,7 @@ class Likes(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'likes.delete'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_list(self, type_: str, owner_id: int = None, item_id: int = None, page_url: str = None, filter_: str = None, friends_only: int = None, extended: bool = None, offset: int = None, count: int = None, skip_own: bool = None):
         """
@@ -52,7 +52,7 @@ class Likes(ApiMethod):
     
         param_alias_dict = {'type_': 'type', 'filter_': 'filter'}
         method_name = 'likes.getList'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def is_liked(self, type_: str, item_id: int, user_id: int = None, owner_id: int = None):
         """
@@ -66,5 +66,5 @@ class Likes(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'likes.isLiked'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

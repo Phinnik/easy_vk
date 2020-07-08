@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -15,7 +15,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.addOfficeUsers'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def check_link(self, account_id: int, link_type: str, link_url: str, campaign_id: int = None):
         """
@@ -28,7 +28,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.checkLink'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create_ads(self, account_id: int, data: str):
         """
@@ -39,7 +39,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.createAds'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create_campaigns(self, account_id: int, data: str):
         """
@@ -50,7 +50,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.createCampaigns'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create_clients(self, account_id: int, data: str):
         """
@@ -61,7 +61,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.createClients'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create_target_group(self, account_id: int, name: str, client_id: int = None, lifetime: int = None, target_pixel_id: int = None, target_pixel_rules: str = None):
         """
@@ -76,7 +76,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.createTargetGroup'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_ads(self, account_id: int, ids: str):
         """
@@ -87,7 +87,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.deleteAds'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_campaigns(self, account_id: int, ids: str):
         """
@@ -98,7 +98,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.deleteCampaigns'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_clients(self, account_id: int, ids: str):
         """
@@ -109,7 +109,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.deleteClients'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_target_group(self, account_id: int, target_group_id: int, client_id: int = None):
         """
@@ -121,7 +121,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.deleteTargetGroup'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_accounts(self):
         """
@@ -130,7 +130,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getAccounts'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_ads(self, account_id: int, ad_ids: str = None, campaign_ids: str = None, client_id: int = None, include_deleted: bool = None, limit: int = None, offset: int = None):
         """
@@ -146,7 +146,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getAds'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_ads_layout(self, account_id: int, ad_ids: str = None, campaign_ids: str = None, client_id: int = None, include_deleted: bool = None, limit: int = None, offset: int = None):
         """
@@ -162,7 +162,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getAdsLayout'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_ads_targeting(self, account_id: int, ad_ids: str = None, campaign_ids: str = None, client_id: int = None, include_deleted: bool = None, limit: int = None, offset: int = None):
         """
@@ -178,7 +178,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getAdsTargeting'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_budget(self, account_id: int):
         """
@@ -188,7 +188,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getBudget'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_campaigns(self, account_id: int, client_id: int = None, include_deleted: bool = None, campaign_ids: str = None, fields: List[str] = None):
         """
@@ -205,7 +205,7 @@ class Ads(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'ads.getCampaigns'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_categories(self, lang: str = None):
         """
@@ -215,7 +215,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getCategories'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_clients(self, account_id: int):
         """
@@ -225,7 +225,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getClients'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_demographics(self, account_id: int, ids_type: str, ids: str, period: str, date_from: str, date_to: str):
         """
@@ -240,7 +240,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getDemographics'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_flood_stats(self, account_id: int):
         """
@@ -250,7 +250,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getFloodStats'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_office_users(self, account_id: int):
         """
@@ -260,7 +260,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getOfficeUsers'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_posts_reach(self, account_id: int, ids_type: str, ids: str):
         """
@@ -272,7 +272,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getPostsReach'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_rejection_reason(self, account_id: int, ad_id: int):
         """
@@ -283,7 +283,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getRejectionReason'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_statistics(self, account_id: int, ids_type: str, ids: str, period: str, date_from: str, date_to: str, stats_fields: List[str] = None):
         """
@@ -302,7 +302,7 @@ class Ads(ApiMethod):
             stats_fields = ','.join(stats_fields)
         
         method_name = 'ads.getStatistics'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_suggestions(self, section: str, ids: str = None, q: str = None, country: int = None, cities: str = None, lang: str = None):
         """
@@ -317,7 +317,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getSuggestions'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_target_groups(self, account_id: int, client_id: int = None, extended: bool = None):
         """
@@ -329,7 +329,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getTargetGroups'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_targeting_stats(self, account_id: int, link_url: str, client_id: int = None, criteria: str = None, ad_id: int = None, ad_format: int = None, ad_platform: str = None, ad_platform_no_wall: str = None, ad_platform_no_ad_network: str = None, link_domain: str = None):
         """
@@ -348,7 +348,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getTargetingStats'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_upload_ur_l(self, ad_format: int, icon: int = None):
         """
@@ -359,7 +359,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getUploadURL'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_video_upload_ur_l(self):
         """
@@ -368,7 +368,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.getVideoUploadURL'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def import_target_contacts(self, account_id: int, target_group_id: int, contacts: str, client_id: int = None):
         """
@@ -381,7 +381,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.importTargetContacts'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def remove_office_users(self, account_id: int, ids: str):
         """
@@ -392,7 +392,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.removeOfficeUsers'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def update_ads(self, account_id: int, data: str):
         """
@@ -403,7 +403,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.updateAds'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def update_campaigns(self, account_id: int, data: str):
         """
@@ -414,7 +414,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.updateCampaigns'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def update_clients(self, account_id: int, data: str):
         """
@@ -425,7 +425,7 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.updateClients'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def update_target_group(self, account_id: int, target_group_id: int, name: str, client_id: int = None, domain: str = None, lifetime: int = None, target_pixel_id: int = None, target_pixel_rules: str = None):
         """
@@ -442,5 +442,5 @@ class Ads(ApiMethod):
         """
     
         method_name = 'ads.updateTargetGroup'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

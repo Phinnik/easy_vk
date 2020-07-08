@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -14,7 +14,7 @@ class Wall(ApiMethod):
         """
     
         method_name = 'wall.closeComments'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create_comment(self, post_id: int, owner_id: int = None, from_group: int = None, message: str = None, reply_to_comment: int = None, attachments: List[str] = None, sticker_id: int = None, guid: str = None):
         """
@@ -34,7 +34,7 @@ class Wall(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'wall.createComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete(self, owner_id: int = None, post_id: int = None):
         """
@@ -45,7 +45,7 @@ class Wall(ApiMethod):
         """
     
         method_name = 'wall.delete'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_comment(self, comment_id: int, owner_id: int = None):
         """
@@ -56,7 +56,7 @@ class Wall(ApiMethod):
         """
     
         method_name = 'wall.deleteComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit(self, post_id: int, owner_id: int = None, friends_only: bool = None, message: str = None, attachments: List[str] = None, services: str = None, signed: bool = None, publish_date: int = None, lat: float = None, long: float = None, place_id: int = None, mark_as_ads: bool = None, close_comments: bool = None, poster_bkg_id: int = None, poster_bkg_owner_id: int = None, poster_bkg_access_hash: str = None, copyright_: str = None):
         """
@@ -86,7 +86,7 @@ class Wall(ApiMethod):
         
         param_alias_dict = {'copyright_': 'copyright'}
         method_name = 'wall.edit'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_ads_stealth(self, post_id: int, owner_id: int = None, message: str = None, attachments: List[str] = None, signed: bool = None, lat: float = None, long: float = None, place_id: int = None, link_button: str = None, link_title: str = None, link_image: str = None, link_video: str = None):
         """
@@ -110,7 +110,7 @@ class Wall(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'wall.editAdsStealth'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_comment(self, comment_id: int, owner_id: int = None, message: str = None, attachments: List[str] = None):
         """
@@ -126,7 +126,7 @@ class Wall(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'wall.editComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, owner_id: int = None, domain: str = None, offset: int = None, count: int = None, filter_: str = None, extended: bool = None, fields: List[str] = None):
         """
@@ -146,7 +146,7 @@ class Wall(ApiMethod):
         
         param_alias_dict = {'filter_': 'filter'}
         method_name = 'wall.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_id(self, posts: List[str], extended: bool = None, copy_history_depth: int = None, fields: List[str] = None):
         """
@@ -164,7 +164,7 @@ class Wall(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'wall.getById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_comment(self, comment_id: int, owner_id: int = None, extended: bool = None, fields: List[str] = None):
         """
@@ -180,7 +180,7 @@ class Wall(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'wall.getComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_comments(self, owner_id: int = None, post_id: int = None, need_likes: bool = None, start_comment_id: int = None, offset: int = None, count: int = None, sort: str = None, preview_length: int = None, extended: bool = None, fields: List[str] = None, comment_id: int = None, thread_items_count: int = None):
         """
@@ -204,7 +204,7 @@ class Wall(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'wall.getComments'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_reposts(self, owner_id: int = None, post_id: int = None, offset: int = None, count: int = None):
         """
@@ -217,7 +217,7 @@ class Wall(ApiMethod):
         """
     
         method_name = 'wall.getReposts'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def open_comments(self, owner_id: int, post_id: int):
         """
@@ -227,7 +227,7 @@ class Wall(ApiMethod):
         """
     
         method_name = 'wall.openComments'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def pin(self, post_id: int, owner_id: int = None):
         """
@@ -238,7 +238,7 @@ class Wall(ApiMethod):
         """
     
         method_name = 'wall.pin'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def post(self, owner_id: int = None, friends_only: bool = None, from_group: bool = None, message: str = None, attachments: List[str] = None, services: str = None, signed: bool = None, publish_date: int = None, lat: float = None, long: float = None, place_id: int = None, post_id: int = None, guid: str = None, mark_as_ads: bool = None, close_comments: bool = None, mute_notifications: bool = None, copyright_: str = None):
         """
@@ -268,7 +268,7 @@ class Wall(ApiMethod):
         
         param_alias_dict = {'copyright_': 'copyright'}
         method_name = 'wall.post'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def post_ads_stealth(self, owner_id: int, message: str = None, attachments: List[str] = None, signed: bool = None, lat: float = None, long: float = None, place_id: int = None, guid: str = None, link_button: str = None, link_title: str = None, link_image: str = None, link_video: str = None):
         """
@@ -292,7 +292,7 @@ class Wall(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'wall.postAdsStealth'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def report_comment(self, owner_id: int, comment_id: int, reason: int = None):
         """
@@ -304,7 +304,7 @@ class Wall(ApiMethod):
         """
     
         method_name = 'wall.reportComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def report_post(self, owner_id: int, post_id: int, reason: int = None):
         """
@@ -316,7 +316,7 @@ class Wall(ApiMethod):
         """
     
         method_name = 'wall.reportPost'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def repost(self, object_: str, message: str = None, group_id: int = None, mark_as_ads: bool = None, mute_notifications: bool = None):
         """
@@ -331,7 +331,7 @@ class Wall(ApiMethod):
     
         param_alias_dict = {'object_': 'object'}
         method_name = 'wall.repost'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def restore(self, owner_id: int = None, post_id: int = None):
         """
@@ -342,7 +342,7 @@ class Wall(ApiMethod):
         """
     
         method_name = 'wall.restore'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def restore_comment(self, comment_id: int, owner_id: int = None):
         """
@@ -353,7 +353,7 @@ class Wall(ApiMethod):
         """
     
         method_name = 'wall.restoreComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def search(self, owner_id: int = None, domain: str = None, query: str = None, owners_only: bool = None, count: int = None, offset: int = None, extended: bool = None, fields: List[str] = None):
         """
@@ -373,7 +373,7 @@ class Wall(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'wall.search'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def unpin(self, post_id: int, owner_id: int = None):
         """
@@ -384,5 +384,5 @@ class Wall(ApiMethod):
         """
     
         method_name = 'wall.unpin'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

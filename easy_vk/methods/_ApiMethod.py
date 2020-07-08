@@ -1,5 +1,5 @@
 import time
-from exceptions import raise_exception
+from ..exceptions  import raise_exception
 
 
 class ApiMethod:
@@ -9,7 +9,7 @@ class ApiMethod:
         self._v = v
         self._requests_per_s = requests_per_s
 
-    def call(self, method_name, method_locals):
+    def _call(self, method_name, method_locals):
         time_start = time.time()
 
         api_url = f'https://api.vk.com/method/{method_name}'

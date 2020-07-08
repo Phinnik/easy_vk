@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -25,7 +25,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.addAddress'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_callback_server(self, group_id: int, url: str, title: str, secret_key: str = None):
         """
@@ -37,7 +37,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.addCallbackServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_link(self, group_id: int, link: str, text: str = None):
         """
@@ -49,7 +49,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.addLink'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def approve_request(self, group_id: int, user_id: int):
         """
@@ -60,7 +60,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.approveRequest'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def ban(self, group_id: int, owner_id: int = None, end_date: int = None, reason: int = None, comment: str = None, comment_visible: bool = None):
         """
@@ -74,7 +74,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.ban'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create(self, title: str, description: str = None, type_: str = None, public_category: int = None, subtype: int = None):
         """
@@ -89,7 +89,7 @@ class Groups(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'groups.create'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_callback_server(self, group_id: int, server_id: int):
         """
@@ -99,7 +99,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.deleteCallbackServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_link(self, group_id: int, link_id: int):
         """
@@ -110,7 +110,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.deleteLink'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def disable_online(self, group_id: int):
         """
@@ -119,7 +119,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.disableOnline'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit(self, group_id: int, title: str = None, description: str = None, screen_name: str = None, access: int = None, website: str = None, subject: str = None, email: str = None, phone: str = None, rss: str = None, event_start_date: int = None, event_finish_date: int = None, event_group_id: int = None, public_category: int = None, public_subcategory: int = None, public_date: str = None, wall: int = None, topics: int = None, photos: int = None, video: int = None, audio: int = None, links: bool = None, events: bool = None, places: bool = None, contacts: bool = None, docs: int = None, wiki: int = None, messages: bool = None, articles: bool = None, addresses: bool = None, age_limits: int = None, market: bool = None, market_comments: bool = None, market_country: List[int] = None, market_city: List[int] = None, market_currency: int = None, market_contact: int = None, market_wiki: int = None, obscene_filter: bool = None, obscene_stopwords: bool = None, obscene_words: List[str] = None, main_section: int = None, secondary_section: int = None, country: int = None, city: int = None):
         """
@@ -182,7 +182,7 @@ class Groups(ApiMethod):
             obscene_words = ','.join(obscene_words)
         
         method_name = 'groups.edit'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_address(self, group_id: int, address_id: int, title: str = None, address: str = None, additional_address: str = None, country_id: int = None, city_id: int = None, metro_id: int = None, latitude: float = None, longitude: float = None, phone: str = None, work_info_status: str = None, timetable: str = None, is_main_address: bool = None):
         """
@@ -204,7 +204,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.editAddress'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_callback_server(self, group_id: int, server_id: int, url: str, title: str, secret_key: str = None):
         """
@@ -217,7 +217,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.editCallbackServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_link(self, group_id: int, link_id: int, text: str = None):
         """
@@ -229,7 +229,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.editLink'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_manager(self, group_id: int, user_id: int, role: str = None, is_contact: bool = None, contact_position: str = None, contact_phone: str = None, contact_email: str = None):
         """
@@ -245,7 +245,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.editManager'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def enable_online(self, group_id: int):
         """
@@ -254,7 +254,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.enableOnline'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, user_id: int = None, extended: bool = None, filter_: List[str] = None, fields: List[str] = None, offset: int = None, count: int = None):
         """
@@ -275,7 +275,7 @@ class Groups(ApiMethod):
         
         param_alias_dict = {'filter_': 'filter'}
         method_name = 'groups.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_addresses(self, group_id: int, address_ids: List[int] = None, latitude: float = None, longitude: float = None, offset: int = None, count: int = None, fields: List[str] = None):
         """
@@ -297,7 +297,7 @@ class Groups(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'groups.getAddresses'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_banned(self, group_id: int, offset: int = None, count: int = None, fields: List[str] = None, owner_id: int = None):
         """
@@ -314,7 +314,7 @@ class Groups(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'groups.getBanned'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_id(self, group_ids: List[str] = None, group_id: str = None, fields: List[str] = None):
         """
@@ -331,7 +331,7 @@ class Groups(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'groups.getById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_callback_confirmation_code(self, group_id: int):
         """
@@ -341,7 +341,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.getCallbackConfirmationCode'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_callback_servers(self, group_id: int, server_ids: List[int] = None):
         """
@@ -355,7 +355,7 @@ class Groups(ApiMethod):
             server_ids = ','.join(server_ids)
         
         method_name = 'groups.getCallbackServers'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_callback_settings(self, group_id: int, server_id: int = None):
         """
@@ -366,7 +366,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.getCallbackSettings'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_catalog(self, category_id: int = None, subcategory_id: int = None):
         """
@@ -377,7 +377,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.getCatalog'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_catalog_info(self, extended: bool = None, subcategories: bool = None):
         """
@@ -388,7 +388,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.getCatalogInfo'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_invited_users(self, group_id: int, offset: int = None, count: int = None, fields: List[str] = None, name_case: str = None):
         """
@@ -405,7 +405,7 @@ class Groups(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'groups.getInvitedUsers'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_invites(self, offset: int = None, count: int = None, extended: bool = None):
         """
@@ -417,7 +417,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.getInvites'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_long_poll_server(self, group_id: int):
         """
@@ -427,7 +427,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.getLongPollServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_long_poll_settings(self, group_id: int):
         """
@@ -437,7 +437,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.getLongPollSettings'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_members(self, group_id: str = None, sort: str = None, offset: int = None, count: int = None, fields: List[str] = None, filter_: str = None):
         """
@@ -456,7 +456,7 @@ class Groups(ApiMethod):
         
         param_alias_dict = {'filter_': 'filter'}
         method_name = 'groups.getMembers'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_requests(self, group_id: int, offset: int = None, count: int = None, fields: List[str] = None):
         """
@@ -472,7 +472,7 @@ class Groups(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'groups.getRequests'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_settings(self, group_id: int):
         """
@@ -482,7 +482,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.getSettings'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_token_permissions(self):
         """
@@ -490,7 +490,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.getTokenPermissions'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def invite(self, group_id: int, user_id: int):
         """
@@ -501,7 +501,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.invite'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def is_member(self, group_id: str, user_id: int = None, user_ids: List[int] = None, extended: bool = None):
         """
@@ -518,7 +518,7 @@ class Groups(ApiMethod):
             user_ids = ','.join(user_ids)
         
         method_name = 'groups.isMember'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def join(self, group_id: int = None, not_sure: str = None):
         """
@@ -529,7 +529,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.join'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def leave(self, group_id: int):
         """
@@ -539,7 +539,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.leave'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def remove_user(self, group_id: int, user_id: int):
         """
@@ -550,7 +550,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.removeUser'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def reorder_link(self, group_id: int, link_id: int, after: int = None):
         """
@@ -562,7 +562,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.reorderLink'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def search(self, q: str, type_: str = None, country_id: int = None, city_id: int = None, future: bool = None, market: bool = None, sort: int = None, offset: int = None, count: int = None):
         """
@@ -581,7 +581,7 @@ class Groups(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'groups.search'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_callback_settings(self, group_id: int, server_id: int = None, api_version: str = None, message_new: bool = None, message_reply: bool = None, message_allow: bool = None, message_edit: bool = None, message_deny: bool = None, message_typing_state: bool = None, photo_new: bool = None, audio_new: bool = None, video_new: bool = None, wall_reply_new: bool = None, wall_reply_edit: bool = None, wall_reply_delete: bool = None, wall_reply_restore: bool = None, wall_post_new: bool = None, wall_repost: bool = None, board_post_new: bool = None, board_post_edit: bool = None, board_post_restore: bool = None, board_post_delete: bool = None, photo_comment_new: bool = None, photo_comment_edit: bool = None, photo_comment_delete: bool = None, photo_comment_restore: bool = None, video_comment_new: bool = None, video_comment_edit: bool = None, video_comment_delete: bool = None, video_comment_restore: bool = None, market_comment_new: bool = None, market_comment_edit: bool = None, market_comment_delete: bool = None, market_comment_restore: bool = None, poll_vote_new: bool = None, group_join: bool = None, group_leave: bool = None, group_change_settings: bool = None, group_change_photo: bool = None, group_officers_edit: bool = None, user_block: bool = None, user_unblock: bool = None, lead_forms_new: bool = None):
         """
@@ -633,7 +633,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.setCallbackSettings'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_long_poll_settings(self, group_id: int, enabled: bool = None, api_version: str = None, message_new: bool = None, message_reply: bool = None, message_allow: bool = None, message_deny: bool = None, message_edit: bool = None, message_typing_state: bool = None, photo_new: bool = None, audio_new: bool = None, video_new: bool = None, wall_reply_new: bool = None, wall_reply_edit: bool = None, wall_reply_delete: bool = None, wall_reply_restore: bool = None, wall_post_new: bool = None, wall_repost: bool = None, board_post_new: bool = None, board_post_edit: bool = None, board_post_restore: bool = None, board_post_delete: bool = None, photo_comment_new: bool = None, photo_comment_edit: bool = None, photo_comment_delete: bool = None, photo_comment_restore: bool = None, video_comment_new: bool = None, video_comment_edit: bool = None, video_comment_delete: bool = None, video_comment_restore: bool = None, market_comment_new: bool = None, market_comment_edit: bool = None, market_comment_delete: bool = None, market_comment_restore: bool = None, poll_vote_new: bool = None, group_join: bool = None, group_leave: bool = None, group_change_settings: bool = None, group_change_photo: bool = None, group_officers_edit: bool = None, user_block: bool = None, user_unblock: bool = None):
         """
@@ -684,7 +684,7 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.setLongPollSettings'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def unban(self, group_id: int, owner_id: int = None):
         """
@@ -694,5 +694,5 @@ class Groups(ApiMethod):
         """
     
         method_name = 'groups.unban'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

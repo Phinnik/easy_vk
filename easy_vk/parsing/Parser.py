@@ -28,7 +28,6 @@ class Parser:
         delay = 1 / 2.8 - (time.time() - time_start)
         if delay > 0:
             time.sleep(delay)
-        print(response)
         return response['response']
 
     async def _parse_single_pack(self, items_pack: list, parse_method, access_token: str, ):
@@ -73,17 +72,3 @@ class Parser:
         for t in tasks:
             result.extend(t.result())
         return result
-
-
-# at = '460257f8b317e32d8be2e28aee7cf2ed132c9ae11d612a64d9e9938bedf8e70be203a9c9c8c3ea86ca3e7'
-# parser = Parser(access_tokens=[at])
-# print(parser.fast_items_parse([1,2,3,4,5], 'items[i]'))
-
-# async def test(a):
-#     await asyncio.sleep(a/10)
-#     return a + 1
-#
-# loop = asyncio.get_event_loop()
-# tasks = [loop.create_task(test(i)) for i in range(10)]
-# loop.run_until_complete(asyncio.wait(tasks))
-# loop.close()

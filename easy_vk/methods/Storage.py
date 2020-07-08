@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -19,7 +19,7 @@ class Storage(ApiMethod):
             keys = ','.join(keys)
         
         method_name = 'storage.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_keys(self, user_id: int = None, offset: int = None, count: int = None):
         """
@@ -31,7 +31,7 @@ class Storage(ApiMethod):
         """
     
         method_name = 'storage.getKeys'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set(self, key: str, value: str = None, user_id: int = None):
         """
@@ -43,5 +43,5 @@ class Storage(ApiMethod):
         """
     
         method_name = 'storage.set'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

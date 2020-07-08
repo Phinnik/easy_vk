@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -14,7 +14,7 @@ class Utils(ApiMethod):
         """
     
         method_name = 'utils.checkLink'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_from_last_shortened(self, key: str):
         """
@@ -24,7 +24,7 @@ class Utils(ApiMethod):
         """
     
         method_name = 'utils.deleteFromLastShortened'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_last_shortened_links(self, count: int = None, offset: int = None):
         """
@@ -35,7 +35,7 @@ class Utils(ApiMethod):
         """
     
         method_name = 'utils.getLastShortenedLinks'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_link_stats(self, key: str, source: str = None, access_key: str = None, interval: str = None, intervals_count: int = None, extended: bool = None):
         """
@@ -50,7 +50,7 @@ class Utils(ApiMethod):
         """
     
         method_name = 'utils.getLinkStats'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_server_time(self):
         """
@@ -59,7 +59,7 @@ class Utils(ApiMethod):
         """
     
         method_name = 'utils.getServerTime'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_short_link(self, url: str, private: bool = None):
         """
@@ -70,7 +70,7 @@ class Utils(ApiMethod):
         """
     
         method_name = 'utils.getShortLink'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def resolve_screen_name(self, screen_name: str):
         """
@@ -80,5 +80,5 @@ class Utils(ApiMethod):
         """
     
         method_name = 'utils.resolveScreenName'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

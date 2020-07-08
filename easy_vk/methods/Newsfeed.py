@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -22,7 +22,7 @@ class Newsfeed(ApiMethod):
             group_ids = ','.join(group_ids)
         
         method_name = 'newsfeed.addBan'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_ban(self, user_ids: List[int] = None, group_ids: List[int] = None):
         """
@@ -40,7 +40,7 @@ class Newsfeed(ApiMethod):
             group_ids = ','.join(group_ids)
         
         method_name = 'newsfeed.deleteBan'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_list(self, list_id: int):
         """
@@ -49,7 +49,7 @@ class Newsfeed(ApiMethod):
         """
     
         method_name = 'newsfeed.deleteList'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, filters: List[str] = None, return_banned: bool = None, start_time: int = None, end_time: int = None, max_photos: int = None, source_ids: str = None, start_from: str = None, count: int = None, fields: List[str] = None, section: str = None):
         """
@@ -73,7 +73,7 @@ class Newsfeed(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'newsfeed.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_banned(self, extended: bool = None, fields: List[str] = None, name_case: str = None):
         """
@@ -88,7 +88,7 @@ class Newsfeed(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'newsfeed.getBanned'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_comments(self, count: int = None, filters: List[str] = None, reposts: str = None, start_time: int = None, end_time: int = None, last_comments_count: int = None, start_from: str = None, fields: List[str] = None):
         """
@@ -110,7 +110,7 @@ class Newsfeed(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'newsfeed.getComments'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_lists(self, list_ids: List[int] = None, extended: bool = None):
         """
@@ -125,7 +125,7 @@ class Newsfeed(ApiMethod):
             list_ids = ','.join(list_ids)
         
         method_name = 'newsfeed.getLists'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_mentions(self, owner_id: int = None, start_time: int = None, end_time: int = None, offset: int = None, count: int = None):
         """
@@ -139,7 +139,7 @@ class Newsfeed(ApiMethod):
         """
     
         method_name = 'newsfeed.getMentions'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_recommended(self, start_time: int = None, end_time: int = None, max_photos: int = None, start_from: str = None, count: int = None, fields: List[str] = None):
         """
@@ -157,7 +157,7 @@ class Newsfeed(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'newsfeed.getRecommended'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_suggested_sources(self, offset: int = None, count: int = None, shuffle: bool = None, fields: List[str] = None):
         """
@@ -173,7 +173,7 @@ class Newsfeed(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'newsfeed.getSuggestedSources'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def ignore_item(self, type_: str, owner_id: int, item_id: int):
         """
@@ -186,7 +186,7 @@ class Newsfeed(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'newsfeed.ignoreItem'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save_list(self, title: str, list_id: int = None, source_ids: List[int] = None, no_reposts: bool = None):
         """
@@ -203,7 +203,7 @@ class Newsfeed(ApiMethod):
             source_ids = ','.join(source_ids)
         
         method_name = 'newsfeed.saveList'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def search(self, q: str = None, extended: bool = None, count: int = None, latitude: float = None, longitude: float = None, start_time: int = None, end_time: int = None, start_from: str = None, fields: List[str] = None):
         """
@@ -224,7 +224,7 @@ class Newsfeed(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'newsfeed.search'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def unignore_item(self, type_: str, owner_id: int, item_id: int):
         """
@@ -237,7 +237,7 @@ class Newsfeed(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'newsfeed.unignoreItem'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def unsubscribe(self, type_: str, item_id: int, owner_id: int = None):
         """
@@ -250,5 +250,5 @@ class Newsfeed(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'newsfeed.unsubscribe'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

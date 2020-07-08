@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -21,7 +21,7 @@ class Board(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'board.addTopic'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def close_topic(self, group_id: int, topic_id: int):
         """
@@ -32,7 +32,7 @@ class Board(ApiMethod):
         """
     
         method_name = 'board.closeTopic'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create_comment(self, group_id: int, topic_id: int, message: str = None, attachments: List[str] = None, from_group: bool = None, sticker_id: int = None, guid: str = None):
         """
@@ -51,7 +51,7 @@ class Board(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'board.createComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_comment(self, group_id: int, topic_id: int, comment_id: int):
         """
@@ -63,7 +63,7 @@ class Board(ApiMethod):
         """
     
         method_name = 'board.deleteComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_topic(self, group_id: int, topic_id: int):
         """
@@ -74,7 +74,7 @@ class Board(ApiMethod):
         """
     
         method_name = 'board.deleteTopic'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_comment(self, group_id: int, topic_id: int, comment_id: int, message: str = None, attachments: List[str] = None):
         """
@@ -91,7 +91,7 @@ class Board(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'board.editComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_topic(self, group_id: int, topic_id: int, title: str):
         """
@@ -103,7 +103,7 @@ class Board(ApiMethod):
         """
     
         method_name = 'board.editTopic'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def fix_topic(self, group_id: int, topic_id: int):
         """
@@ -114,7 +114,7 @@ class Board(ApiMethod):
         """
     
         method_name = 'board.fixTopic'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_comments(self, group_id: int, topic_id: int, need_likes: bool = None, start_comment_id: int = None, offset: int = None, count: int = None, extended: bool = None, sort: str = None):
         """
@@ -131,7 +131,7 @@ class Board(ApiMethod):
         """
     
         method_name = 'board.getComments'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_topics(self, group_id: int, topic_ids: List[int] = None, order: int = None, offset: int = None, count: int = None, extended: bool = None, preview: int = None, preview_length: int = None):
         """
@@ -152,7 +152,7 @@ class Board(ApiMethod):
             topic_ids = ','.join(topic_ids)
         
         method_name = 'board.getTopics'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def open_topic(self, group_id: int, topic_id: int):
         """
@@ -163,7 +163,7 @@ class Board(ApiMethod):
         """
     
         method_name = 'board.openTopic'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def restore_comment(self, group_id: int, topic_id: int, comment_id: int):
         """
@@ -175,7 +175,7 @@ class Board(ApiMethod):
         """
     
         method_name = 'board.restoreComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def unfix_topic(self, group_id: int, topic_id: int):
         """
@@ -186,5 +186,5 @@ class Board(ApiMethod):
         """
     
         method_name = 'board.unfixTopic'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

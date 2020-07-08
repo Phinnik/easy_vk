@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -16,7 +16,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.addChatUser'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def allow_messages_from_group(self, group_id: int, key: str = None):
         """
@@ -27,7 +27,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.allowMessagesFromGroup'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create_chat(self, user_ids: List[int] = None, title: str = None, group_id: int = None):
         """
@@ -43,7 +43,7 @@ class Messages(ApiMethod):
             user_ids = ','.join(user_ids)
         
         method_name = 'messages.createChat'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete(self, message_ids: List[int] = None, spam: bool = None, group_id: int = None, delete_for_all: bool = None):
         """
@@ -60,7 +60,7 @@ class Messages(ApiMethod):
             message_ids = ','.join(message_ids)
         
         method_name = 'messages.delete'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_chat_photo(self, chat_id: int, group_id: int = None):
         """
@@ -71,7 +71,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.deleteChatPhoto'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_conversation(self, user_id: int = None, peer_id: int = None, group_id: int = None):
         """
@@ -83,7 +83,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.deleteConversation'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def deny_messages_from_group(self, group_id: int):
         """
@@ -93,7 +93,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.denyMessagesFromGroup'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit(self, peer_id: int, message: str = None, lat: float = None, long: float = None, attachment: str = None, keep_forward_messages: bool = None, keep_snippets: bool = None, group_id: int = None, dont_parse_links: bool = None, message_id: int = None):
         """
@@ -112,7 +112,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.edit'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_chat(self, chat_id: int, title: str):
         """
@@ -123,7 +123,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.editChat'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_conversation_message_id(self, peer_id: int, conversation_message_ids: List[int], extended: bool = None, fields: List[str] = None, group_id: int = None):
         """
@@ -143,7 +143,7 @@ class Messages(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'messages.getByConversationMessageId'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_id(self, message_ids: List[int], preview_length: int = None, extended: bool = None, fields: List[str] = None, group_id: int = None):
         """
@@ -163,7 +163,7 @@ class Messages(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'messages.getById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_chat_preview(self, peer_id: int = None, link: str = None, fields: List[str] = None):
         """
@@ -177,7 +177,7 @@ class Messages(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'messages.getChatPreview'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_conversation_members(self, peer_id: int, fields: List[str] = None, group_id: int = None):
         """
@@ -192,7 +192,7 @@ class Messages(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'messages.getConversationMembers'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_conversations(self, offset: int = None, count: int = None, filter_: str = None, extended: bool = None, start_message_id: int = None, fields: List[str] = None, group_id: int = None):
         """
@@ -212,7 +212,7 @@ class Messages(ApiMethod):
         
         param_alias_dict = {'filter_': 'filter'}
         method_name = 'messages.getConversations'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_conversations_by_id(self, peer_ids: List[int], extended: bool = None, fields: List[str] = None, group_id: int = None):
         """
@@ -231,7 +231,7 @@ class Messages(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'messages.getConversationsById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_history(self, offset: int = None, count: int = None, user_id: int = None, peer_id: int = None, start_message_id: int = None, rev: int = None, extended: bool = None, fields: List[str] = None, group_id: int = None):
         """
@@ -252,7 +252,7 @@ class Messages(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'messages.getHistory'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_history_attachments(self, peer_id: int, media_type: str = None, start_from: str = None, count: int = None, photo_sizes: bool = None, fields: List[str] = None, group_id: int = None, preserve_order: bool = None, max_forwards_level: int = None):
         """
@@ -273,7 +273,7 @@ class Messages(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'messages.getHistoryAttachments'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_invite_link(self, peer_id: int, reset: bool = None, group_id: int = None):
         """
@@ -284,7 +284,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.getInviteLink'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_last_activity(self, user_id: int):
         """
@@ -294,7 +294,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.getLastActivity'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_long_poll_history(self, ts: int = None, pts: int = None, preview_length: int = None, onlines: bool = None, fields: List[str] = None, events_limit: int = None, msgs_limit: int = None, max_msg_id: int = None, group_id: int = None, lp_version: int = None, last_n: int = None, credentials: bool = None):
         """
@@ -318,7 +318,7 @@ class Messages(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'messages.getLongPollHistory'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_long_poll_server(self, need_pts: bool = None, group_id: int = None, lp_version: int = None):
         """
@@ -330,7 +330,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.getLongPollServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def is_messages_from_group_allowed(self, group_id: int, user_id: int):
         """
@@ -341,7 +341,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.isMessagesFromGroupAllowed'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def join_chat_by_invite_link(self, link: str):
         """
@@ -350,7 +350,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.joinChatByInviteLink'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def mark_as_answered_conversation(self, peer_id: int, answered: bool = None, group_id: int = None):
         """
@@ -362,7 +362,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.markAsAnsweredConversation'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def mark_as_important(self, message_ids: List[int] = None, important: int = None):
         """
@@ -377,7 +377,7 @@ class Messages(ApiMethod):
             message_ids = ','.join(message_ids)
         
         method_name = 'messages.markAsImportant'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def mark_as_important_conversation(self, peer_id: int, important: bool = None, group_id: int = None):
         """
@@ -389,7 +389,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.markAsImportantConversation'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def mark_as_read(self, message_ids: List[int] = None, peer_id: int = None, start_message_id: int = None, group_id: int = None):
         """
@@ -406,7 +406,7 @@ class Messages(ApiMethod):
             message_ids = ','.join(message_ids)
         
         method_name = 'messages.markAsRead'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def pin(self, peer_id: int, message_id: int = None):
         """
@@ -417,7 +417,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.pin'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def remove_chat_user(self, chat_id: int, user_id: int = None, member_id: int = None):
         """
@@ -429,7 +429,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.removeChatUser'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def restore(self, message_id: int, group_id: int = None):
         """
@@ -440,7 +440,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.restore'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def search(self, q: str = None, peer_id: int = None, date: int = None, preview_length: int = None, offset: int = None, count: int = None, extended: bool = None, fields: List[str] = None, group_id: int = None):
         """
@@ -461,7 +461,7 @@ class Messages(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'messages.search'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def search_conversations(self, q: str = None, count: int = None, extended: bool = None, fields: List[str] = None, group_id: int = None):
         """
@@ -478,7 +478,7 @@ class Messages(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'messages.searchConversations'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def send(self, user_id: int = None, random_id: int = None, peer_id: int = None, domain: str = None, chat_id: int = None, user_ids: List[int] = None, message: str = None, lat: float = None, long: float = None, attachment: str = None, reply_to: int = None, forward_messages: List[int] = None, sticker_id: int = None, group_id: int = None, keyboard: str = None, payload: str = None, dont_parse_links: bool = None, disable_mentions: bool = None, intent: str = None):
         """
@@ -513,7 +513,7 @@ class Messages(ApiMethod):
             forward_messages = ','.join(forward_messages)
         
         method_name = 'messages.send'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_activity(self, user_id: int = None, type_: str = None, peer_id: int = None, group_id: int = None):
         """
@@ -527,7 +527,7 @@ class Messages(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'messages.setActivity'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def set_chat_photo(self, file: str):
         """
@@ -537,7 +537,7 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.setChatPhoto'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def unpin(self, peer_id: int, group_id: int = None):
         """
@@ -547,5 +547,5 @@ class Messages(ApiMethod):
         """
     
         method_name = 'messages.unpin'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

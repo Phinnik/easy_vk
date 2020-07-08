@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -19,7 +19,7 @@ class Prettycards(ApiMethod):
         """
     
         method_name = 'prettyCards.create'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete(self, owner_id: int, card_id: int):
         """
@@ -29,7 +29,7 @@ class Prettycards(ApiMethod):
         """
     
         method_name = 'prettyCards.delete'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit(self, owner_id: int, card_id: int, photo: str = None, title: str = None, link: str = None, price: str = None, price_old: str = None, button: str = None):
         """
@@ -45,7 +45,7 @@ class Prettycards(ApiMethod):
         """
     
         method_name = 'prettyCards.edit'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, owner_id: int, offset: int = None, count: int = None):
         """
@@ -56,7 +56,7 @@ class Prettycards(ApiMethod):
         """
     
         method_name = 'prettyCards.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_id(self, owner_id: int, card_ids: List[int]):
         """
@@ -70,7 +70,7 @@ class Prettycards(ApiMethod):
             card_ids = ','.join(card_ids)
         
         method_name = 'prettyCards.getById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_upload_ur_l(self):
         """
@@ -78,5 +78,5 @@ class Prettycards(ApiMethod):
         """
     
         method_name = 'prettyCards.getUploadURL'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

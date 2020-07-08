@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -27,7 +27,7 @@ class Market(ApiMethod):
             photo_ids = ','.join(photo_ids)
         
         method_name = 'market.add'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_album(self, owner_id: int, title: str, photo_id: int = None, main_album: bool = None):
         """
@@ -40,7 +40,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.addAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_to_album(self, owner_id: int, item_id: int, album_ids: List[int]):
         """
@@ -56,7 +56,7 @@ class Market(ApiMethod):
             album_ids = ','.join(album_ids)
         
         method_name = 'market.addToAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create_comment(self, owner_id: int, item_id: int, message: str = None, attachments: List[str] = None, from_group: bool = None, reply_to_comment: int = None, sticker_id: int = None, guid: str = None):
         """
@@ -76,7 +76,7 @@ class Market(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'market.createComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete(self, owner_id: int, item_id: int):
         """
@@ -87,7 +87,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.delete'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_album(self, owner_id: int, album_id: int):
         """
@@ -98,7 +98,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.deleteAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_comment(self, owner_id: int, comment_id: int):
         """
@@ -109,7 +109,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.deleteComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit(self, owner_id: int, item_id: int, name: str, description: str, category_id: int, price: float, main_photo_id: int, deleted: bool = None, photo_ids: List[int] = None, url: str = None):
         """
@@ -132,7 +132,7 @@ class Market(ApiMethod):
             photo_ids = ','.join(photo_ids)
         
         method_name = 'market.edit'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_album(self, owner_id: int, album_id: int, title: str, photo_id: int = None, main_album: bool = None):
         """
@@ -146,7 +146,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.editAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_comment(self, owner_id: int, comment_id: int, message: str = None, attachments: List[str] = None):
         """
@@ -162,7 +162,7 @@ class Market(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'market.editComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, owner_id: int, album_id: int = None, count: int = None, offset: int = None, extended: bool = None):
         """
@@ -176,7 +176,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_album_by_id(self, owner_id: int, album_ids: List[int]):
         """
@@ -191,7 +191,7 @@ class Market(ApiMethod):
             album_ids = ','.join(album_ids)
         
         method_name = 'market.getAlbumById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_albums(self, owner_id: int, offset: int = None, count: int = None):
         """
@@ -203,7 +203,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.getAlbums'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_id(self, item_ids: List[str], extended: bool = None):
         """
@@ -217,7 +217,7 @@ class Market(ApiMethod):
             item_ids = ','.join(item_ids)
         
         method_name = 'market.getById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_categories(self, count: int = None, offset: int = None):
         """
@@ -228,7 +228,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.getCategories'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_comments(self, owner_id: int, item_id: int, need_likes: bool = None, start_comment_id: int = None, offset: int = None, count: int = None, sort: str = None, extended: bool = None, fields: List[str] = None):
         """
@@ -249,7 +249,7 @@ class Market(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'market.getComments'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def remove_from_album(self, owner_id: int, item_id: int, album_ids: List[int]):
         """
@@ -265,7 +265,7 @@ class Market(ApiMethod):
             album_ids = ','.join(album_ids)
         
         method_name = 'market.removeFromAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def reorder_albums(self, owner_id: int, album_id: int, before: int = None, after: int = None):
         """
@@ -278,7 +278,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.reorderAlbums'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def reorder_items(self, owner_id: int, item_id: int, album_id: int = None, before: int = None, after: int = None):
         """
@@ -292,7 +292,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.reorderItems'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def report(self, owner_id: int, item_id: int, reason: int = None):
         """
@@ -304,7 +304,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.report'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def report_comment(self, owner_id: int, comment_id: int, reason: int):
         """
@@ -316,7 +316,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.reportComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def restore(self, owner_id: int, item_id: int):
         """
@@ -327,7 +327,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.restore'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def restore_comment(self, owner_id: int, comment_id: int):
         """
@@ -338,7 +338,7 @@ class Market(ApiMethod):
         """
     
         method_name = 'market.restoreComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def search(self, owner_id: int, album_id: int = None, q: str = None, price_from: int = None, price_to: int = None, tags: List[int] = None, sort: int = None, rev: int = None, offset: int = None, count: int = None, extended: bool = None, status: int = None):
         """
@@ -363,5 +363,5 @@ class Market(ApiMethod):
             tags = ','.join(tags)
         
         method_name = 'market.search'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

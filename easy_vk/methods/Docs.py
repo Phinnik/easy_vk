@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -16,7 +16,7 @@ class Docs(ApiMethod):
         """
     
         method_name = 'docs.add'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete(self, owner_id: int, doc_id: int):
         """
@@ -27,7 +27,7 @@ class Docs(ApiMethod):
         """
     
         method_name = 'docs.delete'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit(self, owner_id: int, doc_id: int, title: str = None, tags: List[str] = None):
         """
@@ -43,7 +43,7 @@ class Docs(ApiMethod):
             tags = ','.join(tags)
         
         method_name = 'docs.edit'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, count: int = None, offset: int = None, type_: int = None, owner_id: int = None, return_tags: bool = None):
         """
@@ -58,7 +58,7 @@ class Docs(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'docs.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_by_id(self, docs: List[str], return_tags: bool = None):
         """
@@ -72,7 +72,7 @@ class Docs(ApiMethod):
             docs = ','.join(docs)
         
         method_name = 'docs.getById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_messages_upload_server(self, type_: str = None, peer_id: int = None):
         """
@@ -84,7 +84,7 @@ class Docs(ApiMethod):
     
         param_alias_dict = {'type_': 'type'}
         method_name = 'docs.getMessagesUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_types(self, owner_id: int):
         """
@@ -94,7 +94,7 @@ class Docs(ApiMethod):
         """
     
         method_name = 'docs.getTypes'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_upload_server(self, group_id: int = None):
         """
@@ -104,7 +104,7 @@ class Docs(ApiMethod):
         """
     
         method_name = 'docs.getUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_wall_upload_server(self, group_id: int = None):
         """
@@ -114,7 +114,7 @@ class Docs(ApiMethod):
         """
     
         method_name = 'docs.getWallUploadServer'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save(self, file: str, title: str = None, tags: str = None, return_tags: bool = None):
         """
@@ -127,7 +127,7 @@ class Docs(ApiMethod):
         """
     
         method_name = 'docs.save'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def search(self, q: str, search_own: bool = None, count: int = None, offset: int = None, return_tags: bool = None):
         """
@@ -141,5 +141,5 @@ class Docs(ApiMethod):
         """
     
         method_name = 'docs.search'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

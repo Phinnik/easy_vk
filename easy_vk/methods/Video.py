@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -16,7 +16,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.add'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_album(self, group_id: int = None, title: str = None, privacy: List[str] = None):
         """
@@ -31,7 +31,7 @@ class Video(ApiMethod):
             privacy = ','.join(privacy)
         
         method_name = 'video.addAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def add_to_album(self, owner_id: int, video_id: int, target_id: int = None, album_id: int = None, album_ids: List[int] = None):
         """
@@ -48,7 +48,7 @@ class Video(ApiMethod):
             album_ids = ','.join(album_ids)
         
         method_name = 'video.addToAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def create_comment(self, video_id: int, owner_id: int = None, message: str = None, attachments: List[str] = None, from_group: bool = None, reply_to_comment: int = None, sticker_id: int = None, guid: str = None):
         """
@@ -68,7 +68,7 @@ class Video(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'video.createComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete(self, video_id: int, owner_id: int = None, target_id: int = None):
         """
@@ -80,7 +80,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.delete'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_album(self, album_id: int, group_id: int = None):
         """
@@ -91,7 +91,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.deleteAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def delete_comment(self, comment_id: int, owner_id: int = None):
         """
@@ -102,7 +102,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.deleteComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit(self, video_id: int, owner_id: int = None, name: str = None, desc: str = None, privacy_view: List[str] = None, privacy_comment: List[str] = None, no_comments: bool = None, repeat: bool = None):
         """
@@ -124,7 +124,7 @@ class Video(ApiMethod):
             privacy_comment = ','.join(privacy_comment)
         
         method_name = 'video.edit'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_album(self, album_id: int, title: str, group_id: int = None, privacy: List[str] = None):
         """
@@ -140,7 +140,7 @@ class Video(ApiMethod):
             privacy = ','.join(privacy)
         
         method_name = 'video.editAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def edit_comment(self, comment_id: int, owner_id: int = None, message: str = None, attachments: List[str] = None):
         """
@@ -156,7 +156,7 @@ class Video(ApiMethod):
             attachments = ','.join(attachments)
         
         method_name = 'video.editComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get(self, owner_id: int = None, videos: List[str] = None, album_id: int = None, count: int = None, offset: int = None, extended: bool = None):
         """
@@ -174,7 +174,7 @@ class Video(ApiMethod):
             videos = ','.join(videos)
         
         method_name = 'video.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_album_by_id(self, album_id: int, owner_id: int = None):
         """
@@ -185,7 +185,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.getAlbumById'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_albums(self, owner_id: int = None, offset: int = None, count: int = None, extended: bool = None, need_system: bool = None):
         """
@@ -199,7 +199,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.getAlbums'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_albums_by_video(self, owner_id: int, video_id: int, target_id: int = None, extended: bool = None):
         """
@@ -211,7 +211,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.getAlbumsByVideo'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_comments(self, video_id: int, owner_id: int = None, need_likes: bool = None, start_comment_id: int = None, offset: int = None, count: int = None, sort: str = None, extended: bool = None, fields: List[str] = None):
         """
@@ -232,7 +232,7 @@ class Video(ApiMethod):
             fields = ','.join(fields)
         
         method_name = 'video.getComments'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def remove_from_album(self, owner_id: int, video_id: int, target_id: int = None, album_id: int = None, album_ids: List[int] = None):
         """
@@ -249,7 +249,7 @@ class Video(ApiMethod):
             album_ids = ','.join(album_ids)
         
         method_name = 'video.removeFromAlbum'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def reorder_albums(self, album_id: int, owner_id: int = None, before: int = None, after: int = None):
         """
@@ -262,7 +262,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.reorderAlbums'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def reorder_videos(self, owner_id: int, video_id: int, target_id: int = None, album_id: int = None, before_owner_id: int = None, before_video_id: int = None, after_owner_id: int = None, after_video_id: int = None):
         """
@@ -279,7 +279,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.reorderVideos'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def report(self, owner_id: int, video_id: int, reason: int = None, comment: str = None, search_query: str = None):
         """
@@ -293,7 +293,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.report'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def report_comment(self, owner_id: int, comment_id: int, reason: int = None):
         """
@@ -305,7 +305,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.reportComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def restore(self, video_id: int, owner_id: int = None):
         """
@@ -316,7 +316,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.restore'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def restore_comment(self, comment_id: int, owner_id: int = None):
         """
@@ -327,7 +327,7 @@ class Video(ApiMethod):
         """
     
         method_name = 'video.restoreComment'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def save(self, name: str = None, description: str = None, is_private: bool = None, wallpost: bool = None, link: str = None, group_id: int = None, album_id: int = None, privacy_view: List[str] = None, privacy_comment: List[str] = None, no_comments: bool = None, repeat: bool = None, compression: bool = None):
         """
@@ -353,7 +353,7 @@ class Video(ApiMethod):
             privacy_comment = ','.join(privacy_comment)
         
         method_name = 'video.save'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def search(self, q: str, sort: int = None, hd: int = None, adult: bool = None, filters: List[str] = None, search_own: bool = None, offset: int = None, longer: int = None, shorter: int = None, count: int = None, extended: bool = None):
         """
@@ -376,5 +376,5 @@ class Video(ApiMethod):
             filters = ','.join(filters)
         
         method_name = 'video.search'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

@@ -1,4 +1,4 @@
-import methods
+from . import methods
 from requests import Session
 
 

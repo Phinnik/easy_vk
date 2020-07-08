@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -16,5 +16,5 @@ class Gifts(ApiMethod):
         """
     
         method_name = 'gifts.get'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -19,7 +19,7 @@ class Leads(ApiMethod):
         """
     
         method_name = 'leads.checkUser'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def complete(self, vk_sid: str, secret: str, comment: str = None):
         """
@@ -31,7 +31,7 @@ class Leads(ApiMethod):
         """
     
         method_name = 'leads.complete'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_stats(self, lead_id: int, secret: str = None, date_start: str = None, date_end: str = None):
         """
@@ -44,7 +44,7 @@ class Leads(ApiMethod):
         """
     
         method_name = 'leads.getStats'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def get_users(self, offer_id: int, secret: str, offset: int = None, count: int = None, status: int = None, reverse: bool = None):
         """
@@ -59,7 +59,7 @@ class Leads(ApiMethod):
         """
     
         method_name = 'leads.getUsers'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def metric_hit(self, data: str):
         """
@@ -69,7 +69,7 @@ class Leads(ApiMethod):
         """
     
         method_name = 'leads.metricHit'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def start(self, lead_id: int, secret: str, uid: int = None, aid: int = None, test_mode: bool = None, force: bool = None):
         """
@@ -84,5 +84,5 @@ class Leads(ApiMethod):
         """
     
         method_name = 'leads.start'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 

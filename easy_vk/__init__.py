@@ -1,3 +1,3 @@
-import exceptions
-from user import User
-from .parser import Parser
+from . import exceptions
+from .user import User
+from .parsing import Parser

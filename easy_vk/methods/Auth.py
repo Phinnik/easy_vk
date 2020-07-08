@@ -1,4 +1,4 @@
-from _ApiMethod import ApiMethod
+from ._ApiMethod import ApiMethod
 from typing import List
 
 
@@ -17,7 +17,7 @@ class Auth(ApiMethod):
         """
     
         method_name = 'auth.checkPhone'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
     def restore(self, phone: str, last_name: str):
         """
@@ -28,5 +28,5 @@ class Auth(ApiMethod):
         """
     
         method_name = 'auth.restore'
-        return self.call(method_name, locals())
+        return self._call(method_name, locals())
 
