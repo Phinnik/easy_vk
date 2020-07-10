@@ -515,6 +515,19 @@ class Messages(ApiMethod):
         method_name = 'messages.send'
         return self._call(method_name, locals())
 
+    def send_message_event_answer(self, event_id: str, user_id: int, peer_id: int, event_data: dict):
+        """
+
+
+        :param event_id: random string, returned in message_event
+        :param user_id: user id
+        :param peer_id: dialog id on the groups side
+        :param event_data: object action, which should occur after the button is pressed
+        """
+
+        method_name = 'messages.sendMessageEventAnswer'
+        return self._call(method_name, locals())
+
     def set_activity(self, user_id: int = None, type_: str = None, peer_id: int = None, group_id: int = None):
         """
         Changes the status of a user as typing in a conversation.

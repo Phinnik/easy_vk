@@ -1,11 +1,11 @@
-from typing import List, Union
+from typing import List
 
 import requests
 import re
 
 from .longpoll import GroupLongpoll
 from .handlers import UpdateHandler
-from .objects import Message
+from ..objects.objects import Message
 from ..methods import Messages
 
 

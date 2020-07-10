@@ -19,7 +19,7 @@ class Geo(BaseModel):
     place: Place = Field(None)
 
 
-class Action(BaseModel):
+class MessageAction(BaseModel):
     type: str = Field(None)
     member_id: int = Field(None)
     text: str = Field(None)
@@ -94,9 +94,29 @@ class Audio(BaseModel):
 
 
 class Attachment(BaseModel):
-    photo: Photo = Field(None)
-    video: Video = Field(None)
-    audio: Audio = Field(None)
+    action: Photo = Field(None)
+    color: str = Field(None)
+
+
+class ButtonAction(BaseModel):
+    type: str = Field(...)
+    label: str = Field(None)
+    payload: str = Field(None)
+    link: str = Field(None)
+    hash: str = Field(None)
+    app_id: int = Field(None)
+    owner_id: int = Field(None)
+
+
+class Button(BaseModel):
+    action: ButtonAction = Field(...)
+    color: str = Field(None)
+
+
+class Keyboard(BaseModel):
+    one_time: bool = Field(None)
+    buttons: List[List[Button]] = Field(None)
+    inline: bool = Field(None)
 
 
 class Message(BaseModel):
@@ -115,7 +135,7 @@ class Message(BaseModel):
     # keyboard = Field(None)
     fwd_messages: List["Message"] = Field(None)
     reply_message: "Message" = Field(None)
-    action: Union[Action, str] = Field(None)
+    action: Union[MessageAction, str] = Field(None)
     chat_id: int = Field(None)
     chat_active: List[int] = Field(None)
     push_settings: dict = Field(None)
