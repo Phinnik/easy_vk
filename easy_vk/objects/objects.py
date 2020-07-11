@@ -94,8 +94,10 @@ class Audio(BaseModel):
 
 
 class Attachment(BaseModel):
-    action: Photo = Field(None)
-    color: str = Field(None)
+    type: str = Field(None)
+    photo: Photo = Field(None)
+    audio: Audio = Field(None)
+    video: Video = Field(None)
 
 
 class ButtonAction(BaseModel):
@@ -119,7 +121,11 @@ class Keyboard(BaseModel):
     inline: bool = Field(None)
 
 
-class Message(BaseModel):
+# class MessageClientInfo(BaseModel):
+    # button_actions: list
+
+
+class MessageMessage(BaseModel):
     id: int = Field(None)
     date: int = Field(None)
     peer_id: int = Field(None)
@@ -133,8 +139,8 @@ class Message(BaseModel):
     geo: Geo = Field(None)
     payload: str = Field(None)
     # keyboard = Field(None)
-    fwd_messages: List["Message"] = Field(None)
-    reply_message: "Message" = Field(None)
+    fwd_messages: List["MessageMessage"] = Field(None)
+    reply_message: "MessageMessage" = Field(None)
     action: Union[MessageAction, str] = Field(None)
     chat_id: int = Field(None)
     chat_active: List[int] = Field(None)
@@ -149,4 +155,9 @@ class Message(BaseModel):
     photo_200: str = Field(None)
 
 
-Message.update_forward_refs()
+MessageMessage.update_forward_refs()
+
+
+class BotMessage(BaseModel):
+    message: MessageMessage = Field(None)
+    # client_info: MessageClientInfo = Field(None)

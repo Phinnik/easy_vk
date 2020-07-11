@@ -5,7 +5,7 @@ import re
 
 from .longpoll import GroupLongpoll
 from .handlers import UpdateHandler
-from ..objects.objects import Message
+from ..objects.objects import BotMessage
 from ..methods import Messages
 
 
@@ -13,11 +13,15 @@ class GroupBot:
     def __init__(self, owner_access_token: str,
                  group_access_token: str,
                  group_id: int,
-                 wait: int = 25):
+                 wait: int = 25,
+                 debug_mode: bool = False,
+                 owner_id: int = None):
         self._owner_access_token = owner_access_token
         self._group_access_token = group_access_token
         self._group_id = group_id
         self._wait = wait
+        self._debug_mode = debug_mode
+        self._owner_id = owner_id
 
         self._handlers: List[UpdateHandler] = []
 
@@ -48,20 +52,22 @@ class GroupBot:
                             user_id: int = None,
                             user_ids: List[int] = None,
                             attachment_type: str = None):
+        if self._debug_mode:
+            user_id = self._owner_id
+
         def decorator(function):
             update_type = 'message_new'
             filters = []
             if regexp:
                 filters.append(lambda x: True if re.fullmatch(regexp, x.get('text', '')) else None)
             if user_id:
-                filters.append(lambda x: x['from_id'] == user_id)
+                filters.append(lambda x: x['message']['from_id'] == user_id)
             if user_ids:
-                filters.append(lambda x: x['from_id'] in user_ids)
+                filters.append(lambda x: x['message']['from_id'] in user_ids)
             if attachment_type:
-                filters.append(lambda x: attachment_type in [a['type'] for a in x['attachments']])
+                filters.append(lambda x: attachment_type in [a['type'] for a in x['message']['attachments']])
 
-
-            handler = UpdateHandler(update_type, filters, function, handled_object_type=Message)
+            handler = UpdateHandler(update_type, filters, function, handled_object_type=BotMessage)
             self._handlers.append(handler)
             return function
 
