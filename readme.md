@@ -1,14 +1,12 @@
 # easy_vk
-Ну, что, пацаны, погнали.
+Библиотека в стадии разработки
 
 ## Оглавление
 1. [Установка библиотеки](https://github.com/Phinnik/easy_vk#установка-библиотеки)
-1. [Примеры спользования](https://github.com/Phinnik/easy_vk#Примеры-спользования)
+1. [Примеры использования](https://github.com/Phinnik/easy_vk#Примеры-использования)
     - [Для пользователей](https://github.com/Phinnik/easy_vk#Для-пользователей)
     - [Для ботов](https://github.com/Phinnik/easy_vk#Для-ботов)
-    - [Для парсина](https://github.com/Phinnik/easy_vk#Для-парсинга)
 1. [Планы на будущее](https://github.com/Phinnik/easy_vk#Планы-на-будущее)
-1. [Мем](https://github.com/Phinnik/easy_vk#Мем)
 
 
 ## Установка библиотеки:
@@ -16,14 +14,14 @@
 pip install easy_vk
 ```
 
-## Примеры спользования
+## Примеры использования
 ### Для пользователей
 ```python
 
-import VK
+from easy_vk import User
 
 access_token = 'YOUR ACCESS_TOKEN'
-vk = VK(access_token=access_token)
+vk = User(access_token=access_token)
 vk.friends.get(user_id=1, count=1)
 
 # >>> {'count': 0, 'items': []} 
@@ -31,67 +29,34 @@ vk.friends.get(user_id=1, count=1)
 
 ### Для ботов:
 ```python
-# Модуль для ботов удален из-за угрозы восстания машин
-"""
-Прошу прощения за неудобства у всех людей, коих бесчисленное 
-количество, за предоставленные неудобства
-""" 
+
+import time
+from easy_vk.bot import GroupBot
+from easy_vk.objects.objects import BotMessage
+
+bot = GroupBot(owner_access_token='owner_access_token', 
+               group_access_token='group_access_token',
+               group_id=1, 
+               debug_mode=True, 
+               owner_id=1)
+
+@bot.handlers.message_new(regexp='Hello')
+def response(message: BotMessage):
+    bot.messages.send(user_id = message.message.from_id,
+                     message = 'world',
+                     random_id = time.time())
+
+bot.run()
 ```
 
-### Для парсинга:
-#### Получение словаря друзей своих друзей
-```python
-# Быстро получить всех друзей своих друзей:
-
-from easy_vk import  Parser
-import VK
-
-
-accounts = ['1YOUR ACCESS_TOKEN1']
-
-vk = VK(access_token=accounts[0])
-my_friends = vk.friends.get()['items']
-parser = Parser(accounts)
-method = '[API.friends.get({"user_id": items[i]})["items"]]'
-friends_friends = parser.parse(method, my_friends)
-friends_friends = {friend: friends_friends[i] for i, friend in enumerate(my_friends)}
-
-"""
-friends_friends = {
-    123: [1, 234, 453234, ... ],
-    14543: [23, 5543],
-    ...
-}
-"""
-```
-
-#### Получение всех участников группы с помощью нескольких аккаунтов
-```python
-# Быстро получить всех участников группы с помощью нескольких аккаунтов
-
-from easy_vk import  Parser
-import VK
-
-accounts = ['1YOUR ACCESS_TOKEN1', '2YOUR ACCESS_TOKEN2']
-
-vk = VK(accounts[0])
-group_members_count = vk.groups.getMembers(group_id=84926122)['count']
-offsets = list(range(0, group_members_count, 1000))
-parser = Parser(accounts)
-method = 'API.groups.getMembers({"group_id": 84926122, "count": 1000, "offset": items[i]})["items"]'
-group_members = parser.parse(method, offsets)
-
-# group_members = [1, 223434, 2341, 23432, ...]
-# group_members_count = 233677
-```
 
 ## Планы на будущее
-- [ ] Сделать аннотирование типов
-- [ ] Написать классы для объектов
-- [ ] Написать классы для медиа
-- [x] Зафигачить классные штуки дрюки для парсинга
-- [ ] Намутить штуки для ботов
-- [ ] Хорошенечко отдохнуть
+- [ ] Создание модуля для парсинга данных
+- [ ] Типизация данных VK API
+- [ ] Типизация ответов VK API
+- [ ] Создание модуля базы данных
+- [ ] Создание модуля для ботов
+- [ ] Написание документации
+- [ ] Логирование каждого модуля
+- [ ] Написание полезных утилит
 
-## Мем
-<img src="https://sun9-67.userapi.com/dUc3jo42I-uAB5m9pRNM37xDF3LtofvvnpQriw/sQkfjjtF0iI.jpg" width="60%">

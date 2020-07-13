@@ -7,7 +7,7 @@ with open('readme.md', 'r', encoding='utf-8') as f:
 
 setup(
     name="easy_vk",
-    version="0.0.26",
+    version="0.0.28",
     author="Phinnik",
     author_email="elecdron@gmail.com",
     description="Обертка для VK api",
