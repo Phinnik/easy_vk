@@ -96,14 +96,8 @@ class BaseCategory:
             else:
                 raise e
 
-        response = response_type(response)
+        if isinstance(response, dict):
+            response = response_type(**response)
+        else:
+            response = response_type(response)
         return response
-
-
-# def method(self=2, global_=2, asd=1, raw_response=None) -> responses.MethodExtended:
-#     method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
-#     method_name = 'method'
-#     param_aliases = [('global_', 'global')]
-#     if extended:
-#         response_type = responses.MethodExtended
-#     return self._call(method_name, method_parameters, param_aliases, response_type)
