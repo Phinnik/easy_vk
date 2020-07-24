@@ -67,7 +67,7 @@ class BaseCategory:
                 method_parameters[alias] = method_parameters.pop(name, None)
 
         params = {parameter: value for parameter, value in method_parameters.items() if value is not None}
-        params = {p: preprocess_parameter(p) for p in params}
+        params = {p: preprocess_parameter(params[p]) for p in params}
         params['access_token'] = self._access_token
         params['v'] = self._v
 
@@ -76,7 +76,7 @@ class BaseCategory:
             response = self._session.post(url=api_url, params=params).json()
 
             if 'response' in response:
-                response = response['response']
+                response = response
 
             # error
             else:
@@ -96,8 +96,5 @@ class BaseCategory:
             else:
                 raise e
 
-        if isinstance(response, dict):
-            response = response_type(**response)
-        else:
-            response = response_type(response)
+        response = response_type(**response)
         return response
