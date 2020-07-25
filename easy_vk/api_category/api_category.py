@@ -24,7 +24,8 @@ def preprocess_parameter(parameter):
 
 
 class BaseCategory:
-    def __init__(self, session, access_token: str, v: str, delay: float, auto_retry: bool, max_retries: int, timeout: float):
+    def __init__(self, session, access_token: str, v: str, delay: float, auto_retry: bool, max_retries: int,
+                 timeout: float):
         """
         Base api category class
 
@@ -46,7 +47,8 @@ class BaseCategory:
         self._max_retries = max_retries
         self._timeout = timeout
 
-    def _call(self, method_name: str, method_parameters: Dict[str, Any], param_aliases: Optional[List[Tuple[str, str]]], response_type, retries_count: int = 0):
+    def _call(self, method_name: str, method_parameters: Dict[str, Any], param_aliases: Optional[List[Tuple[str, str]]],
+              response_type, retries_count: int = 0):
         """
         Call method "method_name" with parameters and return json or object response
 
@@ -76,7 +78,7 @@ class BaseCategory:
             response = self._session.post(url=api_url, params=params).json()
 
             if 'response' in response:
-                response = response
+                response = response['response']
 
             # error
             else:
@@ -96,5 +98,16 @@ class BaseCategory:
             else:
                 raise e
 
-        response = response_type(**response)
+        if hasattr(response_type, '__supertype__'):
+            response = response_type(response)
+
+        elif isinstance(response, dict):
+            response = response_type.parse_obj(response)
+
+        elif isinstance(response, list):
+            response = response_type.parse_obj(response)
+
+        else:
+            response = response_type(response)
+
         return response

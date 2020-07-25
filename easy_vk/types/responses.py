@@ -26,16 +26,20 @@ class AccountGetBanned(BaseModel):
     groups: Optional[List[objects.GroupsGroup]] = Field(None)
 
 
-AccountGetCounters = NewType('AccountGetCounters', objects.AccountAccountCounters)
+class AccountGetCounters(objects.AccountAccountCounters):
+    ...
 
 
-AccountGetInfo = NewType('AccountGetInfo', objects.AccountInfo)
+class AccountGetInfo(objects.AccountInfo):
+    ...
 
 
-AccountGetProfileInfo = NewType('AccountGetProfileInfo', objects.AccountUserSettings)
+class AccountGetProfileInfo(objects.AccountUserSettings):
+    ...
 
 
-AccountGetPushSettings = NewType('AccountGetPushSettings', objects.AccountPushSettings)
+class AccountGetPushSettings(objects.AccountPushSettings):
+    ...
 
 
 class AccountSaveProfileInfo(BaseModel):
@@ -46,16 +50,38 @@ class AccountSaveProfileInfo(BaseModel):
 AdsAddOfficeUsers = NewType('AdsAddOfficeUsers', bool)
 
 
-AdsCheckLink = NewType('AdsCheckLink', objects.AdsLinkStatus)
+class AdsCheckLink(objects.AdsLinkStatus):
+    ...
 
 
-AdsCreateAds = NewType('AdsCreateAds', List[int])
+class AdsCreateAds(BaseModel):
+    __root__: List[int]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsCreateCampaigns = NewType('AdsCreateCampaigns', List[int])
+class AdsCreateCampaigns(BaseModel):
+    __root__: List[int]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsCreateClients = NewType('AdsCreateClients', List[int])
+class AdsCreateClients(BaseModel):
+    __root__: List[int]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class AdsCreateTargetGroup(BaseModel):
@@ -63,7 +89,14 @@ class AdsCreateTargetGroup(BaseModel):
     pixel: Optional[str] = Field(None, description="Pixel code")
 
 
-AdsDeleteAds = NewType('AdsDeleteAds', List[int])
+class AdsDeleteAds(BaseModel):
+    __root__: List[int]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 AdsDeleteCampaigns = NewType('AdsDeleteCampaigns', int)
@@ -72,22 +105,57 @@ AdsDeleteCampaigns = NewType('AdsDeleteCampaigns', int)
 AdsDeleteClients = NewType('AdsDeleteClients', int)
 
 
-AdsGetAccounts = NewType('AdsGetAccounts', List[objects.AdsAccount])
+class AdsGetAccounts(BaseModel):
+    __root__: List[objects.AdsAccount]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetAdsLayout = NewType('AdsGetAdsLayout', List[objects.AdsAdLayout])
+class AdsGetAdsLayout(BaseModel):
+    __root__: List[objects.AdsAdLayout]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetAdsTargeting = NewType('AdsGetAdsTargeting', List[objects.AdsTargSettings])
+class AdsGetAdsTargeting(BaseModel):
+    __root__: List[objects.AdsTargSettings]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetAds = NewType('AdsGetAds', List[objects.AdsAd])
+class AdsGetAds(BaseModel):
+    __root__: List[objects.AdsAd]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 AdsGetBudget = NewType('AdsGetBudget', int)
 
 
-AdsGetCampaigns = NewType('AdsGetCampaigns', List[objects.AdsCampaign])
+class AdsGetCampaigns(BaseModel):
+    __root__: List[objects.AdsCampaign]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class AdsGetCategories(BaseModel):
@@ -95,13 +163,28 @@ class AdsGetCategories(BaseModel):
     v2: Optional[List[objects.AdsCategory]] = Field(None, description="Actual categories")
 
 
-AdsGetClients = NewType('AdsGetClients', List[objects.AdsClient])
+class AdsGetClients(BaseModel):
+    __root__: List[objects.AdsClient]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetDemographics = NewType('AdsGetDemographics', List[objects.AdsDemoStats])
+class AdsGetDemographics(BaseModel):
+    __root__: List[objects.AdsDemoStats]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetFloodStats = NewType('AdsGetFloodStats', objects.AdsFloodStats)
+class AdsGetFloodStats(objects.AdsFloodStats):
+    ...
 
 
 class AdsGetLookalikeRequests(BaseModel):
@@ -113,34 +196,92 @@ class AdsGetMusicians(BaseModel):
     items: List[objects.AdsMusician] = Field(..., description="Musicians")
 
 
-AdsGetOfficeUsers = NewType('AdsGetOfficeUsers', List[objects.AdsUsers])
+class AdsGetOfficeUsers(BaseModel):
+    __root__: List[objects.AdsUsers]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetPostsReach = NewType('AdsGetPostsReach', List[objects.AdsPromotedPostReach])
+class AdsGetPostsReach(BaseModel):
+    __root__: List[objects.AdsPromotedPostReach]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetRejectionReason = NewType('AdsGetRejectionReason', objects.AdsRejectReason)
+class AdsGetRejectionReason(objects.AdsRejectReason):
+    ...
 
 
-AdsGetStatistics = NewType('AdsGetStatistics', List[objects.AdsStats])
+class AdsGetStatistics(BaseModel):
+    __root__: List[objects.AdsStats]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetSuggestionsCities = NewType('AdsGetSuggestionsCities', List[objects.AdsTargSuggestionsCities])
+class AdsGetSuggestionsCities(BaseModel):
+    __root__: List[objects.AdsTargSuggestionsCities]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetSuggestionsRegions = NewType('AdsGetSuggestionsRegions', List[objects.AdsTargSuggestionsRegions])
+class AdsGetSuggestionsRegions(BaseModel):
+    __root__: List[objects.AdsTargSuggestionsRegions]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetSuggestions = NewType('AdsGetSuggestions', List[objects.AdsTargSuggestions])
+class AdsGetSuggestions(BaseModel):
+    __root__: List[objects.AdsTargSuggestions]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetSuggestionsSchools = NewType('AdsGetSuggestionsSchools', List[objects.AdsTargSuggestionsSchools])
+class AdsGetSuggestionsSchools(BaseModel):
+    __root__: List[objects.AdsTargSuggestionsSchools]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetTargetGroups = NewType('AdsGetTargetGroups', List[objects.AdsTargetGroup])
+class AdsGetTargetGroups(BaseModel):
+    __root__: List[objects.AdsTargetGroup]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-AdsGetTargetingStats = NewType('AdsGetTargetingStats', objects.AdsTargStats)
+class AdsGetTargetingStats(objects.AdsTargStats):
+    ...
 
 
 AdsGetUploadUrl = NewType('AdsGetUploadUrl', str)
@@ -155,7 +296,14 @@ AdsImportTargetContacts = NewType('AdsImportTargetContacts', int)
 AdsRemoveOfficeUsers = NewType('AdsRemoveOfficeUsers', bool)
 
 
-AdsUpdateAds = NewType('AdsUpdateAds', List[int])
+class AdsUpdateAds(BaseModel):
+    __root__: List[int]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 AdsUpdateCampaigns = NewType('AdsUpdateCampaigns', int)
@@ -209,7 +357,8 @@ class AuthRestore(BaseModel):
 BaseBool = NewType('BaseBool', objects.BaseBoolInt)
 
 
-BaseGetUploadServer = NewType('BaseGetUploadServer', objects.BaseUploadServer)
+class BaseGetUploadServer(objects.BaseUploadServer):
+    ...
 
 
 BaseOk = NewType('BaseOk', int)
@@ -255,7 +404,14 @@ class DatabaseGetChairs(BaseModel):
     items: Optional[List[objects.BaseObject]] = Field(None)
 
 
-DatabaseGetCitiesById = NewType('DatabaseGetCitiesById', List[objects.BaseObject])
+class DatabaseGetCitiesById(BaseModel):
+    __root__: List[objects.BaseObject]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class DatabaseGetCities(BaseModel):
@@ -263,7 +419,14 @@ class DatabaseGetCities(BaseModel):
     items: Optional[List[objects.DatabaseCity]] = Field(None)
 
 
-DatabaseGetCountriesById = NewType('DatabaseGetCountriesById', List[objects.BaseCountry])
+class DatabaseGetCountriesById(BaseModel):
+    __root__: List[objects.BaseCountry]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class DatabaseGetCountries(BaseModel):
@@ -276,7 +439,14 @@ class DatabaseGetFaculties(BaseModel):
     items: Optional[List[objects.DatabaseFaculty]] = Field(None)
 
 
-DatabaseGetMetroStationsById = NewType('DatabaseGetMetroStationsById', List[objects.DatabaseStation])
+class DatabaseGetMetroStationsById(BaseModel):
+    __root__: List[objects.DatabaseStation]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class DatabaseGetMetroStations(BaseModel):
@@ -289,7 +459,14 @@ class DatabaseGetRegions(BaseModel):
     items: Optional[List[objects.DatabaseRegion]] = Field(None)
 
 
-DatabaseGetSchoolClasses = NewType('DatabaseGetSchoolClasses', List[List[Union[int, str]]])
+class DatabaseGetSchoolClasses(BaseModel):
+    __root__: List[List[Union[int, str]]]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class DatabaseGetSchools(BaseModel):
@@ -306,7 +483,14 @@ class DocsAdd(BaseModel):
     id_: Optional[int] = Field(None, alias='id', description="Doc ID")
 
 
-DocsGetById = NewType('DocsGetById', List[objects.DocsDoc])
+class DocsGetById(BaseModel):
+    __root__: List[objects.DocsDoc]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class DocsGetTypes(BaseModel):
@@ -314,7 +498,8 @@ class DocsGetTypes(BaseModel):
     items: Optional[List[objects.DocsDocTypes]] = Field(None)
 
 
-DocsGetUploadServer = NewType('DocsGetUploadServer', objects.BaseUploadServer)
+class DocsGetUploadServer(objects.BaseUploadServer):
+    ...
 
 
 class DocsGet(BaseModel):
@@ -338,7 +523,8 @@ class DownloadedGamesPaidStatus(BaseModel):
     is_paid: bool = Field(..., description="Game has been paid")
 
 
-FaveAddTag = NewType('FaveAddTag', objects.FaveTag)
+class FaveAddTag(objects.FaveTag):
+    ...
 
 
 class FaveGetPages(BaseModel):
@@ -370,10 +556,24 @@ class FriendsAddList(BaseModel):
 FriendsAdd = NewType('FriendsAdd', int)
 
 
-FriendsAreFriendsExtended = NewType('FriendsAreFriendsExtended', List[objects.FriendsFriendExtendedStatus])
+class FriendsAreFriendsExtended(BaseModel):
+    __root__: List[objects.FriendsFriendExtendedStatus]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-FriendsAreFriends = NewType('FriendsAreFriends', List[objects.FriendsFriendStatus])
+class FriendsAreFriends(BaseModel):
+    __root__: List[objects.FriendsFriendStatus]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class FriendsDelete(BaseModel):
@@ -384,10 +584,24 @@ class FriendsDelete(BaseModel):
     suggestion_deleted: Optional[int] = Field(None, description="Returns 1 if suggestion has been declined")
 
 
-FriendsGetAppUsers = NewType('FriendsGetAppUsers', List[int])
+class FriendsGetAppUsers(BaseModel):
+    __root__: List[int]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-FriendsGetByPhones = NewType('FriendsGetByPhones', List[objects.FriendsUserXtrPhone])
+class FriendsGetByPhones(BaseModel):
+    __root__: List[objects.FriendsUserXtrPhone]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class FriendsGetLists(BaseModel):
@@ -395,10 +609,24 @@ class FriendsGetLists(BaseModel):
     items: List[objects.FriendsFriendsList] = Field(...)
 
 
-FriendsGetMutual = NewType('FriendsGetMutual', List[int])
+class FriendsGetMutual(BaseModel):
+    __root__: List[int]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-FriendsGetMutualTargetUids = NewType('FriendsGetMutualTargetUids', List[objects.FriendsMutualFriend])
+class FriendsGetMutualTargetUids(BaseModel):
+    __root__: List[objects.FriendsMutualFriend]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class FriendsGetOnlineOnlineMobile(BaseModel):
@@ -406,10 +634,24 @@ class FriendsGetOnlineOnlineMobile(BaseModel):
     online_mobile: Optional[List[int]] = Field(None)
 
 
-FriendsGetOnline = NewType('FriendsGetOnline', List[int])
+class FriendsGetOnline(BaseModel):
+    __root__: List[int]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-FriendsGetRecent = NewType('FriendsGetRecent', List[int])
+class FriendsGetRecent(BaseModel):
+    __root__: List[int]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class FriendsGetRequestsExtended(BaseModel):
@@ -453,20 +695,24 @@ class GiftsGet(BaseModel):
     items: Optional[List[objects.GiftsGift]] = Field(None)
 
 
-GroupsAddAddress = NewType('GroupsAddAddress', objects.GroupsAddress)
+class GroupsAddAddress(objects.GroupsAddress):
+    ...
 
 
 class GroupsAddCallbackServer(BaseModel):
     server_id: Optional[int] = Field(None)
 
 
-GroupsAddLink = NewType('GroupsAddLink', objects.GroupsGroupLink)
+class GroupsAddLink(objects.GroupsGroupLink):
+    ...
 
 
-GroupsCreate = NewType('GroupsCreate', objects.GroupsGroup)
+class GroupsCreate(objects.GroupsGroup):
+    ...
 
 
-GroupsEditAddress = NewType('GroupsEditAddress', objects.GroupsAddress)
+class GroupsEditAddress(objects.GroupsAddress):
+    ...
 
 
 class GroupsGetAddresses(BaseModel):
@@ -479,7 +725,14 @@ class GroupsGetBanned(BaseModel):
     # items: List[objects.GroupsBannedItem] = Field(...)
 
 
-GroupsGetById = NewType('GroupsGetById', List[objects.GroupsGroupFull])
+class GroupsGetById(BaseModel):
+    __root__: List[objects.GroupsGroupFull]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class GroupsGetCallbackConfirmationCode(BaseModel):
@@ -491,7 +744,8 @@ class GroupsGetCallbackServers(BaseModel):
     items: List[objects.GroupsCallbackServer] = Field(...)
 
 
-GroupsGetCallbackSettings = NewType('GroupsGetCallbackSettings', objects.GroupsCallbackSettings)
+class GroupsGetCallbackSettings(objects.GroupsCallbackSettings):
+    ...
 
 
 class GroupsGetCatalogInfoExtended(BaseModel):
@@ -526,10 +780,12 @@ class GroupsGetInvites(BaseModel):
     items: List[objects.GroupsGroupXtrInvitedBy] = Field(...)
 
 
-GroupsGetLongPollServer = NewType('GroupsGetLongPollServer', objects.GroupsLongPollServer)
+class GroupsGetLongPollServer(objects.GroupsLongPollServer):
+    ...
 
 
-GroupsGetLongPollSettings = NewType('GroupsGetLongPollSettings', objects.GroupsLongPollSettings)
+class GroupsGetLongPollSettings(objects.GroupsLongPollSettings):
+    ...
 
 
 class GroupsGetMembersFields(BaseModel):
@@ -626,10 +882,24 @@ class GroupsIsMemberExtended(BaseModel):
 GroupsIsMember = NewType('GroupsIsMember', objects.BaseBoolInt)
 
 
-GroupsIsMemberUserIdsExtended = NewType('GroupsIsMemberUserIdsExtended', List[objects.GroupsMemberStatusFull])
+class GroupsIsMemberUserIdsExtended(BaseModel):
+    __root__: List[objects.GroupsMemberStatusFull]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-GroupsIsMemberUserIds = NewType('GroupsIsMemberUserIds', List[objects.GroupsMemberStatus])
+class GroupsIsMemberUserIds(BaseModel):
+    __root__: List[objects.GroupsMemberStatus]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class GroupsSearch(BaseModel):
@@ -637,16 +907,26 @@ class GroupsSearch(BaseModel):
     items: List[objects.GroupsGroup] = Field(...)
 
 
-LeadsCheckUser = NewType('LeadsCheckUser', objects.LeadsChecked)
+class LeadsCheckUser(objects.LeadsChecked):
+    ...
 
 
-LeadsComplete = NewType('LeadsComplete', objects.LeadsComplete)
+class LeadsComplete(objects.LeadsComplete):
+    ...
 
 
-LeadsGetStats = NewType('LeadsGetStats', objects.LeadsLead)
+class LeadsGetStats(objects.LeadsLead):
+    ...
 
 
-LeadsGetUsers = NewType('LeadsGetUsers', List[objects.LeadsEntry])
+class LeadsGetUsers(BaseModel):
+    __root__: List[objects.LeadsEntry]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class LeadsMetricHit(BaseModel):
@@ -654,7 +934,8 @@ class LeadsMetricHit(BaseModel):
     redirect_link: Optional[str] = Field(None, description="Redirect link")
 
 
-LeadsStart = NewType('LeadsStart', objects.LeadsStart)
+class LeadsStart(objects.LeadsStart):
+    ...
 
 
 class LikesAdd(BaseModel):
@@ -758,7 +1039,6 @@ class MessagesDeleteChatPhoto(BaseModel):
 class MessagesDeleteConversation(BaseModel):
     last_deleted_id: int = Field(..., description="Id of the last message, that was deleted")
 
-MessagesDelete = NewType('MessagesDelete', int)
 
 # response MessagesDelete has error in json-schema
 
@@ -788,16 +1068,32 @@ class MessagesGetChatPreview(BaseModel):
     profiles: Optional[List[objects.UsersUserFull]] = Field(None)
 
 
-MessagesGetChatChatIdsFields = NewType('MessagesGetChatChatIdsFields', List[objects.MessagesChatFull])
+class MessagesGetChatChatIdsFields(BaseModel):
+    __root__: List[objects.MessagesChatFull]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-MessagesGetChatChatIds = NewType('MessagesGetChatChatIds', List[objects.MessagesChat])
+class MessagesGetChatChatIds(BaseModel):
+    __root__: List[objects.MessagesChat]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-MessagesGetChatFields = NewType('MessagesGetChatFields', objects.MessagesChatFull)
+class MessagesGetChatFields(objects.MessagesChatFull):
+    ...
 
 
-MessagesGetChat = NewType('MessagesGetChat', objects.MessagesChat)
+class MessagesGetChat(objects.MessagesChat):
+    ...
 
 
 class MessagesGetConversationMembers(BaseModel):
@@ -843,7 +1139,8 @@ class MessagesGetInviteLink(BaseModel):
     link: Optional[str] = Field(None)
 
 
-MessagesGetLastActivity = NewType('MessagesGetLastActivity', objects.MessagesLastActivity)
+class MessagesGetLastActivity(objects.MessagesLastActivity):
+    ...
 
 
 class MessagesGetLongPollHistory(BaseModel):
@@ -857,7 +1154,8 @@ class MessagesGetLongPollHistory(BaseModel):
     conversations: Optional[List[objects.MessagesConversation]] = Field(None)
 
 
-MessagesGetLongPollServer = NewType('MessagesGetLongPollServer', objects.MessagesLongpollParams)
+class MessagesGetLongPollServer(objects.MessagesLongpollParams):
+    ...
 
 
 class MessagesIsMessagesFromGroupAllowed(BaseModel):
@@ -868,10 +1166,18 @@ class MessagesJoinChatByInviteLink(BaseModel):
     chat_id: Optional[int] = Field(None)
 
 
-MessagesMarkAsImportant = NewType('MessagesMarkAsImportant', List[int])
+class MessagesMarkAsImportant(BaseModel):
+    __root__: List[int]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-MessagesPin = NewType('MessagesPin', objects.MessagesPinnedMessage)
+class MessagesPin(objects.MessagesPinnedMessage):
+    ...
 
 
 class MessagesSearchConversations(BaseModel):
@@ -889,7 +1195,14 @@ class MessagesSearch(BaseModel):
 MessagesSend = NewType('MessagesSend', int)
 
 
-MessagesSendUserIds = NewType('MessagesSendUserIds', List[dict])
+class MessagesSendUserIds(BaseModel):
+    __root__: List[dict]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class MessagesSetChatPhoto(BaseModel):
@@ -976,7 +1289,8 @@ NotesAdd = NewType('NotesAdd', int)
 NotesCreateComment = NewType('NotesCreateComment', int)
 
 
-NotesGetById = NewType('NotesGetById', objects.NotesNote)
+class NotesGetById(objects.NotesNote):
+    ...
 
 
 class NotesGetComments(BaseModel):
@@ -1005,7 +1319,14 @@ class NotificationsGet(BaseModel):
 NotificationsMarkAsViewed = NewType('NotificationsMarkAsViewed', objects.BaseBoolInt)
 
 
-NotificationsSendMessage = NewType('NotificationsSendMessage', List[objects.NotificationsSendMessageItem])
+class NotificationsSendMessage(BaseModel):
+    __root__: List[objects.NotificationsSendMessageItem]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 OrdersCancelSubscription = NewType('OrdersCancelSubscription', objects.BaseBoolInt)
@@ -1014,13 +1335,22 @@ OrdersCancelSubscription = NewType('OrdersCancelSubscription', objects.BaseBoolI
 OrdersChangeState = NewType('OrdersChangeState', str)
 
 
-OrdersGetAmount = NewType('OrdersGetAmount', objects.OrdersAmount)
+class OrdersGetAmount(objects.OrdersAmount):
+    ...
 
 
-OrdersGetById = NewType('OrdersGetById', List[objects.OrdersOrder])
+class OrdersGetById(BaseModel):
+    __root__: List[objects.OrdersOrder]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-OrdersGetUserSubscriptionById = NewType('OrdersGetUserSubscriptionById', objects.OrdersSubscription)
+class OrdersGetUserSubscriptionById(objects.OrdersSubscription):
+    ...
 
 
 class OrdersGetUserSubscriptions(BaseModel):
@@ -1028,22 +1358,45 @@ class OrdersGetUserSubscriptions(BaseModel):
     items: Optional[List[objects.OrdersSubscription]] = Field(None)
 
 
-OrdersGet = NewType('OrdersGet', List[objects.OrdersOrder])
+class OrdersGet(BaseModel):
+    __root__: List[objects.OrdersOrder]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 OrdersUpdateSubscription = NewType('OrdersUpdateSubscription', objects.BaseBoolInt)
 
 
-PagesGetHistory = NewType('PagesGetHistory', List[objects.PagesWikipageHistory])
+class PagesGetHistory(BaseModel):
+    __root__: List[objects.PagesWikipageHistory]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-PagesGetTitles = NewType('PagesGetTitles', List[objects.PagesWikipage])
+class PagesGetTitles(BaseModel):
+    __root__: List[objects.PagesWikipage]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-PagesGetVersion = NewType('PagesGetVersion', objects.PagesWikipageFull)
+class PagesGetVersion(objects.PagesWikipageFull):
+    ...
 
 
-PagesGet = NewType('PagesGet', objects.PagesWikipageFull)
+class PagesGet(objects.PagesWikipageFull):
+    ...
 
 
 PagesParseWiki = NewType('PagesParseWiki', str)
@@ -1058,7 +1411,8 @@ PagesSave = NewType('PagesSave', int)
 PhotosCopy = NewType('PhotosCopy', int)
 
 
-PhotosCreateAlbum = NewType('PhotosCreateAlbum', objects.PhotosPhotoAlbumFull)
+class PhotosCreateAlbum(objects.PhotosPhotoAlbumFull):
+    ...
 
 
 PhotosCreateComment = NewType('PhotosCreateComment', int)
@@ -1092,10 +1446,24 @@ class PhotosGetAll(BaseModel):
     more: Optional[objects.BaseBoolInt] = Field(None, description="Information whether next page is presented")
 
 
-PhotosGetByIdExtended = NewType('PhotosGetByIdExtended', List[objects.PhotosPhotoFull])
+class PhotosGetByIdExtended(BaseModel):
+    __root__: List[objects.PhotosPhotoFull]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-PhotosGetById = NewType('PhotosGetById', List[objects.PhotosPhoto])
+class PhotosGetById(BaseModel):
+    __root__: List[objects.PhotosPhoto]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class PhotosGetCommentsExtended(BaseModel):
@@ -1112,10 +1480,12 @@ class PhotosGetComments(BaseModel):
     items: Optional[List[objects.WallWallComment]] = Field(None)
 
 
-PhotosGetMarketUploadServer = NewType('PhotosGetMarketUploadServer', objects.BaseUploadServer)
+class PhotosGetMarketUploadServer(objects.BaseUploadServer):
+    ...
 
 
-PhotosGetMessagesUploadServer = NewType('PhotosGetMessagesUploadServer', objects.PhotosPhotoUpload)
+class PhotosGetMessagesUploadServer(objects.PhotosPhotoUpload):
+    ...
 
 
 class PhotosGetNewTags(BaseModel):
@@ -1123,10 +1493,18 @@ class PhotosGetNewTags(BaseModel):
     items: List[objects.PhotosPhotoXtrTagInfo] = Field(...)
 
 
-PhotosGetTags = NewType('PhotosGetTags', List[objects.PhotosPhotoTag])
+class PhotosGetTags(BaseModel):
+    __root__: List[objects.PhotosPhotoTag]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-PhotosGetUploadServer = NewType('PhotosGetUploadServer', objects.PhotosPhotoUpload)
+class PhotosGetUploadServer(objects.PhotosPhotoUpload):
+    ...
 
 
 class PhotosGetUserPhotosExtended(BaseModel):
@@ -1139,7 +1517,8 @@ class PhotosGetUserPhotos(BaseModel):
     items: List[objects.PhotosPhoto] = Field(...)
 
 
-PhotosGetWallUploadServer = NewType('PhotosGetWallUploadServer', objects.PhotosPhotoUpload)
+class PhotosGetWallUploadServer(objects.PhotosPhotoUpload):
+    ...
 
 
 class PhotosGetExtended(BaseModel):
@@ -1158,16 +1537,44 @@ PhotosPutTag = NewType('PhotosPutTag', int)
 PhotosRestoreComment = NewType('PhotosRestoreComment', objects.BaseBoolInt)
 
 
-PhotosSaveMarketAlbumPhoto = NewType('PhotosSaveMarketAlbumPhoto', List[objects.PhotosPhoto])
+class PhotosSaveMarketAlbumPhoto(BaseModel):
+    __root__: List[objects.PhotosPhoto]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-PhotosSaveMarketPhoto = NewType('PhotosSaveMarketPhoto', List[objects.PhotosPhoto])
+class PhotosSaveMarketPhoto(BaseModel):
+    __root__: List[objects.PhotosPhoto]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-PhotosSaveMessagesPhoto = NewType('PhotosSaveMessagesPhoto', List[objects.PhotosPhoto])
+class PhotosSaveMessagesPhoto(BaseModel):
+    __root__: List[objects.PhotosPhoto]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-PhotosSaveOwnerCoverPhoto = NewType('PhotosSaveOwnerCoverPhoto', List[objects.BaseImage])
+class PhotosSaveOwnerCoverPhoto(BaseModel):
+    __root__: List[objects.BaseImage]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class PhotosSaveOwnerPhoto(BaseModel):
@@ -1179,10 +1586,24 @@ class PhotosSaveOwnerPhoto(BaseModel):
     post_id: Optional[int] = Field(None, description="Created post ID")
 
 
-PhotosSaveWallPhoto = NewType('PhotosSaveWallPhoto', List[objects.PhotosPhoto])
+class PhotosSaveWallPhoto(BaseModel):
+    __root__: List[objects.PhotosPhoto]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-PhotosSave = NewType('PhotosSave', List[objects.PhotosPhoto])
+class PhotosSave(BaseModel):
+    __root__: List[objects.PhotosPhoto]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class PhotosSearch(BaseModel):
@@ -1193,16 +1614,25 @@ class PhotosSearch(BaseModel):
 PollsAddVote = NewType('PollsAddVote', objects.BaseBoolInt)
 
 
-PollsCreate = NewType('PollsCreate', objects.PollsPoll)
+class PollsCreate(objects.PollsPoll):
+    ...
 
 
 PollsDeleteVote = NewType('PollsDeleteVote', objects.BaseBoolInt)
 
 
-PollsGetById = NewType('PollsGetById', objects.PollsPoll)
+class PollsGetById(objects.PollsPoll):
+    ...
 
 
-PollsGetVoters = NewType('PollsGetVoters', List[objects.PollsVoters])
+class PollsGetVoters(BaseModel):
+    __root__: List[objects.PollsVoters]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class PrettyCardsCreate(BaseModel):
@@ -1221,7 +1651,14 @@ class PrettyCardsEdit(BaseModel):
     card_id: str = Field(..., description="Card ID of edited pretty card")
 
 
-PrettyCardsGetById = NewType('PrettyCardsGetById', List[objects.PrettycardsPrettycard])
+class PrettyCardsGetById(BaseModel):
+    __root__: List[objects.PrettycardsPrettycard]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 PrettyCardsGetUploadUrl = NewType('PrettyCardsGetUploadUrl', str)
@@ -1238,46 +1675,118 @@ class SearchGetHints(BaseModel):
     suggested_queries: Optional[List[str]] = Field(None)
 
 
-SecureCheckToken = NewType('SecureCheckToken', objects.SecureTokenChecked)
+class SecureCheckToken(objects.SecureTokenChecked):
+    ...
 
 
 SecureGetAppBalance = NewType('SecureGetAppBalance', int)
 
 
-SecureGetSmshistory = NewType('SecureGetSmshistory', List[objects.SecureSmsNotification])
+class SecureGetSmshistory(BaseModel):
+    __root__: List[objects.SecureSmsNotification]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-SecureGetTransactionsHistory = NewType('SecureGetTransactionsHistory', List[objects.SecureTransaction])
+class SecureGetTransactionsHistory(BaseModel):
+    __root__: List[objects.SecureTransaction]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-SecureGetUserLevel = NewType('SecureGetUserLevel', List[objects.SecureLevel])
+class SecureGetUserLevel(BaseModel):
+    __root__: List[objects.SecureLevel]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-SecureGiveEventSticker = NewType('SecureGiveEventSticker', List[dict])
+class SecureGiveEventSticker(BaseModel):
+    __root__: List[dict]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-SecureSendNotification = NewType('SecureSendNotification', List[int])
+class SecureSendNotification(BaseModel):
+    __root__: List[int]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-StatsGetPostReach = NewType('StatsGetPostReach', List[objects.StatsWallpostStat])
+class StatsGetPostReach(BaseModel):
+    __root__: List[objects.StatsWallpostStat]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-StatsGet = NewType('StatsGet', List[objects.StatsPeriod])
+class StatsGet(BaseModel):
+    __root__: List[objects.StatsPeriod]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-StatusGet = NewType('StatusGet', objects.StatusStatus)
+class StatusGet(objects.StatusStatus):
+    ...
 
 
-StorageGetKeys = NewType('StorageGetKeys', List[str])
+class StorageGetKeys(BaseModel):
+    __root__: List[str]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 StorageGet = NewType('StorageGet', str)
 
 
-StorageGetV5110 = NewType('StorageGetV5110', List[objects.StorageValue])
+class StorageGetV5110(BaseModel):
+    __root__: List[objects.StorageValue]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
-StorageGetWithKeys = NewType('StorageGetWithKeys', List[objects.StorageValue])
+class StorageGetWithKeys(BaseModel):
+    __root__: List[objects.StorageValue]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class StoriesGetBannedExtended(BaseModel):
@@ -1309,7 +1818,8 @@ class StoriesGetPhotoUploadServer(BaseModel):
     user_ids: List[int] = Field(..., description="Users ID who can to see story.")
 
 
-StoriesGetStats = NewType('StoriesGetStats', objects.StoriesStoryStats)
+class StoriesGetStats(objects.StoriesStoryStats):
+    ...
 
 
 class StoriesGetVideoUploadServer(BaseModel):
@@ -1374,7 +1884,14 @@ class UsersGetSubscriptions(BaseModel):
     groups: objects.GroupsGroupsArray = Field(...)
 
 
-UsersGet = NewType('UsersGet', List[objects.UsersUserXtrCounters])
+class UsersGet(BaseModel):
+    __root__: List[objects.UsersUserXtrCounters]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class UsersSearch(BaseModel):
@@ -1382,7 +1899,8 @@ class UsersSearch(BaseModel):
     items: Optional[List[objects.UsersUserFull]] = Field(None)
 
 
-UtilsCheckLink = NewType('UtilsCheckLink', objects.UtilsLinkChecked)
+class UtilsCheckLink(objects.UtilsLinkChecked):
+    ...
 
 
 class UtilsGetLastShortenedLinks(BaseModel):
@@ -1390,19 +1908,23 @@ class UtilsGetLastShortenedLinks(BaseModel):
     items: Optional[List[objects.UtilsLastShortenedLink]] = Field(None)
 
 
-UtilsGetLinkStatsExtended = NewType('UtilsGetLinkStatsExtended', objects.UtilsLinkStatsExtended)
+class UtilsGetLinkStatsExtended(objects.UtilsLinkStatsExtended):
+    ...
 
 
-UtilsGetLinkStats = NewType('UtilsGetLinkStats', objects.UtilsLinkStats)
+class UtilsGetLinkStats(objects.UtilsLinkStats):
+    ...
 
 
 UtilsGetServerTime = NewType('UtilsGetServerTime', int)
 
 
-UtilsGetShortLink = NewType('UtilsGetShortLink', objects.UtilsShortLink)
+class UtilsGetShortLink(objects.UtilsShortLink):
+    ...
 
 
-UtilsResolveScreenName = NewType('UtilsResolveScreenName', objects.UtilsDomainResolved)
+class UtilsResolveScreenName(objects.UtilsDomainResolved):
+    ...
 
 
 class VideoAddAlbum(BaseModel):
@@ -1412,7 +1934,8 @@ class VideoAddAlbum(BaseModel):
 VideoCreateComment = NewType('VideoCreateComment', int)
 
 
-VideoGetAlbumById = NewType('VideoGetAlbumById', objects.VideoVideoAlbumFull)
+class VideoGetAlbumById(objects.VideoVideoAlbumFull):
+    ...
 
 
 class VideoGetAlbumsByVideoExtended(BaseModel):
@@ -1420,7 +1943,14 @@ class VideoGetAlbumsByVideoExtended(BaseModel):
     items: Optional[List[objects.VideoVideoAlbumFull]] = Field(None)
 
 
-VideoGetAlbumsByVideo = NewType('VideoGetAlbumsByVideo', List[int])
+class VideoGetAlbumsByVideo(BaseModel):
+    __root__: List[int]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class VideoGetAlbumsExtended(BaseModel):
@@ -1460,7 +1990,8 @@ class VideoGet(BaseModel):
 VideoRestoreComment = NewType('VideoRestoreComment', objects.BaseBoolInt)
 
 
-VideoSave = NewType('VideoSave', objects.VideoSaveResult)
+class VideoSave(objects.VideoSaveResult):
+    ...
 
 
 class VideoSearchExtended(BaseModel):
@@ -1489,7 +2020,14 @@ class WallGetByIdExtended(BaseModel):
     groups: List[objects.GroupsGroupFull] = Field(...)
 
 
-WallGetById = NewType('WallGetById', List[objects.WallWallpostFull])
+class WallGetById(BaseModel):
+    __root__: List[objects.WallWallpostFull]
+
+    def __iter__(self):
+        return iter(self.__root__)
+
+    def __getitem__(self, item):
+        return self.__root__[item]
 
 
 class WallGetCommentExtended(BaseModel):
