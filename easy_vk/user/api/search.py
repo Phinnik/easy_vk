@@ -7,8 +7,8 @@ from easy_vk.api_category import BaseCategory
 
 
 class Search(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, delay, auto_retry, max_retries, timeout)
+    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
+        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
 
     def get_hints(self, q: Optional[str] = None, offset: Optional[int] = None, limit: Optional[int] = None, filters: Optional[List[str]] = None, fields: Optional[List[str]] = None, search_global: Optional[bool] = None) -> responses.SearchGetHints:
         """

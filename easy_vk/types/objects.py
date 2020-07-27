@@ -23,7 +23,7 @@ class AccountAccountCounters(BaseModel):
     sdk: Optional[int] = Field(None, description="New sdk number")
 
 
-class AccountNameRequestStatus(Enum):    
+class AccountNameRequestStatus(str, Enum):    
     """ Request status """
         
     SUCCESS = 'success'
@@ -51,7 +51,7 @@ class AccountOffer(BaseModel):
     link_type: Optional[str] = Field(None, description="Link type")
 
 
-class AccountPushParamsMode(Enum):    
+class AccountPushParamsMode(str, Enum):    
     """ Settings parameters """
         
     ON = 'on'
@@ -60,14 +60,14 @@ class AccountPushParamsMode(Enum):
     NO_TEXT = 'no_text'
 
 
-class AccountPushParamsOnoff(Enum):    
+class AccountPushParamsOnoff(str, Enum):    
     """ Settings parameters """
         
     ON = 'on'
     OFF = 'off'
 
 
-class AccountPushParamsSettings(Enum):    
+class AccountPushParamsSettings(str, Enum):    
     """ Settings parameters """
         
     ON = 'on'
@@ -80,7 +80,7 @@ class AccountUserSettingsInterest(BaseModel):
     value: str = Field(...)
 
 
-class AddressesFields(Enum):    
+class AddressesFields(str, Enum):    
     ID = 'id'
     TITLE = 'title'
     ADDRESS = 'address'
@@ -97,7 +97,7 @@ class AddressesFields(Enum):
     TIME_OFFSET = 'time_offset'
 
 
-class AdsAccessRole(Enum):    
+class AdsAccessRole(str, Enum):    
     """ Current user's role """
         
     ADMIN = 'admin'
@@ -105,14 +105,14 @@ class AdsAccessRole(Enum):
     REPORTS = 'reports'
 
 
-class AdsAccountType(Enum):    
+class AdsAccountType(str, Enum):    
     """ Account type """
         
     GENERAL = 'general'
     AGENCY = 'agency'
 
 
-class AdsAdApproved(Enum):    
+class AdsAdApproved(int, Enum):    
     """ Review status """
         
     NOT_MODERATED = 0
@@ -121,7 +121,7 @@ class AdsAdApproved(Enum):
     REJECTED = 3
 
 
-class AdsAdCostType(Enum):    
+class AdsAdCostType(int, Enum):    
     """ Cost type """
         
     PER_CLICKS = 0
@@ -130,7 +130,7 @@ class AdsAdCostType(Enum):
     PER_IMPRESSIONS_OPTIMIZED = 3
 
 
-class AdsAdStatus(Enum):    
+class AdsAdStatus(int, Enum):    
     """ Ad atatus """
         
     STOPPED = 0
@@ -138,7 +138,7 @@ class AdsAdStatus(Enum):
     DELETED = 2
 
 
-class AdsCampaignStatus(Enum):    
+class AdsCampaignStatus(int, Enum):    
     """ Campaign status """
         
     STOPPED = 0
@@ -146,7 +146,7 @@ class AdsCampaignStatus(Enum):
     DELETED = 2
 
 
-class AdsCampaignType(Enum):    
+class AdsCampaignType(str, Enum):    
     """ Campaign type """
         
     NORMAL = 'normal'
@@ -162,7 +162,7 @@ class AdsClient(BaseModel):
     name: str = Field(..., description="Client name")
 
 
-class AdsCriteriaSex(Enum):    
+class AdsCriteriaSex(int, Enum):    
     """ Sex """
         
     ANY = 0
@@ -191,7 +191,7 @@ class AdsMusician(BaseModel):
     name: str = Field(..., description="Music artist name")
 
 
-class AdsObjectType(Enum):    
+class AdsObjectType(str, Enum):    
     """ Object type """
         
     AD = 'ad'
@@ -256,7 +256,7 @@ class AdsStatsSexAge(BaseModel):
     value: Optional[str] = Field(None, description="Sex and age interval")
 
 
-class AdsStatsSexValue(Enum):    
+class AdsStatsSexValue(str, Enum):    
     """ Sex """
         
     FEMALE = 'f'
@@ -306,7 +306,7 @@ class AdsTargSuggestionsRegions(BaseModel):
     type_: Optional[str] = Field(None, alias='type', description="Object type")
 
 
-class AdsTargSuggestionsSchoolsType(Enum):    
+class AdsTargSuggestionsSchoolsType(str, Enum):    
     """ School type """
         
     SCHOOL = 'school'
@@ -324,7 +324,7 @@ class AdsTargetGroup(BaseModel):
     pixel: Optional[str] = Field(None, description="Pixel code")
 
 
-class AppsAppLeaderboardType(Enum):    
+class AppsAppLeaderboardType(int, Enum):    
     """ Leaderboard type """
         
     NOT_SUPPORTED = 0
@@ -332,7 +332,7 @@ class AppsAppLeaderboardType(Enum):
     POINTS = 2
 
 
-class AppsAppType(Enum):    
+class AppsAppType(str, Enum):    
     """ Application type """
         
     APP = 'app'
@@ -371,7 +371,7 @@ class AudioAudio(BaseModel):
     performer: Optional[str] = Field(None, description="Performer name")
 
 
-class BaseBoolInt(Enum):    
+class BaseBoolInt(int, Enum):    
     NO = 0
     YES = 1
 
@@ -408,13 +408,14 @@ class BaseLinkApplicationStore(BaseModel):
     name: Optional[str] = Field(None, description="Store name")
 
 
-class BaseLinkButtonActionType(Enum):    
+class BaseLinkButtonActionType(str, Enum):    
     """ Action type """
         
     OPEN_URL = 'open_url'
 
 
-# object BaseLinkButtonStyle has error in vk json-schema
+class BaseLinkButtonStyle(str, Enum):
+    ...
 
 
 class BaseLinkRating(BaseModel):    
@@ -455,7 +456,7 @@ class BasePlace(BaseModel):
     type_: Optional[str] = Field(None, alias='type', description="Place type")
 
 
-class BasePropertyExists(Enum):    
+class BasePropertyExists(int, Enum):    
     PROPERTY_EXISTS = 1
 
 
@@ -469,7 +470,7 @@ class BaseRequestParam(BaseModel):
     value: Optional[str] = Field(None, description="Parameter value")
 
 
-class BaseSex(Enum):    
+class BaseSex(int, Enum):    
     UNKNOWN = 0
     FEMALE = 1
     MALE = 2
@@ -484,7 +485,7 @@ class BaseUploadServer(BaseModel):
     upload_url: str = Field(..., description="Upload URL")
 
 
-class BaseUserGroupFields(Enum):    
+class BaseUserGroupFields(str, Enum):    
     ABOUT = 'about'
     ACTION_BUTTON = 'action_button'
     ACTIVITIES = 'activities'
@@ -591,7 +592,7 @@ class BaseUserId(BaseModel):
     user_id: Optional[int] = Field(None, description="User ID")
 
 
-class BoardDefaultOrder(Enum):    
+class BoardDefaultOrder(int, Enum):    
     """ Sort type """
         
     DESC_UPDATED = 1
@@ -606,7 +607,7 @@ class CallbackBoardPostDelete(BaseModel):
     id_: Optional[int] = Field(None, alias='id')
 
 
-class CallbackGroupJoinType(Enum):    
+class CallbackGroupJoinType(str, Enum):    
     JOIN = 'join'
     UNSURE = 'unsure'
     ACCEPTED = 'accepted'
@@ -614,12 +615,12 @@ class CallbackGroupJoinType(Enum):
     REQUEST = 'request'
 
 
-class CallbackGroupMarket(Enum):    
+class CallbackGroupMarket(int, Enum):    
     DISABLED = 0
     OPEN = 1
 
 
-class CallbackGroupOfficerRole(Enum):    
+class CallbackGroupOfficerRole(int, Enum):    
     NONE = 0
     MODERATOR = 1
     EDITOR = 2
@@ -660,7 +661,7 @@ class CallbackMessageDeny(BaseModel):
     user_id: int = Field(...)
 
 
-class CallbackMessageType(Enum):    
+class CallbackMessageType(str, Enum):    
     CONFIRMATION = 'confirmation'
     GROUP_CHANGE_PHOTO = 'group_change_photo'
     GROUP_CHANGE_SETTINGS = 'group_change_settings'
@@ -782,7 +783,7 @@ class DatabaseUniversity(BaseModel):
     title: Optional[str] = Field(None, description="University title")
 
 
-class DocsDocAttachmentType(Enum):    
+class DocsDocAttachmentType(str, Enum):    
     """ Doc attachment type """
         
     DOC = 'doc'
@@ -820,7 +821,7 @@ class DocsDocUploadResponse(BaseModel):
     file: Optional[str] = Field(None, description="Uploaded file data")
 
 
-class FaveBookmarkType(Enum):    
+class FaveBookmarkType(str, Enum):    
     POST = 'post'
     VIDEO = 'video'
     PRODUCT = 'product'
@@ -828,7 +829,7 @@ class FaveBookmarkType(Enum):
     LINK = 'link'
 
 
-class FavePageType(Enum):    
+class FavePageType(str, Enum):    
     USER = 'user'
     GROUP = 'group'
     HINTS = 'hints'
@@ -839,7 +840,7 @@ class FaveTag(BaseModel):
     name: Optional[str] = Field(None, description="Tag name")
 
 
-class FriendsFriendStatusStatus(Enum):    
+class FriendsFriendStatusStatus(int, Enum):    
     """ Friend status with the user """
         
     NOT_A_FRIEND = 0
@@ -864,7 +865,7 @@ class FriendsRequestsMutual(BaseModel):
     users: Optional[List[int]] = Field(None)
 
 
-class GiftsGiftPrivacy(Enum):    
+class GiftsGiftPrivacy(int, Enum):    
     """ Gift privacy """
         
     NAME_AND_MESSAGE_FOR_ALL = 0
@@ -892,7 +893,7 @@ class GroupsAddressTimetableDay(BaseModel):
     open_time: int = Field(..., description="Open time in minutes")
 
 
-class GroupsAddressWorkInfoStatus(Enum):    
+class GroupsAddressWorkInfoStatus(str, Enum):    
     """ Status of information about timetable """
         
     NO_INFORMATION = 'no_information'
@@ -907,7 +908,7 @@ class GroupsAddressesInfo(BaseModel):
     main_address_id: Optional[int] = Field(None, description="Main address id for group")
 
 
-class GroupsBanInfoReason(Enum):    
+class GroupsBanInfoReason(int, Enum):    
     """ Ban reason """
         
     OTHER = 0
@@ -945,7 +946,7 @@ class GroupsCountersGroup(BaseModel):
     videos: Optional[int] = Field(None, description="Videos number")
 
 
-class GroupsFields(Enum):    
+class GroupsFields(str, Enum):    
     MARKET = 'market'
     MEMBER_STATUS = 'member_status'
     IS_FAVORITE = 'is_favorite'
@@ -997,7 +998,7 @@ class GroupsFields(Enum):
     CLIPS_COUNT = 'clips_count'
 
 
-class GroupsFilter(Enum):    
+class GroupsFilter(str, Enum):    
     ADMIN = 'admin'
     EDITOR = 'editor'
     MODER = 'moder'
@@ -1008,13 +1009,13 @@ class GroupsFilter(Enum):
     HAS_ADDRESSES = 'has_addresses'
 
 
-class GroupsGroupAccess(Enum):    
+class GroupsGroupAccess(int, Enum):    
     OPEN = 0
     CLOSED = 1
     PRIVATE = 2
 
 
-class GroupsGroupAdminLevel(Enum):    
+class GroupsGroupAdminLevel(int, Enum):    
     """ Level of current user's credentials as manager """
         
     MODERATOR = 1
@@ -1022,7 +1023,7 @@ class GroupsGroupAdminLevel(Enum):
     ADMINISTRATOR = 3
 
 
-class GroupsGroupAgeLimits(Enum):    
+class GroupsGroupAgeLimits(int, Enum):    
     UNLIMITED = 1
     SIXTEEN_PLUS = 2
     EIGHTEEN_PLUS = 3
@@ -1036,7 +1037,7 @@ class GroupsGroupAttach(BaseModel):
     is_favorite: bool = Field(..., description="is favorite")
 
 
-class GroupsGroupAudio(Enum):    
+class GroupsGroupAudio(int, Enum):    
     DISABLED = 0
     OPEN = 1
     LIMITED = 2
@@ -1047,19 +1048,19 @@ class GroupsGroupCategoryType(BaseModel):
     name: str = Field(...)
 
 
-class GroupsGroupDocs(Enum):    
+class GroupsGroupDocs(int, Enum):    
     DISABLED = 0
     OPEN = 1
     LIMITED = 2
 
 
-class GroupsGroupFullAgeLimits(Enum):    
+class GroupsGroupFullAgeLimits(int, Enum):    
     NO = 1
     OVER_16 = 2
     OVER_18 = 3
 
 
-class GroupsGroupFullMainSection(Enum):    
+class GroupsGroupFullMainSection(int, Enum):    
     """ Main section of community """
         
     ABSENT = 0
@@ -1070,7 +1071,7 @@ class GroupsGroupFullMainSection(Enum):
     MARKET = 5
 
 
-class GroupsGroupFullMemberStatus(Enum):    
+class GroupsGroupFullMemberStatus(int, Enum):    
     NOT_A_MEMBER = 0
     MEMBER = 1
     NOT_SURE = 2
@@ -1079,7 +1080,7 @@ class GroupsGroupFullMemberStatus(Enum):
     INVITED = 5
 
 
-class GroupsGroupIsClosed(Enum):    
+class GroupsGroupIsClosed(int, Enum):    
     """ Information whether community is closed """
         
     OPEN = 0
@@ -1087,7 +1088,7 @@ class GroupsGroupIsClosed(Enum):
     PRIVATE = 2
 
 
-class GroupsGroupMarketCurrency(Enum):    
+class GroupsGroupMarketCurrency(int, Enum):    
     RUSSIAN_RUBLES = 643
     UKRAINIAN_HRYVNIA = 980
     KAZAKH_TENGE = 398
@@ -1095,19 +1096,19 @@ class GroupsGroupMarketCurrency(Enum):
     US_DOLLARS = 840
 
 
-class GroupsGroupPhotos(Enum):    
+class GroupsGroupPhotos(int, Enum):    
     DISABLED = 0
     OPEN = 1
     LIMITED = 2
 
 
-class GroupsGroupRole(Enum):    
+class GroupsGroupRole(str, Enum):    
     MODERATOR = 'moderator'
     EDITOR = 'editor'
     ADMINISTRATOR = 'administrator'
 
 
-class GroupsGroupSubject(Enum):    
+class GroupsGroupSubject(str, Enum):    
     AUTO = 1
     ACTIVITY_HOLIDAYS = 2
     BUSINESS = 3
@@ -1152,13 +1153,13 @@ class GroupsGroupSubject(Enum):
     DESIGN_AND_GRAPHICS = 42
 
 
-class GroupsGroupTopics(Enum):    
+class GroupsGroupTopics(int, Enum):    
     DISABLED = 0
     OPEN = 1
     LIMITED = 2
 
 
-class GroupsGroupType(Enum):    
+class GroupsGroupType(str, Enum):    
     """ Community type """
         
     GROUP = 'group'
@@ -1166,26 +1167,26 @@ class GroupsGroupType(Enum):
     EVENT = 'event'
 
 
-class GroupsGroupVideo(Enum):    
+class GroupsGroupVideo(int, Enum):    
     DISABLED = 0
     OPEN = 1
     LIMITED = 2
 
 
-class GroupsGroupWall(Enum):    
+class GroupsGroupWall(int, Enum):    
     DISABLED = 0
     OPEN = 1
     LIMITED = 2
     CLOSED = 3
 
 
-class GroupsGroupWiki(Enum):    
+class GroupsGroupWiki(int, Enum):    
     DISABLED = 0
     OPEN = 1
     LIMITED = 2
 
 
-class GroupsGroupXtrInvitedByAdminLevel(Enum):    
+class GroupsGroupXtrInvitedByAdminLevel(int, Enum):    
     """ Level of current user's credentials as manager """
         
     MODERATOR = 1
@@ -1193,7 +1194,7 @@ class GroupsGroupXtrInvitedByAdminLevel(Enum):
     ADMINISTRATOR = 3
 
 
-class GroupsGroupXtrInvitedByType(Enum):    
+class GroupsGroupXtrInvitedByType(str, Enum):    
     """ Community type """
         
     GROUP = 'group'
@@ -1212,11 +1213,11 @@ class GroupsLongPollServer(BaseModel):
     ts: str = Field(..., description="Number of the last event")
 
 
-class GroupsMemberRolePermission(Enum):    
+class GroupsMemberRolePermission(str, Enum):    
     ADS = 'ads'
 
 
-class GroupsMemberRoleStatus(Enum):    
+class GroupsMemberRoleStatus(str, Enum):    
     """ User's credentials as community admin """
         
     MODERATOR = 'moderator'
@@ -1225,7 +1226,7 @@ class GroupsMemberRoleStatus(Enum):
     CREATOR = 'creator'
 
 
-class GroupsOnlineStatusType(Enum):    
+class GroupsOnlineStatusType(str, Enum):    
     """ Type of online status of group """
         
     NONE = 'none'
@@ -1233,14 +1234,14 @@ class GroupsOnlineStatusType(Enum):
     ANSWER_MARK = 'answer_mark'
 
 
-class GroupsOwnerXtrBanInfoType(Enum):    
+class GroupsOwnerXtrBanInfoType(str, Enum):    
     """ Owner type """
         
     GROUP = 'group'
     PROFILE = 'profile'
 
 
-class GroupsRoleOptions(Enum):    
+class GroupsRoleOptions(str, Enum):    
     """ User's credentials as community admin """
         
     MODERATOR = 'moderator'
@@ -1264,7 +1265,7 @@ class GroupsTokenPermissionSetting(BaseModel):
     setting: int = Field(...)
 
 
-class LeadsCheckedResult(Enum):    
+class LeadsCheckedResult(str, Enum):    
     """ Information whether user can start the lead """
         
     TRUE = 'true'
@@ -1278,7 +1279,7 @@ class LeadsLeadDays(BaseModel):
     started: Optional[int] = Field(None, description="Started offers number")
 
 
-class LikesType(Enum):    
+class LikesType(str, Enum):    
     POST = 'post'
     COMMENT = 'comment'
     PHOTO = 'photo'
@@ -1304,7 +1305,7 @@ class MarketCurrency(BaseModel):
     name: str = Field(..., description="Currency sign")
 
 
-class MarketMarketItemAvailability(Enum):    
+class MarketMarketItemAvailability(int, Enum):    
     """ Information whether the item is available """
         
     AVAILABLE = 0
@@ -1355,7 +1356,7 @@ class MessagesConversationMember(BaseModel):
     member_id: int = Field(...)
 
 
-class MessagesConversationPeerType(Enum):    
+class MessagesConversationPeerType(str, Enum):    
     """ Peer type """
         
     CHAT = 'chat'
@@ -1373,7 +1374,7 @@ class MessagesGraffiti(BaseModel):
     width: int = Field(..., description="Graffiti width")
 
 
-class MessagesHistoryMessageAttachmentType(Enum):    
+class MessagesHistoryMessageAttachmentType(str, Enum):    
     """ Attachments type """
         
     PHOTO = 'photo'
@@ -1401,7 +1402,7 @@ class MessagesMessageActionPhoto(BaseModel):
     photo_50: str = Field(..., description="URL of the preview image with 50px in width")
 
 
-class MessagesMessageActionStatus(Enum):    
+class MessagesMessageActionStatus(str, Enum):    
     """ Action status """
         
     CHAT_PHOTO_UPDATE = 'chat_photo_update'
@@ -1415,7 +1416,7 @@ class MessagesMessageActionStatus(Enum):
     CHAT_INVITE_USER_BY_LINK = 'chat_invite_user_by_link'
 
 
-class MessagesMessageAttachmentType(Enum):    
+class MessagesMessageAttachmentType(str, Enum):    
     """ Attachment type """
         
     PHOTO = 'photo'
@@ -1440,7 +1441,7 @@ class MessagesMessageRequestData(BaseModel):
     request_date: Optional[int] = Field(None, description="Message request date")
 
 
-class MessagesTemplateActionTypeNames(Enum):    
+class MessagesTemplateActionTypeNames(str, Enum):    
     """ Template action type names """
         
     TEXT = 'text'
@@ -1452,7 +1453,7 @@ class MessagesTemplateActionTypeNames(Enum):
     OPEN_LINK = 'open_link'
 
 
-class NewsfeedCommentsFilters(Enum):    
+class NewsfeedCommentsFilters(str, Enum):    
     POST = 'post'
     PHOTO = 'photo'
     VIDEO = 'video'
@@ -1460,7 +1461,7 @@ class NewsfeedCommentsFilters(Enum):
     NOTE = 'note'
 
 
-class NewsfeedFilters(Enum):    
+class NewsfeedFilters(str, Enum):    
     POST = 'post'
     PHOTO = 'photo'
     PHOTO_TAG = 'photo_tag'
@@ -1474,7 +1475,7 @@ class NewsfeedFilters(Enum):
     CLIP = 'clip'
 
 
-class NewsfeedIgnoreItemType(Enum):    
+class NewsfeedIgnoreItemType(str, Enum):    
     POST_ON_THE_WALL = 'wall'
     TAG_ON_A_PHOTO = 'tag'
     PROFILE_PHOTO = 'profilephoto'
@@ -1500,12 +1501,12 @@ class NewsfeedItemWallpostFeedbackAnswer(BaseModel):
     id_: Optional[str] = Field(None, alias='id')
 
 
-class NewsfeedItemWallpostFeedbackType(Enum):    
+class NewsfeedItemWallpostFeedbackType(str, Enum):    
     BUTTONS = 'buttons'
     STARS = 'stars'
 
 
-class NewsfeedItemWallpostType(Enum):    
+class NewsfeedItemWallpostType(str, Enum):    
     """ Post type """
         
     POST = 'post'
@@ -1518,7 +1519,7 @@ class NewsfeedList(BaseModel):
     title: str = Field(..., description="List title")
 
 
-class NewsfeedNewsfeedItemType(Enum):    
+class NewsfeedNewsfeedItemType(str, Enum):    
     """ Item type """
         
     POST = 'post'
@@ -1612,7 +1613,7 @@ class OwnerState(BaseModel):
     description: Optional[str] = Field(None, description="wiki text to describe user state")
 
 
-class PagesPrivacySettings(Enum):    
+class PagesPrivacySettings(int, Enum):    
     COMMUNITY_MANAGERS_ONLY = 0
     COMMUNITY_MEMBERS_ONLY = 1
     EVERYONE = 2
@@ -1626,7 +1627,7 @@ class PagesWikipageHistory(BaseModel):
     editor_name: str = Field(..., description="Last editor name")
 
 
-class PhotosImageType(Enum):    
+class PhotosImageType(str, Enum):    
     """ Photo's type. """
         
     S = 's'
@@ -1670,7 +1671,7 @@ class PhotosOwnerUploadResponse(BaseModel):
     server: Optional[int] = Field(None, description="Upload server number")
 
 
-class PhotosPhotoSizesType(Enum):    
+class PhotosPhotoSizesType(str, Enum):    
     """ Size type """
         
     S = 's'
@@ -1734,7 +1735,7 @@ class PollsVotersUsers(BaseModel):
     items: Optional[List[int]] = Field(None)
 
 
-class SearchHintSection(Enum):    
+class SearchHintSection(str, Enum):    
     """ Section title """
         
     GROUPS = 'groups'
@@ -1746,7 +1747,7 @@ class SearchHintSection(Enum):
     MUTUAL_FRIENDS = 'mutual_friends'
 
 
-class SearchHintType(Enum):    
+class SearchHintType(str, Enum):    
     """ Object type """
         
     GROUP = 'group'
@@ -1851,7 +1852,7 @@ class StoriesStoryLink(BaseModel):
     url: str = Field(..., description="Link URL")
 
 
-class StoriesStoryStatsState(Enum):    
+class StoriesStoryStatsState(str, Enum):    
     """ Statistic state """
         
     ON = 'on'
@@ -1859,7 +1860,7 @@ class StoriesStoryStatsState(Enum):
     HIDDEN = 'hidden'
 
 
-class StoriesStoryType(Enum):    
+class StoriesStoryType(str, Enum):    
     """ Story type. """
         
     PHOTO = 'photo'
@@ -1868,7 +1869,7 @@ class StoriesStoryType(Enum):
     LIVE_FINISHED = 'live_finished'
 
 
-class StoriesUploadLinkText(Enum):    
+class StoriesUploadLinkText(str, Enum):    
     TO_STORE = 'to_store'
     VOTE = 'vote'
     MORE = 'more'
@@ -1923,7 +1924,7 @@ class UsersExports(BaseModel):
     twitter: Optional[int] = Field(None)
 
 
-class UsersFields(Enum):    
+class UsersFields(str, Enum):    
     PHOTO_ID = 'photo_id'
     VERIFIED = 'verified'
     SEX = 'sex'
@@ -2101,7 +2102,7 @@ class UsersUserMin(BaseModel):
     is_closed: Optional[bool] = Field(None)
 
 
-class UsersUserRelation(Enum):    
+class UsersUserRelation(int, Enum):    
     NOT_SPECIFIED = 0
     SINGLE = 1
     IN_A_RELATIONSHIP = 2
@@ -2113,7 +2114,7 @@ class UsersUserRelation(Enum):
     IN_A_CIVIL_UNION = 8
 
 
-class UsersUserType(Enum):    
+class UsersUserType(str, Enum):    
     """ Object type """
         
     PROFILE = 'profile'
@@ -2124,7 +2125,7 @@ class UsersUsersArray(BaseModel):
     items: List[int] = Field(...)
 
 
-class UtilsDomainResolvedType(Enum):    
+class UtilsDomainResolvedType(str, Enum):    
     """ Object type """
         
     USER = 'user'
@@ -2142,7 +2143,7 @@ class UtilsLastShortenedLink(BaseModel):
     views: Optional[int] = Field(None, description="Total views number")
 
 
-class UtilsLinkCheckedStatus(Enum):    
+class UtilsLinkCheckedStatus(str, Enum):    
     """ Link status """
         
     NOT_BANNED = 'not_banned'
@@ -2225,7 +2226,7 @@ class WallCarouselBase(BaseModel):
     carousel_offset: Optional[int] = Field(None, description="Index of current carousel element")
 
 
-class WallCommentAttachmentType(Enum):    
+class WallCommentAttachmentType(str, Enum):    
     """ Attachment type """
         
     PHOTO = 'photo'
@@ -2254,7 +2255,7 @@ class WallPostCopyright(BaseModel):
     type_: Optional[str] = Field(None, alias='type')
 
 
-class WallPostSourceType(Enum):    
+class WallPostSourceType(str, Enum):    
     """ Type of post source """
         
     VK = 'vk'
@@ -2262,9 +2263,10 @@ class WallPostSourceType(Enum):
     API = 'api'
     RSS = 'rss'
     SMS = 'sms'
+    MVK = 'mvk'
 
 
-class WallPostType(Enum):    
+class WallPostType(str, Enum):    
     """ Post type """
         
     POST = 'post'
@@ -2285,7 +2287,7 @@ class WallViews(BaseModel):
     count: Optional[int] = Field(None, description="Count")
 
 
-class WallWallpostAttachmentType(Enum):    
+class WallWallpostAttachmentType(str, Enum):    
     """ Attachment type """
         
     PHOTO = 'photo'
@@ -2306,7 +2308,7 @@ class WallWallpostAttachmentType(Enum):
     EVENT = 'event'
 
 
-class WidgetsCommentMediaType(Enum):    
+class WidgetsCommentMediaType(str, Enum):    
     """ Media type """
         
     AUDIO = 'audio'
@@ -3355,7 +3357,7 @@ class BaseLinkButton(BaseModel):
     section_id: Optional[str] = Field(None, description="Target section id")
     owner_id: Optional[int] = Field(None, description="Owner id")
     icon: Optional[str] = Field(None, description="Button icon name, e.g. 'phone' or 'gift'")
-    # style: Optional[BaseLinkButtonStyle] = Field(None)
+    style: Optional[BaseLinkButtonStyle] = Field(None)
 
 
 class BaseLinkProduct(BaseModel):    
@@ -4277,6 +4279,7 @@ class StoriesStory(BaseModel):
     first_narrative_title: Optional[str] = Field(None)
     birthday_wish_user_id: Optional[int] = Field(None)
 
+
 StoriesStory.update_forward_refs()
 
 
@@ -4400,6 +4403,7 @@ class StoriesFeedItem(BaseModel):
     app: Optional[AppsAppMin] = Field(None, description="App, which stories has been grouped (for type app_grouped_stories)")
     promo_data: Optional[StoriesPromoBlock] = Field(None, description="Additional data for promo stories (for type promo_stories)")
 
+
 StoriesFeedItem.update_forward_refs()
 
 
@@ -4497,6 +4501,7 @@ class MessagesForeignMessage(BaseModel):
     update_time: Optional[int] = Field(None, description="Date when the message has been updated in Unixtime")
     was_listened: Optional[bool] = Field(None, description="Was the audio message inside already listened by you")
     payload: Optional[str] = Field(None, description="Additional data sent along with message for developer convenience")
+
 
 MessagesForeignMessage.update_forward_refs()
 

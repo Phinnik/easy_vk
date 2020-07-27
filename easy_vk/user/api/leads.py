@@ -7,8 +7,8 @@ from easy_vk.api_category import BaseCategory
 
 
 class Leads(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, delay, auto_retry, max_retries, timeout)
+    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
+        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
 
     def check_user(self, lead_id: int, test_result: Optional[int] = None, test_mode: Optional[bool] = None, auto_start: Optional[bool] = None, age: Optional[int] = None, country: Optional[str] = None) -> responses.LeadsCheckUser:
         """

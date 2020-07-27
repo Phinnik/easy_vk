@@ -19,5 +19,3 @@ class Bot:
         self.storage = api.Storage(session, access_token, v, delay, auto_retry, max_retries, timeout)
         self.docs = api.Docs(session, access_token, v, delay, auto_retry, max_retries, timeout)
         self.utils = api.Utils(session, access_token, v, delay, auto_retry, max_retries, timeout)
-
-        self.messages.get_long_poll_server()

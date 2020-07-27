@@ -7,8 +7,8 @@ from easy_vk.api_category import BaseCategory
 
 
 class Widgets(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, delay, auto_retry, max_retries, timeout)
+    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
+        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
 
     def get_comments(self, widget_api_id: Optional[int] = None, url: Optional[str] = None, page_id: Optional[str] = None, order: Optional[str] = None, fields: Optional[List[Union[objects.UsersFields, str]]] = None, offset: Optional[int] = None, count: Optional[int] = None) -> responses.WidgetsGetComments:
         """

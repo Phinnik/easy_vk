@@ -7,8 +7,8 @@ from easy_vk.api_category import BaseCategory
 
 
 class Groups(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, delay, auto_retry, max_retries, timeout)
+    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
+        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
 
     def add_address(self, group_id: int, title: str, address: str, country_id: int, city_id: int, latitude: float, longitude: float, additional_address: Optional[str] = None, metro_id: Optional[int] = None, phone: Optional[str] = None, work_info_status: Optional[str] = None, timetable: Optional[str] = None, is_main_address: Optional[bool] = None) -> responses.GroupsAddAddress:
         """

@@ -7,8 +7,8 @@ from easy_vk.api_category import BaseCategory
 
 
 class Photos(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, delay, auto_retry, max_retries, timeout)
+    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
+        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
 
     def confirm_tag(self, photo_id: str, tag_id: int, owner_id: Optional[int] = None) -> responses.BaseOk:
         """

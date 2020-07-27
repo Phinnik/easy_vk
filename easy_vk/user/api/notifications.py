@@ -7,8 +7,8 @@ from easy_vk.api_category import BaseCategory
 
 
 class Notifications(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, delay, auto_retry, max_retries, timeout)
+    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
+        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
 
     def get(self, count: Optional[int] = None, start_from: Optional[str] = None, filters: Optional[List[str]] = None, start_time: Optional[int] = None, end_time: Optional[int] = None) -> responses.NotificationsGet:
         """

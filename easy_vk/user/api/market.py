@@ -7,8 +7,8 @@ from easy_vk.api_category import BaseCategory
 
 
 class Market(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, delay, auto_retry, max_retries, timeout)
+    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
+        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
 
     def add(self, owner_id: int, name: str, description: str, category_id: int, main_photo_id: int, price: Optional[float] = None, old_price: Optional[float] = None, deleted: Optional[bool] = None, photo_ids: Optional[List[int]] = None, url: Optional[str] = None, dimension_width: Optional[int] = None, dimension_height: Optional[int] = None, dimension_length: Optional[int] = None, weight: Optional[int] = None) -> responses.MarketAdd:
         """

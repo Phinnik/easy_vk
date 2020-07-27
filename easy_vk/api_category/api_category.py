@@ -1,6 +1,7 @@
 import time
 from easy_vk.exceptions.exceptions import raise_exception, Server
 from typing import Optional, Tuple, List, Dict, Any
+from ctypes import c_longdouble
 
 
 def preprocess_parameter(parameter):
@@ -23,8 +24,21 @@ def preprocess_parameter(parameter):
                        f'Parameters can be only builtin types or objects, defined in easy_vk.types.objects.')
 
 
+def unpack_response(response, response_type):
+    if response_type in (int, bool, str, float):
+        return response_type(response)
+    elif hasattr(response_type, '__origin__'):
+        return [unpack_response(r, response_type.__args__[0]) for r in response]
+    elif hasattr(response_type, '__fields__'):
+        return response_type(**response)
+    else:
+        pass
+
+
 class BaseCategory:
-    def __init__(self, session, access_token: str, v: str, delay: float, auto_retry: bool, max_retries: int,
+    def __init__(self, session, access_token: str, v: str, last_call_timer: c_longdouble, delay: float,
+                 auto_retry: bool,
+                 max_retries: int,
                  timeout: float):
         """
         Base api category class
@@ -39,6 +53,7 @@ class BaseCategory:
         :param timeout: time to sleep between retries. Works only if auto_retry is True
         """
 
+        self._last_call_timer = last_call_timer
         self._session = session
         self._access_token = access_token
         self._v = v
@@ -59,9 +74,6 @@ class BaseCategory:
             e.g easy_vk.types.responses.FriendsGetResponse
         :param retries_count: current retries counter
         """
-
-        time_start = time.time()
-
         api_url = f'https://api.vk.com/method/{method_name}'
 
         if param_aliases:
@@ -72,6 +84,10 @@ class BaseCategory:
         params = {p: preprocess_parameter(params[p]) for p in params}
         params['access_token'] = self._access_token
         params['v'] = self._v
+
+        delay = self._delay - (time.time() - self._last_call_timer.value)
+        if delay > 0:
+            time.sleep(delay)
 
         try:
             # post request type to have larger size requests
@@ -86,10 +102,6 @@ class BaseCategory:
                 error_message = response['error']['error_msg']
                 raise_exception(error_code, error_message)
 
-            delay = self._delay - (time.time() - time_start)
-            if delay > 0:
-                time.sleep(delay)
-
         except Server as e:
             if self._auto_retry and retries_count < self._max_retries:
                 time.sleep(self._timeout)
@@ -98,16 +110,8 @@ class BaseCategory:
             else:
                 raise e
 
-        if hasattr(response_type, '__supertype__'):
-            response = response_type(response)
+        self._last_call_timer.value = time.time()
 
-        elif isinstance(response, dict):
-            response = response_type.parse_obj(response)
-
-        elif isinstance(response, list):
-            response = response_type.parse_obj(response)
-
-        else:
-            response = response_type(response)
+        response = unpack_response(response, response_type)
 
         return response

@@ -16,7 +16,7 @@ class AccountGetActiveOffers(BaseModel):
     items: List[objects.AccountOffer] = Field(...)
 
 
-AccountGetAppPermissions = NewType('AccountGetAppPermissions', int)
+AccountGetAppPermissions = int
 
 
 class AccountGetBanned(BaseModel):
@@ -47,41 +47,20 @@ class AccountSaveProfileInfo(BaseModel):
     name_request: Optional[objects.AccountNameRequest] = Field(None)
 
 
-AdsAddOfficeUsers = NewType('AdsAddOfficeUsers', bool)
+AdsAddOfficeUsers = bool
 
 
 class AdsCheckLink(objects.AdsLinkStatus):
     ...
 
 
-class AdsCreateAds(BaseModel):
-    __root__: List[int]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsCreateAds = List[int]
 
 
-class AdsCreateCampaigns(BaseModel):
-    __root__: List[int]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsCreateCampaigns = List[int]
 
 
-class AdsCreateClients(BaseModel):
-    __root__: List[int]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsCreateClients = List[int]
 
 
 class AdsCreateTargetGroup(BaseModel):
@@ -89,73 +68,31 @@ class AdsCreateTargetGroup(BaseModel):
     pixel: Optional[str] = Field(None, description="Pixel code")
 
 
-class AdsDeleteAds(BaseModel):
-    __root__: List[int]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsDeleteAds = List[int]
 
 
-AdsDeleteCampaigns = NewType('AdsDeleteCampaigns', int)
+AdsDeleteCampaigns = int
 
 
-AdsDeleteClients = NewType('AdsDeleteClients', int)
+AdsDeleteClients = int
 
 
-class AdsGetAccounts(BaseModel):
-    __root__: List[objects.AdsAccount]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetAccounts = List[objects.AdsAccount]
 
 
-class AdsGetAdsLayout(BaseModel):
-    __root__: List[objects.AdsAdLayout]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetAdsLayout = List[objects.AdsAdLayout]
 
 
-class AdsGetAdsTargeting(BaseModel):
-    __root__: List[objects.AdsTargSettings]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetAdsTargeting = List[objects.AdsTargSettings]
 
 
-class AdsGetAds(BaseModel):
-    __root__: List[objects.AdsAd]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetAds = List[objects.AdsAd]
 
 
-AdsGetBudget = NewType('AdsGetBudget', int)
+AdsGetBudget = int
 
 
-class AdsGetCampaigns(BaseModel):
-    __root__: List[objects.AdsCampaign]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetCampaigns = List[objects.AdsCampaign]
 
 
 class AdsGetCategories(BaseModel):
@@ -163,24 +100,10 @@ class AdsGetCategories(BaseModel):
     v2: Optional[List[objects.AdsCategory]] = Field(None, description="Actual categories")
 
 
-class AdsGetClients(BaseModel):
-    __root__: List[objects.AdsClient]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetClients = List[objects.AdsClient]
 
 
-class AdsGetDemographics(BaseModel):
-    __root__: List[objects.AdsDemoStats]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetDemographics = List[objects.AdsDemoStats]
 
 
 class AdsGetFloodStats(objects.AdsFloodStats):
@@ -196,120 +119,57 @@ class AdsGetMusicians(BaseModel):
     items: List[objects.AdsMusician] = Field(..., description="Musicians")
 
 
-class AdsGetOfficeUsers(BaseModel):
-    __root__: List[objects.AdsUsers]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetOfficeUsers = List[objects.AdsUsers]
 
 
-class AdsGetPostsReach(BaseModel):
-    __root__: List[objects.AdsPromotedPostReach]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetPostsReach = List[objects.AdsPromotedPostReach]
 
 
 class AdsGetRejectionReason(objects.AdsRejectReason):
     ...
 
 
-class AdsGetStatistics(BaseModel):
-    __root__: List[objects.AdsStats]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetStatistics = List[objects.AdsStats]
 
 
-class AdsGetSuggestionsCities(BaseModel):
-    __root__: List[objects.AdsTargSuggestionsCities]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetSuggestionsCities = List[objects.AdsTargSuggestionsCities]
 
 
-class AdsGetSuggestionsRegions(BaseModel):
-    __root__: List[objects.AdsTargSuggestionsRegions]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetSuggestionsRegions = List[objects.AdsTargSuggestionsRegions]
 
 
-class AdsGetSuggestions(BaseModel):
-    __root__: List[objects.AdsTargSuggestions]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetSuggestions = List[objects.AdsTargSuggestions]
 
 
-class AdsGetSuggestionsSchools(BaseModel):
-    __root__: List[objects.AdsTargSuggestionsSchools]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetSuggestionsSchools = List[objects.AdsTargSuggestionsSchools]
 
 
-class AdsGetTargetGroups(BaseModel):
-    __root__: List[objects.AdsTargetGroup]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsGetTargetGroups = List[objects.AdsTargetGroup]
 
 
 class AdsGetTargetingStats(objects.AdsTargStats):
     ...
 
 
-AdsGetUploadUrl = NewType('AdsGetUploadUrl', str)
+AdsGetUploadUrl = str
 
 
-AdsGetVideoUploadUrl = NewType('AdsGetVideoUploadUrl', str)
+AdsGetVideoUploadUrl = str
 
 
-AdsImportTargetContacts = NewType('AdsImportTargetContacts', int)
+AdsImportTargetContacts = int
 
 
-AdsRemoveOfficeUsers = NewType('AdsRemoveOfficeUsers', bool)
+AdsRemoveOfficeUsers = bool
 
 
-class AdsUpdateAds(BaseModel):
-    __root__: List[int]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+AdsUpdateAds = List[int]
 
 
-AdsUpdateCampaigns = NewType('AdsUpdateCampaigns', int)
+AdsUpdateCampaigns = int
 
 
-AdsUpdateClients = NewType('AdsUpdateClients', int)
+AdsUpdateClients = int
 
 
 class AppsGetCatalog(BaseModel):
@@ -338,7 +198,7 @@ class AppsGetScopes(BaseModel):
     items: List[objects.AppsScope] = Field(...)
 
 
-AppsGetScore = NewType('AppsGetScore', int)
+AppsGetScore = int
 
 
 class AppsGet(BaseModel):
@@ -346,7 +206,7 @@ class AppsGet(BaseModel):
     items: Optional[List[objects.AppsApp]] = Field(None, description="List of applications")
 
 
-AppsSendRequest = NewType('AppsSendRequest', int)
+AppsSendRequest = int
 
 
 class AuthRestore(BaseModel):
@@ -354,20 +214,20 @@ class AuthRestore(BaseModel):
     sid: Optional[str] = Field(None, description="Parameter needed to grant access by code")
 
 
-BaseBool = NewType('BaseBool', objects.BaseBoolInt)
+BaseBool = objects.BaseBoolInt
 
 
 class BaseGetUploadServer(objects.BaseUploadServer):
     ...
 
 
-BaseOk = NewType('BaseOk', int)
+BaseOk = int
 
 
-BoardAddTopic = NewType('BoardAddTopic', int)
+BoardAddTopic = int
 
 
-BoardCreateComment = NewType('BoardCreateComment', int)
+BoardCreateComment = int
 
 
 class BoardGetCommentsExtended(BaseModel):
@@ -404,14 +264,7 @@ class DatabaseGetChairs(BaseModel):
     items: Optional[List[objects.BaseObject]] = Field(None)
 
 
-class DatabaseGetCitiesById(BaseModel):
-    __root__: List[objects.BaseObject]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+DatabaseGetCitiesById = List[objects.BaseObject]
 
 
 class DatabaseGetCities(BaseModel):
@@ -419,14 +272,7 @@ class DatabaseGetCities(BaseModel):
     items: Optional[List[objects.DatabaseCity]] = Field(None)
 
 
-class DatabaseGetCountriesById(BaseModel):
-    __root__: List[objects.BaseCountry]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+DatabaseGetCountriesById = List[objects.BaseCountry]
 
 
 class DatabaseGetCountries(BaseModel):
@@ -439,14 +285,7 @@ class DatabaseGetFaculties(BaseModel):
     items: Optional[List[objects.DatabaseFaculty]] = Field(None)
 
 
-class DatabaseGetMetroStationsById(BaseModel):
-    __root__: List[objects.DatabaseStation]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+DatabaseGetMetroStationsById = List[objects.DatabaseStation]
 
 
 class DatabaseGetMetroStations(BaseModel):
@@ -459,14 +298,7 @@ class DatabaseGetRegions(BaseModel):
     items: Optional[List[objects.DatabaseRegion]] = Field(None)
 
 
-class DatabaseGetSchoolClasses(BaseModel):
-    __root__: List[List[Union[int, str]]]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+DatabaseGetSchoolClasses = List[List[Union[str, int]]]
 
 
 class DatabaseGetSchools(BaseModel):
@@ -483,14 +315,7 @@ class DocsAdd(BaseModel):
     id_: Optional[int] = Field(None, alias='id', description="Doc ID")
 
 
-class DocsGetById(BaseModel):
-    __root__: List[objects.DocsDoc]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+DocsGetById = List[objects.DocsDoc]
 
 
 class DocsGetTypes(BaseModel):
@@ -553,27 +378,13 @@ class FriendsAddList(BaseModel):
     list_id: int = Field(..., description="List ID")
 
 
-FriendsAdd = NewType('FriendsAdd', int)
+FriendsAdd = int
 
 
-class FriendsAreFriendsExtended(BaseModel):
-    __root__: List[objects.FriendsFriendExtendedStatus]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+FriendsAreFriendsExtended = List[objects.FriendsFriendExtendedStatus]
 
 
-class FriendsAreFriends(BaseModel):
-    __root__: List[objects.FriendsFriendStatus]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+FriendsAreFriends = List[objects.FriendsFriendStatus]
 
 
 class FriendsDelete(BaseModel):
@@ -584,24 +395,10 @@ class FriendsDelete(BaseModel):
     suggestion_deleted: Optional[int] = Field(None, description="Returns 1 if suggestion has been declined")
 
 
-class FriendsGetAppUsers(BaseModel):
-    __root__: List[int]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+FriendsGetAppUsers = List[int]
 
 
-class FriendsGetByPhones(BaseModel):
-    __root__: List[objects.FriendsUserXtrPhone]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+FriendsGetByPhones = List[objects.FriendsUserXtrPhone]
 
 
 class FriendsGetLists(BaseModel):
@@ -609,24 +406,10 @@ class FriendsGetLists(BaseModel):
     items: List[objects.FriendsFriendsList] = Field(...)
 
 
-class FriendsGetMutual(BaseModel):
-    __root__: List[int]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+FriendsGetMutual = List[int]
 
 
-class FriendsGetMutualTargetUids(BaseModel):
-    __root__: List[objects.FriendsMutualFriend]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+FriendsGetMutualTargetUids = List[objects.FriendsMutualFriend]
 
 
 class FriendsGetOnlineOnlineMobile(BaseModel):
@@ -634,24 +417,10 @@ class FriendsGetOnlineOnlineMobile(BaseModel):
     online_mobile: Optional[List[int]] = Field(None)
 
 
-class FriendsGetOnline(BaseModel):
-    __root__: List[int]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+FriendsGetOnline = List[int]
 
 
-class FriendsGetRecent(BaseModel):
-    __root__: List[int]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+FriendsGetRecent = List[int]
 
 
 class FriendsGetRequestsExtended(BaseModel):
@@ -725,14 +494,7 @@ class GroupsGetBanned(BaseModel):
     # items: List[objects.GroupsBannedItem] = Field(...)
 
 
-class GroupsGetById(BaseModel):
-    __root__: List[objects.GroupsGroupFull]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+GroupsGetById = List[objects.GroupsGroupFull]
 
 
 class GroupsGetCallbackConfirmationCode(BaseModel):
@@ -879,27 +641,13 @@ class GroupsIsMemberExtended(BaseModel):
     request: Optional[objects.BaseBoolInt] = Field(None, description="Information whether user has sent request to the group")
 
 
-GroupsIsMember = NewType('GroupsIsMember', objects.BaseBoolInt)
+GroupsIsMember = objects.BaseBoolInt
 
 
-class GroupsIsMemberUserIdsExtended(BaseModel):
-    __root__: List[objects.GroupsMemberStatusFull]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+GroupsIsMemberUserIdsExtended = List[objects.GroupsMemberStatusFull]
 
 
-class GroupsIsMemberUserIds(BaseModel):
-    __root__: List[objects.GroupsMemberStatus]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+GroupsIsMemberUserIds = List[objects.GroupsMemberStatus]
 
 
 class GroupsSearch(BaseModel):
@@ -919,14 +667,7 @@ class LeadsGetStats(objects.LeadsLead):
     ...
 
 
-class LeadsGetUsers(BaseModel):
-    __root__: List[objects.LeadsEntry]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+LeadsGetUsers = List[objects.LeadsEntry]
 
 
 class LeadsMetricHit(BaseModel):
@@ -969,10 +710,10 @@ class MarketAdd(BaseModel):
     market_item_id: Optional[int] = Field(None, description="Item ID")
 
 
-MarketCreateComment = NewType('MarketCreateComment', int)
+MarketCreateComment = int
 
 
-MarketDeleteComment = NewType('MarketDeleteComment', objects.BaseBoolInt)
+MarketDeleteComment = objects.BaseBoolInt
 
 
 class MarketGetAlbumById(BaseModel):
@@ -1015,7 +756,7 @@ class MarketGet(BaseModel):
     items: Optional[List[objects.MarketMarketItem]] = Field(None)
 
 
-MarketRestoreComment = NewType('MarketRestoreComment', objects.BaseBoolInt)
+MarketRestoreComment = objects.BaseBoolInt
 
 
 class MarketSearchExtended(BaseModel):
@@ -1028,7 +769,7 @@ class MarketSearch(BaseModel):
     items: Optional[List[objects.MarketMarketItem]] = Field(None)
 
 
-MessagesCreateChat = NewType('MessagesCreateChat', int)
+MessagesCreateChat = int
 
 
 class MessagesDeleteChatPhoto(BaseModel):
@@ -1043,7 +784,7 @@ class MessagesDeleteConversation(BaseModel):
 # response MessagesDelete has error in json-schema
 
 
-MessagesEdit = NewType('MessagesEdit', objects.BaseBoolInt)
+MessagesEdit = objects.BaseBoolInt
 
 
 class MessagesGetByConversationMessageId(BaseModel):
@@ -1068,24 +809,10 @@ class MessagesGetChatPreview(BaseModel):
     profiles: Optional[List[objects.UsersUserFull]] = Field(None)
 
 
-class MessagesGetChatChatIdsFields(BaseModel):
-    __root__: List[objects.MessagesChatFull]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+MessagesGetChatChatIdsFields = List[objects.MessagesChatFull]
 
 
-class MessagesGetChatChatIds(BaseModel):
-    __root__: List[objects.MessagesChat]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+MessagesGetChatChatIds = List[objects.MessagesChat]
 
 
 class MessagesGetChatFields(objects.MessagesChatFull):
@@ -1166,14 +893,7 @@ class MessagesJoinChatByInviteLink(BaseModel):
     chat_id: Optional[int] = Field(None)
 
 
-class MessagesMarkAsImportant(BaseModel):
-    __root__: List[int]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+MessagesMarkAsImportant = List[int]
 
 
 class MessagesPin(objects.MessagesPinnedMessage):
@@ -1192,17 +912,10 @@ class MessagesSearch(BaseModel):
     items: List[objects.MessagesMessage] = Field(...)
 
 
-MessagesSend = NewType('MessagesSend', int)
+MessagesSend = int
 
 
-class MessagesSendUserIds(BaseModel):
-    __root__: List[dict]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+MessagesSendUserIds = List[dict]
 
 
 class MessagesSetChatPhoto(BaseModel):
@@ -1262,7 +975,7 @@ class NewsfeedGet(BaseModel):
     next_from: Optional[str] = Field(None, description="New from value")
 
 
-NewsfeedSaveList = NewType('NewsfeedSaveList', int)
+NewsfeedSaveList = int
 
 
 class NewsfeedSearchExtended(BaseModel):
@@ -1283,10 +996,10 @@ class NewsfeedSearch(BaseModel):
     total_count: Optional[int] = Field(None, description="Total number")
 
 
-NotesAdd = NewType('NotesAdd', int)
+NotesAdd = int
 
 
-NotesCreateComment = NewType('NotesCreateComment', int)
+NotesCreateComment = int
 
 
 class NotesGetById(objects.NotesNote):
@@ -1316,37 +1029,23 @@ class NotificationsGet(BaseModel):
     ttl: Optional[int] = Field(None)
 
 
-NotificationsMarkAsViewed = NewType('NotificationsMarkAsViewed', objects.BaseBoolInt)
+NotificationsMarkAsViewed = objects.BaseBoolInt
 
 
-class NotificationsSendMessage(BaseModel):
-    __root__: List[objects.NotificationsSendMessageItem]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+NotificationsSendMessage = List[objects.NotificationsSendMessageItem]
 
 
-OrdersCancelSubscription = NewType('OrdersCancelSubscription', objects.BaseBoolInt)
+OrdersCancelSubscription = objects.BaseBoolInt
 
 
-OrdersChangeState = NewType('OrdersChangeState', str)
+OrdersChangeState = str
 
 
 class OrdersGetAmount(objects.OrdersAmount):
     ...
 
 
-class OrdersGetById(BaseModel):
-    __root__: List[objects.OrdersOrder]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+OrdersGetById = List[objects.OrdersOrder]
 
 
 class OrdersGetUserSubscriptionById(objects.OrdersSubscription):
@@ -1358,37 +1057,16 @@ class OrdersGetUserSubscriptions(BaseModel):
     items: Optional[List[objects.OrdersSubscription]] = Field(None)
 
 
-class OrdersGet(BaseModel):
-    __root__: List[objects.OrdersOrder]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+OrdersGet = List[objects.OrdersOrder]
 
 
-OrdersUpdateSubscription = NewType('OrdersUpdateSubscription', objects.BaseBoolInt)
+OrdersUpdateSubscription = objects.BaseBoolInt
 
 
-class PagesGetHistory(BaseModel):
-    __root__: List[objects.PagesWikipageHistory]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PagesGetHistory = List[objects.PagesWikipageHistory]
 
 
-class PagesGetTitles(BaseModel):
-    __root__: List[objects.PagesWikipage]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PagesGetTitles = List[objects.PagesWikipage]
 
 
 class PagesGetVersion(objects.PagesWikipageFull):
@@ -1399,29 +1077,29 @@ class PagesGet(objects.PagesWikipageFull):
     ...
 
 
-PagesParseWiki = NewType('PagesParseWiki', str)
+PagesParseWiki = str
 
 
-PagesSaveAccess = NewType('PagesSaveAccess', int)
+PagesSaveAccess = int
 
 
-PagesSave = NewType('PagesSave', int)
+PagesSave = int
 
 
-PhotosCopy = NewType('PhotosCopy', int)
+PhotosCopy = int
 
 
 class PhotosCreateAlbum(objects.PhotosPhotoAlbumFull):
     ...
 
 
-PhotosCreateComment = NewType('PhotosCreateComment', int)
+PhotosCreateComment = int
 
 
-PhotosDeleteComment = NewType('PhotosDeleteComment', objects.BaseBoolInt)
+PhotosDeleteComment = objects.BaseBoolInt
 
 
-PhotosGetAlbumsCount = NewType('PhotosGetAlbumsCount', int)
+PhotosGetAlbumsCount = int
 
 
 class PhotosGetAlbums(BaseModel):
@@ -1446,24 +1124,10 @@ class PhotosGetAll(BaseModel):
     more: Optional[objects.BaseBoolInt] = Field(None, description="Information whether next page is presented")
 
 
-class PhotosGetByIdExtended(BaseModel):
-    __root__: List[objects.PhotosPhotoFull]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PhotosGetByIdExtended = List[objects.PhotosPhotoFull]
 
 
-class PhotosGetById(BaseModel):
-    __root__: List[objects.PhotosPhoto]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PhotosGetById = List[objects.PhotosPhoto]
 
 
 class PhotosGetCommentsExtended(BaseModel):
@@ -1493,14 +1157,7 @@ class PhotosGetNewTags(BaseModel):
     items: List[objects.PhotosPhotoXtrTagInfo] = Field(...)
 
 
-class PhotosGetTags(BaseModel):
-    __root__: List[objects.PhotosPhotoTag]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PhotosGetTags = List[objects.PhotosPhotoTag]
 
 
 class PhotosGetUploadServer(objects.PhotosPhotoUpload):
@@ -1531,50 +1188,22 @@ class PhotosGet(BaseModel):
     items: List[objects.PhotosPhoto] = Field(...)
 
 
-PhotosPutTag = NewType('PhotosPutTag', int)
+PhotosPutTag = int
 
 
-PhotosRestoreComment = NewType('PhotosRestoreComment', objects.BaseBoolInt)
+PhotosRestoreComment = objects.BaseBoolInt
 
 
-class PhotosSaveMarketAlbumPhoto(BaseModel):
-    __root__: List[objects.PhotosPhoto]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PhotosSaveMarketAlbumPhoto = List[objects.PhotosPhoto]
 
 
-class PhotosSaveMarketPhoto(BaseModel):
-    __root__: List[objects.PhotosPhoto]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PhotosSaveMarketPhoto = List[objects.PhotosPhoto]
 
 
-class PhotosSaveMessagesPhoto(BaseModel):
-    __root__: List[objects.PhotosPhoto]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PhotosSaveMessagesPhoto = List[objects.PhotosPhoto]
 
 
-class PhotosSaveOwnerCoverPhoto(BaseModel):
-    __root__: List[objects.BaseImage]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PhotosSaveOwnerCoverPhoto = List[objects.BaseImage]
 
 
 class PhotosSaveOwnerPhoto(BaseModel):
@@ -1586,24 +1215,10 @@ class PhotosSaveOwnerPhoto(BaseModel):
     post_id: Optional[int] = Field(None, description="Created post ID")
 
 
-class PhotosSaveWallPhoto(BaseModel):
-    __root__: List[objects.PhotosPhoto]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PhotosSaveWallPhoto = List[objects.PhotosPhoto]
 
 
-class PhotosSave(BaseModel):
-    __root__: List[objects.PhotosPhoto]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PhotosSave = List[objects.PhotosPhoto]
 
 
 class PhotosSearch(BaseModel):
@@ -1611,28 +1226,21 @@ class PhotosSearch(BaseModel):
     items: Optional[List[objects.PhotosPhoto]] = Field(None)
 
 
-PollsAddVote = NewType('PollsAddVote', objects.BaseBoolInt)
+PollsAddVote = objects.BaseBoolInt
 
 
 class PollsCreate(objects.PollsPoll):
     ...
 
 
-PollsDeleteVote = NewType('PollsDeleteVote', objects.BaseBoolInt)
+PollsDeleteVote = objects.BaseBoolInt
 
 
 class PollsGetById(objects.PollsPoll):
     ...
 
 
-class PollsGetVoters(BaseModel):
-    __root__: List[objects.PollsVoters]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PollsGetVoters = List[objects.PollsVoters]
 
 
 class PrettyCardsCreate(BaseModel):
@@ -1651,17 +1259,10 @@ class PrettyCardsEdit(BaseModel):
     card_id: str = Field(..., description="Card ID of edited pretty card")
 
 
-class PrettyCardsGetById(BaseModel):
-    __root__: List[objects.PrettycardsPrettycard]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+PrettyCardsGetById = List[objects.PrettycardsPrettycard]
 
 
-PrettyCardsGetUploadUrl = NewType('PrettyCardsGetUploadUrl', str)
+PrettyCardsGetUploadUrl = str
 
 
 class PrettyCardsGet(BaseModel):
@@ -1679,114 +1280,44 @@ class SecureCheckToken(objects.SecureTokenChecked):
     ...
 
 
-SecureGetAppBalance = NewType('SecureGetAppBalance', int)
+SecureGetAppBalance = int
 
 
-class SecureGetSmshistory(BaseModel):
-    __root__: List[objects.SecureSmsNotification]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+SecureGetSmshistory = List[objects.SecureSmsNotification]
 
 
-class SecureGetTransactionsHistory(BaseModel):
-    __root__: List[objects.SecureTransaction]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+SecureGetTransactionsHistory = List[objects.SecureTransaction]
 
 
-class SecureGetUserLevel(BaseModel):
-    __root__: List[objects.SecureLevel]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+SecureGetUserLevel = List[objects.SecureLevel]
 
 
-class SecureGiveEventSticker(BaseModel):
-    __root__: List[dict]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+SecureGiveEventSticker = List[dict]
 
 
-class SecureSendNotification(BaseModel):
-    __root__: List[int]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+SecureSendNotification = List[int]
 
 
-class StatsGetPostReach(BaseModel):
-    __root__: List[objects.StatsWallpostStat]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+StatsGetPostReach = List[objects.StatsWallpostStat]
 
 
-class StatsGet(BaseModel):
-    __root__: List[objects.StatsPeriod]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+StatsGet = List[objects.StatsPeriod]
 
 
 class StatusGet(objects.StatusStatus):
     ...
 
 
-class StorageGetKeys(BaseModel):
-    __root__: List[str]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+StorageGetKeys = List[str]
 
 
-StorageGet = NewType('StorageGet', str)
+StorageGet = str
 
 
-class StorageGetV5110(BaseModel):
-    __root__: List[objects.StorageValue]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+StorageGetV5110 = List[objects.StorageValue]
 
 
-class StorageGetWithKeys(BaseModel):
-    __root__: List[objects.StorageValue]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+StorageGetWithKeys = List[objects.StorageValue]
 
 
 class StoriesGetBannedExtended(BaseModel):
@@ -1884,14 +1415,7 @@ class UsersGetSubscriptions(BaseModel):
     groups: objects.GroupsGroupsArray = Field(...)
 
 
-class UsersGet(BaseModel):
-    __root__: List[objects.UsersUserXtrCounters]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+UsersGet = List[objects.UsersUserXtrCounters]
 
 
 class UsersSearch(BaseModel):
@@ -1916,7 +1440,7 @@ class UtilsGetLinkStats(objects.UtilsLinkStats):
     ...
 
 
-UtilsGetServerTime = NewType('UtilsGetServerTime', int)
+UtilsGetServerTime = int
 
 
 class UtilsGetShortLink(objects.UtilsShortLink):
@@ -1931,7 +1455,7 @@ class VideoAddAlbum(BaseModel):
     album_id: int = Field(..., description="Created album ID")
 
 
-VideoCreateComment = NewType('VideoCreateComment', int)
+VideoCreateComment = int
 
 
 class VideoGetAlbumById(objects.VideoVideoAlbumFull):
@@ -1943,14 +1467,7 @@ class VideoGetAlbumsByVideoExtended(BaseModel):
     items: Optional[List[objects.VideoVideoAlbumFull]] = Field(None)
 
 
-class VideoGetAlbumsByVideo(BaseModel):
-    __root__: List[int]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+VideoGetAlbumsByVideo = List[int]
 
 
 class VideoGetAlbumsExtended(BaseModel):
@@ -1987,7 +1504,7 @@ class VideoGet(BaseModel):
     items: List[objects.VideoVideo] = Field(...)
 
 
-VideoRestoreComment = NewType('VideoRestoreComment', objects.BaseBoolInt)
+VideoRestoreComment = objects.BaseBoolInt
 
 
 class VideoSave(objects.VideoSaveResult):
@@ -2020,14 +1537,7 @@ class WallGetByIdExtended(BaseModel):
     groups: List[objects.GroupsGroupFull] = Field(...)
 
 
-class WallGetById(BaseModel):
-    __root__: List[objects.WallWallpostFull]
-
-    def __iter__(self):
-        return iter(self.__root__)
-
-    def __getitem__(self, item):
-        return self.__root__[item]
+WallGetById = List[objects.WallWallpostFull]
 
 
 class WallGetCommentExtended(BaseModel):

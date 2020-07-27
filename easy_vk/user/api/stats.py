@@ -7,8 +7,8 @@ from easy_vk.api_category import BaseCategory
 
 
 class Stats(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, delay, auto_retry, max_retries, timeout)
+    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
+        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
 
     def get(self, group_id: Optional[int] = None, app_id: Optional[int] = None, timestamp_from: Optional[int] = None, timestamp_to: Optional[int] = None, interval: Optional[str] = None, intervals_count: Optional[int] = None, filters: Optional[List[str]] = None, stats_groups: Optional[List[str]] = None, extended: Optional[bool] = None) -> responses.StatsGet:
         """
