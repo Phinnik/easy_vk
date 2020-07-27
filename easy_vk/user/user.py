@@ -1,7 +1,6 @@
 from . import api
 import requests
 from ctypes import c_longdouble
-import time
 
 
 class User:
