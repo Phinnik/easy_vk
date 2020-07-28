@@ -37,6 +37,7 @@ print(server_time)
 ```
 
 ### Для ботов:
+#### Пример использования
 ```python
 # Пример простого Hello world бота
 # (Если боту приходит сообщение 'Hello', он отправит обратно сообщение 'world')
@@ -53,6 +54,34 @@ bot = Bot(bot_access_token, group_id)
 def response(message):
     bot.messages.send(user_id = message.message.from_id, 
                       message = 'world',
+                      random_id = time.time())
+
+bot.run()
+```
+#### Пример реализации клавиатуры
+<img src="./presentation/keyboard.jpg" alt="Реализация клавиатуры по шаблону" width="300">
+
+```python
+import time
+from easy_vk.bot import Bot
+from easy_vk.bot.keyboard import Keyboard
+
+
+keyboard_template = """inline
+___
+||text|label::Текстовая кнопка||  ||open_link|link::https://vk.com/phinnik|label::Автор||
+||location||
+||text|label::Красная|color::negative||  ||text|label::Зеленая|color::positive||  ||text|label::Синяя|color::primary||
+"""
+keyboard = Keyboard.from_template(keyboard_template)
+
+bot = Bot(group_access_token, group_id)
+
+@bot.handler.message_new()
+def response(message):
+    bot.messages.send(user_id = message.message.from_id,
+                      message = 'Клавиатура!',
+                      keyboard=keyboard.to_json(),
                       random_id = time.time())
 
 bot.run()
