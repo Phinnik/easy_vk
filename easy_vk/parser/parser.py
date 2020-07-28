@@ -58,7 +58,7 @@ class Parser:
         items_per_acc = math.ceil(len(items) / len(self._access_tokens))
         accounts_items = get_items_packs(items, items_per_acc)
 
-        loop = asyncio.new_event_loop()
+        loop = asyncio.get_event_loop()
         tasks = [
             loop.create_task(
                 self._parse_items(ai, pack_size, parse_method, at)
@@ -66,9 +66,13 @@ class Parser:
         ]
 
         loop.run_until_complete(asyncio.wait(tasks))
-        loop.close()
+        # loop.close()
 
         result = []
         for t in tasks:
             result.extend(t.result())
         return result
+
+
+
+

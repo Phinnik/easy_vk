@@ -2306,6 +2306,7 @@ class WallWallpostAttachmentType(str, Enum):
     MARKET_MARKET_ALBUM = 'market_market_album'
     MARKET = 'market'
     EVENT = 'event'
+    MARKET_ALBUM = 'market_album'
 
 
 class WidgetsCommentMediaType(str, Enum):    

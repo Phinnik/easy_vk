@@ -111,7 +111,6 @@ class BaseCategory:
                 raise e
 
         self._last_call_timer.value = time.time()
-
         response = unpack_response(response, response_type)
 
         return response
