@@ -17,45 +17,45 @@ pip install easy_vk
 ## Примеры использования
 ### Для пользователей
 ```python
+# Пример получения времени на сервере VK
 
-from easy_vk import User
+from easy_vk.user import User
 
-access_token = 'YOUR ACCESS_TOKEN'
-vk = User(access_token=access_token)
-vk.friends.get(user_id=1, count=1)
-
-# >>> {'count': 0, 'items': []} 
+vk = User('YOUR ACCESS_TOKEN')
+server_time = vk.utils.get_server_time()
+print(server_time)
+# 1233432
 ```
 
 ### Для ботов:
 ```python
+# Пример простого Hello world бота
+# (Если боту приходит сообщение 'Hello', он отправит обратно сообщение 'world')
 
 import time
-from easy_vk.bot import GroupBot
-from easy_vk.objects.objects import BotMessage
+from easy_vk.bot import Bot
 
-bot = GroupBot(owner_access_token='owner_access_token', 
-               group_access_token='group_access_token',
-               group_id=1, 
-               debug_mode=True, 
-               owner_id=1)
+bot_access_token = 'BOT ACCESS TOKEN'
+group_id = 123123
 
-@bot.handlers.message_new(regexp='Hello')
-def response(message: BotMessage):
-    bot.messages.send(user_id = message.message.from_id,
-                     message = 'world',
-                     random_id = time.time())
+bot = Bot(bot_access_token, group_id)
+
+@bot.handler.message_new(regexp='Hello')
+def response(message):
+    bot.messages.send(user_id = message.message.from_id, 
+                      message = 'world',
+                      random_id = time.time())
 
 bot.run()
 ```
 
 
 ## Планы на будущее
+- [X] Типизация данных VK API
+- [X] Типизация ответов VK API
+- [X] Создание модуля для ботов
 - [ ] Создание модуля для парсинга данных
-- [ ] Типизация данных VK API
-- [ ] Типизация ответов VK API
 - [ ] Создание модуля базы данных
-- [ ] Создание модуля для ботов
 - [ ] Написание документации
 - [ ] Логирование каждого модуля
 - [ ] Написание полезных утилит
