@@ -11,9 +11,9 @@
 
 ## Особенности:
 * Качественные подсказки:
-![](presentation/server-time.gif)
+<img src="./presentation/server-time.gif" width="300" />
 * Подсказки, реагируют на содержание параметров
-![](presentation/parameters.gif)
+<img src="./presentation/parameters.gif" width="300" />
 
 
 ## Установка библиотеки:
