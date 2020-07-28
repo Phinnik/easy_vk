@@ -12,6 +12,7 @@
 ## Особенности:
 * Качественные подсказки:
 <img src="./presentation/server-time.gif" width="300" />
+
 * Подсказки, реагируют на содержание параметров
 <img src="./presentation/parameters.gif" width="300" />
 
