@@ -102,6 +102,10 @@ class Keyboard:
         self.rows = rows
 
     def to_json(self):
+        """
+        Returns json string of keyboard
+        """
+
         keyboard_dict = {'buttons': [r.generate() for r in self.rows]}
         if self.one_time:
             keyboard_dict['one_time'] = True
@@ -112,6 +116,12 @@ class Keyboard:
 
     @classmethod
     def from_template(cls, tmpl: str):
+        """
+        Creates keyboard class from keyboard template
+
+        :param tmpl: keyboard template
+        :return:
+        """
         tmpl_rows = tmpl.split('\n')
 
         one_time = False

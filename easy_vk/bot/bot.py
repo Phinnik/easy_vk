@@ -8,6 +8,19 @@ from easy_vk.bot.handlers import Handlers
 class Bot:
     def __init__(self, access_token: str, group_id: int, v='5.120', session=None, delay=0.08, auto_retry=True,
                  max_retries=2, timeout=2, debug_mode: bool = False, owner_id: int = None):
+        """
+
+        :param access_token: bot access token. Get it in your group - Управление - Работа с API - Создать ключ
+        :param group_id: id of your group
+        :param v: api version (current - '5.120')
+        :param session: requests session
+        :param delay: delay between api calls
+        :param auto_retry: enable auto retries
+        :param max_retries: maximum retries count. Works only if auto retry enabled
+        :param timeout: time between retries. Works only if auto retry enabled
+        :param debug_mode: - Not implemented yet
+        :param owner_id: - Not implemented yet
+        """
         last_call_timer = c_longdouble(0)
         if session is None:
             session = requests.session()
@@ -29,5 +42,8 @@ class Bot:
         self.handler = Handlers()
 
     def run(self):
+        """
+        Infinite loop of bot
+        """
         for update in self._longpoll.run():
-            self.handler._handle(update)
+            self.handler.handle(update)

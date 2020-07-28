@@ -1,4 +1,4 @@
-from typing import List, Callable, Sequence
+from typing import List, Callable
 from easy_vk.bot import update_types
 import re
 
@@ -33,6 +33,14 @@ class Handlers:
                     user_id: int = None,
                     user_ids: List[int] = None,
                     user_black_list: List[int] = None):
+        """
+        Handles new message
+
+        :param regexp: filter of message text
+        :param user_id: filter of writer user id
+        :param user_ids: filter of writers user ids
+        :param user_black_list: filter of blacklisted writers
+        """
 
         if user_id:
             user_ids = [user_id]
@@ -50,12 +58,10 @@ class Handlers:
 
             self._handler_list.append(UpdateHandlerBase('message_new', update_types.MessageNew, filters, function))
             return function
+
         return decorator
 
-
-
-
-    def _handle(self, update):
+    def handle(self, update):
         for handler in self._handler_list:
             if handler.check(update):
                 handler.handle(update)
