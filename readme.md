@@ -2,11 +2,18 @@
 Библиотека в стадии разработки
 
 ## Оглавление
-1. [Установка библиотеки](https://github.com/Phinnik/easy_vk#установка-библиотеки)
+1. [Особенности](https://github.com/Phinnik/easy_vk#Особенности)
+1. [Установка библиотеки](https://github.com/Phinnik/easy_vk#Установка-библиотеки)
 1. [Примеры использования](https://github.com/Phinnik/easy_vk#Примеры-использования)
     - [Для пользователей](https://github.com/Phinnik/easy_vk#Для-пользователей)
     - [Для ботов](https://github.com/Phinnik/easy_vk#Для-ботов)
 1. [Планы на будущее](https://github.com/Phinnik/easy_vk#Планы-на-будущее)
+
+## Особенности:
+* Качественные подсказки:
+![](presentation/server-time.gif | width=100)
+* Подсказки, реагируют на содержание параметров
+![](presentation/parameters.gif | width=100)
 
 
 ## Установка библиотеки:
