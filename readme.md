@@ -10,6 +10,7 @@
 1. [Планы на будущее](https://github.com/Phinnik/easy_vk#Планы-на-будущее)
 
 ## Особенности:
+(клик по гифке для увеличения)
 * Качественные подсказки:
 <img src="./presentation/server-time.gif" width="300" />
 
