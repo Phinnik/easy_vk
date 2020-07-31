@@ -38,7 +38,7 @@ class Longpoll:
                 self.ts = updates['ts']
             else:
                 self._update_longpoll()
-            return self.check_updates(ts_update=False)
+            return self.check_updates(ts_update=True)
 
         else:
             if ts_update:
