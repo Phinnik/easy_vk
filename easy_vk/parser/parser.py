@@ -28,7 +28,11 @@ class Parser:
         delay = 1 / 2.8 - (time.time() - time_start)
         if delay > 0:
             time.sleep(delay)
-        return response['response']
+        if 'response' in response:
+            return response['response']
+        else:
+            raise TimeoutError(response)
+
 
     async def _parse_single_pack(self, items_pack: list, parse_method, access_token: str, ):
         code = """
