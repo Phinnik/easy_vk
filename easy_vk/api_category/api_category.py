@@ -2,6 +2,7 @@ import time
 from easy_vk.exceptions.exceptions import raise_exception, Server
 from typing import Optional, Tuple, List, Dict, Any
 from ctypes import c_longdouble
+from pydantic import ValidationError
 
 
 def preprocess_parameter(parameter):
@@ -30,7 +31,11 @@ def unpack_response(response, response_type):
     elif hasattr(response_type, '__origin__'):
         return [unpack_response(r, response_type.__args__[0]) for r in response]
     elif hasattr(response_type, '__fields__'):
-        return response_type(**response)
+        try:
+            return response_type(**response)
+        except ValidationError as e:
+            print(e.json())
+            return response
     else:
         pass
 

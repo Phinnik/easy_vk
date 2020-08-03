@@ -1534,6 +1534,7 @@ class NewsfeedNewsfeedItemType(str, Enum):
     DIGEST = 'digest'
     STORIES = 'stories'
     TAGS_SUGGESTIONS = 'tags_suggestions'
+    AUDIO_PLAYLIST = 'audio_playlist'
 
 
 class NewsfeedNewsfeedNote(BaseModel):    
