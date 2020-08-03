@@ -23,3 +23,9 @@ class MessageAllow(BaseModel):
 
 class MessageDeny(BaseModel):
     user_id: int = Field(...)
+
+
+class MessageTypingState(BaseModel):
+    state: Optional[str] = Field(None)
+    from_id: int = Field(...)
+    to_id: Optional[int] = Field(None)

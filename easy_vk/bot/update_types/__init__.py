@@ -1,1 +1,1 @@
-from .update_types import (MessageNew, MessageReply, MessageEdit, MessageAllow, MessageDeny)
+from .update_types import (MessageNew, MessageReply, MessageEdit, MessageAllow, MessageDeny, MessageTypingState)
