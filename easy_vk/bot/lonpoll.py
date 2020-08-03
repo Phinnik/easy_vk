@@ -1,7 +1,5 @@
 from typing import Callable
 from requests.sessions import Session
-from .api.groups import Groups
-from easy_vk.types.objects import CallbackMessageBase
 
 
 class Longpoll:
