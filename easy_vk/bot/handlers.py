@@ -61,6 +61,66 @@ class Handlers:
 
         return decorator
 
+    def message_allow(self,
+                      user_id: int = None,
+                      user_ids: List[int] = None,
+                      user_black_list: List[int] = None):
+        """
+        Handles new message
+
+        :param regexp: filter of message text
+        :param user_id: filter of writer user id
+        :param user_ids: filter of writers user ids
+        :param user_black_list: filter of blacklisted writers
+        """
+
+        if user_id:
+            user_ids = [user_id]
+
+        def decorator(function):
+            filters = []
+
+            # adding filters
+            if user_ids:
+                filters.append(lambda update: update.user_id in user_ids)
+            if user_black_list:
+                filters.append(lambda update: not update.user_id in user_black_list)
+
+            self._handler_list.append(UpdateHandlerBase('message_allow', update_types.MessageAllow, filters, function))
+            return function
+
+        return decorator
+
+    def message_deny(self,
+                     user_id: int = None,
+                     user_ids: List[int] = None,
+                     user_black_list: List[int] = None):
+        """
+        Handles new message
+
+        :param regexp: filter of message text
+        :param user_id: filter of writer user id
+        :param user_ids: filter of writers user ids
+        :param user_black_list: filter of blacklisted writers
+        """
+
+        if user_id:
+            user_ids = [user_id]
+
+        def decorator(function):
+            filters = []
+
+            # adding filters
+            if user_ids:
+                filters.append(lambda update: update.user_id in user_ids)
+            if user_black_list:
+                filters.append(lambda update: not update.user_id in user_black_list)
+
+            self._handler_list.append(UpdateHandlerBase('message_deny', update_types.MessageDeny, filters, function))
+            return function
+
+        return decorator
+
     def handle(self, update):
         for handler in self._handler_list:
             if handler.check(update):
