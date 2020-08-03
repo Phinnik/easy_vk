@@ -66,9 +66,6 @@ class Handlers:
                       user_ids: List[int] = None,
                       user_black_list: List[int] = None):
         """
-        Handles new message
-
-        :param regexp: filter of message text
         :param user_id: filter of writer user id
         :param user_ids: filter of writers user ids
         :param user_black_list: filter of blacklisted writers
@@ -96,9 +93,6 @@ class Handlers:
                      user_ids: List[int] = None,
                      user_black_list: List[int] = None):
         """
-        Handles new message
-
-        :param regexp: filter of message text
         :param user_id: filter of writer user id
         :param user_ids: filter of writers user ids
         :param user_black_list: filter of blacklisted writers
@@ -126,9 +120,6 @@ class Handlers:
                              user_ids: List[int] = None,
                              user_black_list: List[int] = None):
         """
-        Handles new message
-
-        :param regexp: filter of message text
         :param user_id: filter of writer user id
         :param user_ids: filter of writers user ids
         :param user_black_list: filter of blacklisted writers
@@ -148,6 +139,60 @@ class Handlers:
 
             self._handler_list.append(
                 UpdateHandlerBase('message_typing_state', update_types.MessageTypingState, filters, function))
+            return function
+
+        return decorator
+
+    def group_leave(self,
+                    user_id: int = None,
+                    user_ids: List[int] = None,
+                    user_black_list: List[int] = None):
+        """
+        :param user_id: filter of writer user id
+        :param user_ids: filter of writers user ids
+        :param user_black_list: filter of blacklisted writers
+        """
+
+        if user_id:
+            user_ids = [user_id]
+
+        def decorator(function):
+            filters = []
+
+            # adding filters
+            if user_ids:
+                filters.append(lambda update: update.user_id in user_ids)
+            if user_black_list:
+                filters.append(lambda update: not update.user_id in user_black_list)
+
+            self._handler_list.append(UpdateHandlerBase('group_leave', update_types.GroupLeave, filters, function))
+            return function
+
+        return decorator
+
+    def group_join(self,
+                   user_id: int = None,
+                   user_ids: List[int] = None,
+                   user_black_list: List[int] = None):
+        """
+        :param user_id: filter of writer user id
+        :param user_ids: filter of writers user ids
+        :param user_black_list: filter of blacklisted writers
+        """
+
+        if user_id:
+            user_ids = [user_id]
+
+        def decorator(function):
+            filters = []
+
+            # adding filters
+            if user_ids:
+                filters.append(lambda update: update.user_id in user_ids)
+            if user_black_list:
+                filters.append(lambda update: not update.user_id in user_black_list)
+
+            self._handler_list.append(UpdateHandlerBase('group_join', update_types.GroupJoin, filters, function))
             return function
 
         return decorator
