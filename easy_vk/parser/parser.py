@@ -1,9 +1,11 @@
 import asyncio
-import aiohttp
-import time
 import math
-
+import time
 from typing import List
+
+import aiohttp
+
+from easy_vk.settings import VK_API_URL, VK_API_VERSION
 
 
 def get_items_packs(items: list, pack_size: int):
@@ -19,8 +21,8 @@ class Parser:
     async def _execute(self, code: str, access_token: str):
         time_start = time.time()
 
-        url = 'https://api.vk.com/method/execute'
-        params = {'access_token': access_token, 'v': '5.120', 'code': code}
+        url = f'{VK_API_URL}/execute'
+        params = {'access_token': access_token, 'v': VK_API_VERSION, 'code': code}
         async with aiohttp.ClientSession() as session:
             response = await session.post(url, params=params)
             response = await response.json()
@@ -32,7 +34,6 @@ class Parser:
             return response['response']
         else:
             raise TimeoutError(response)
-
 
     async def _parse_single_pack(self, items_pack: list, parse_method, access_token: str, ):
         code = """
@@ -76,7 +77,3 @@ class Parser:
         for t in tasks:
             result.extend(t.result())
         return result
-
-
-
-

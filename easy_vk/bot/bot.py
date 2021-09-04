@@ -3,16 +3,17 @@ import requests
 from ctypes import c_longdouble
 from easy_vk.bot.lonpoll import Longpoll
 from easy_vk.bot.handlers import Handlers
+from easy_vk.settings import VK_API_VERSION
 
 
 class Bot:
-    def __init__(self, access_token: str, group_id: int, v='5.120', session=None, delay=0.08, auto_retry=True,
+    def __init__(self, access_token: str, group_id: int, v=VK_API_VERSION, session=None, delay=0.08, auto_retry=True,
                  max_retries=2, timeout=2, debug_mode: bool = False, owner_id: int = None):
         """
 
         :param access_token: bot access token. Get it in your group - Управление - Работа с API - Создать ключ
         :param group_id: id of your group
-        :param v: api version (current - '5.120')
+        :param v: api version (current - VK_API_VERSION)
         :param session: requests session
         :param delay: delay between api calls
         :param auto_retry: enable auto retries

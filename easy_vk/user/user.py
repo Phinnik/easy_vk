@@ -2,9 +2,11 @@ from . import api
 import requests
 from ctypes import c_longdouble
 
+from ..settings import VK_API_VERSION
+
 
 class User:
-    def __init__(self, access_token: str, v='5.120', session=None, delay=0.35,
+    def __init__(self, access_token: str, v=VK_API_VERSION, session=None, delay=0.35,
                  auto_retry=True, max_retries=2, timeout=5):
         last_call_timer = c_longdouble(0)
         if session is None:
