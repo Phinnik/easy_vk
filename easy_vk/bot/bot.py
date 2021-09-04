@@ -5,7 +5,6 @@ from easy_vk.bot.lonpoll import Longpoll
 from easy_vk.bot.handlers import Handlers
 from easy_vk.settings import VK_API_VERSION
 
-
 class Bot:
     def __init__(self, access_token: str, group_id: int, v=VK_API_VERSION, session=None, delay=0.08, auto_retry=True,
                  max_retries=2, timeout=2, debug_mode: bool = False, owner_id: int = None):
@@ -39,7 +38,7 @@ class Bot:
         self.docs = api.Docs(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
         self.utils = api.Utils(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
 
-        self._longpoll = Longpoll(self.groups.get_long_poll_server, session, group_id)
+        self._longpoll = Longpoll(self.groups.get_long_poll_server, session, group_id, debug_mode=debug_mode)
         self.handler = Handlers()
 
     def run(self):

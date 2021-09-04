@@ -1,10 +1,17 @@
+import sys
 from typing import Callable
+
+from loguru import logger
 from requests.sessions import Session
+
+logger.remove()
 
 
 class Longpoll:
     def __init__(self, get_longpoll: Callable, session: Session, group_id: int, key: str = None, ts: int = None,
-                 server=None):
+                 server=None, debug_mode: bool = False):
+        if debug_mode:
+            logger.add(sys.stdout, format="{time} {file} {module} {function}: {message}", level="DEBUG")
         self._get_longpoll = get_longpoll
         self.session = session
         self._group_id = group_id
@@ -41,7 +48,7 @@ class Longpoll:
         else:
             if ts_update:
                 self.ts = updates['ts']
-
+        logger.debug(f'new update: {updates}')
         return updates['updates']
 
     def run(self):
