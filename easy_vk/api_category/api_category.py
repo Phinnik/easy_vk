@@ -4,6 +4,8 @@ from typing import Optional, Tuple, List, Dict, Any
 from ctypes import c_longdouble
 from pydantic import ValidationError
 
+from easy_vk.settings import VK_API_URL
+
 
 def preprocess_parameter(parameter):
     if isinstance(parameter, dict) or isinstance(parameter, str):
@@ -79,7 +81,7 @@ class BaseCategory:
             e.g easy_vk.types.responses.FriendsGetResponse
         :param retries_count: current retries counter
         """
-        api_url = f'https://api.vk.com/method/{method_name}'
+        api_url = f'{VK_API_URL}/{method_name}'
 
         if param_aliases:
             for name, alias in param_aliases:
