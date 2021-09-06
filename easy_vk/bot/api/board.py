@@ -11,18 +11,15 @@ except Exception:
 
 
 class Board(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-
     def delete_comment(self, group_id: int, topic_id: int, comment_id: int) -> responses.BaseOk:
         """
         Deletes a comment on a topic on a community's discussion board.
-        
+
         :param group_id: ID of the community that owns the discussion board.
         :param topic_id: Topic ID.
         :param comment_id: Comment ID.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'board.deleteComment'
@@ -32,12 +29,12 @@ class Board(BaseCategory):
     def restore_comment(self, group_id: int, topic_id: int, comment_id: int) -> responses.BaseOk:
         """
         Restores a comment deleted from a topic on a community's discussion board.
-        
+
         :param group_id: ID of the community that owns the discussion board.
         :param topic_id: Topic ID.
         :param comment_id: Comment ID.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'board.restoreComment'

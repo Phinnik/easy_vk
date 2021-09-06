@@ -11,15 +11,12 @@ except Exception:
 
 
 class Wall(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-
     def close_comments(self, owner_id: int, post_id: int) -> responses.BaseBool:
         """
         :param owner_id:
         :param post_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'wall.closeComments'
@@ -29,7 +26,7 @@ class Wall(BaseCategory):
     def create_comment(self, post_id: int, owner_id: Optional[int] = None, from_group: Optional[int] = None, message: Optional[str] = None, reply_to_comment: Optional[int] = None, attachments: Optional[List[str]] = None, sticker_id: Optional[int] = None, guid: Optional[str] = None) -> responses.WallCreateComment:
         """
         Adds a comment to a post on a user wall or community wall.
-        
+
         :param post_id: Post ID.
         :param owner_id: User ID or community ID. Use a negative value to designate a community ID.
         :param from_group: Group ID.
@@ -39,7 +36,7 @@ class Wall(BaseCategory):
         :param sticker_id: Sticker ID.
         :param guid: Unique identifier to avoid repeated comments.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'wall.createComment'
@@ -51,7 +48,7 @@ class Wall(BaseCategory):
         :param owner_id:
         :param post_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'wall.openComments'

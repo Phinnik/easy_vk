@@ -11,9 +11,6 @@ except Exception:
 
 
 class Storage(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-
     @overload
     def get(self, key: Optional[str] = None, keys: None = None, user_id: Optional[int] = None) -> responses.StorageGetV5110: ...
     @overload
@@ -21,12 +18,12 @@ class Storage(BaseCategory):
     def get(self, key: Optional[str] = None, keys: Optional[List[str]] = None, user_id: Optional[int] = None):
         """
         Returns a value of variable with the name set by key parameter.
-        
+
         :param key:
         :param keys:
         :param user_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'storage.get'
@@ -39,12 +36,12 @@ class Storage(BaseCategory):
     def get_keys(self, user_id: Optional[int] = None, offset: Optional[int] = None, count: Optional[int] = None) -> responses.StorageGetKeys:
         """
         Returns the names of all variables.
-        
+
         :param user_id: user id, whose variables names are returned if they were requested with a server method.
         :param offset:
         :param count: amount of variable names the info needs to be collected from.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'storage.getKeys'
@@ -54,12 +51,12 @@ class Storage(BaseCategory):
     def set_(self, key: str, value: Optional[str] = None, user_id: Optional[int] = None) -> responses.BaseOk:
         """
         Saves a value of variable with the name set by 'key' parameter.
-        
+
         :param key:
         :param value:
         :param user_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'storage.set'

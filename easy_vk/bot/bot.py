@@ -1,4 +1,5 @@
 from easy_vk.bot import api
+from easy_vk.bot.api_options import APIOptions
 import requests
 from ctypes import c_longdouble
 from easy_vk.bot.lonpoll import Longpoll
@@ -25,18 +26,27 @@ class Bot:
         if session is None:
             session = requests.session()
 
-        self.photos = api.Photos(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-        self.wall = api.Wall(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-        self.board = api.Board(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-        self.groups = api.Groups(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-        self.users = api.Users(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-        self.appWidgets = api.Appwidgets(session, access_token, v, last_call_timer, delay, auto_retry, max_retries,
-                                         timeout)
-        self.stories = api.Stories(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-        self.messages = api.Messages(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-        self.storage = api.Storage(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-        self.docs = api.Docs(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-        self.utils = api.Utils(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
+        options = APIOptions(
+            session=session,
+            access_token=access_token,
+            v=v,
+            last_call_timer=last_call_timer,
+            delay=delay,
+            auto_retry=auto_retry,
+            max_retries=max_retries,
+            timeout=timeout,
+        )
+        self.photos = api.Photos(options)
+        self.wall = api.Wall(options)
+        self.board = api.Board(options)
+        self.groups = api.Groups(options)
+        self.users = api.Users(options)
+        self.appWidgets = api.Appwidgets(options)
+        self.stories = api.Stories(options)
+        self.messages = api.Messages(options)
+        self.storage = api.Storage(options)
+        self.docs = api.Docs(options)
+        self.utils = api.Utils(options)
 
         self._longpoll = Longpoll(self.groups.get_long_poll_server, session, group_id, debug_mode=debug_mode)
         self.handler = Handlers()

@@ -11,9 +11,6 @@ except Exception:
 
 
 class Groups(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-
     def add_address(self, group_id: int, title: str, address: str, country_id: int, city_id: int, latitude: float, longitude: float, additional_address: Optional[str] = None, metro_id: Optional[int] = None, phone: Optional[str] = None, work_info_status: Optional[str] = None, timetable: Optional[str] = None, is_main_address: Optional[bool] = None) -> responses.GroupsAddAddress:
         """
         :param group_id:
@@ -30,7 +27,7 @@ class Groups(BaseCategory):
         :param timetable:
         :param is_main_address:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.addAddress'
@@ -44,7 +41,7 @@ class Groups(BaseCategory):
         :param title:
         :param secret_key:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.addCallbackServer'
@@ -56,7 +53,7 @@ class Groups(BaseCategory):
         :param group_id:
         :param server_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.deleteCallbackServer'
@@ -67,7 +64,7 @@ class Groups(BaseCategory):
         """
         :param group_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.disableOnline'
@@ -91,7 +88,7 @@ class Groups(BaseCategory):
         :param timetable:
         :param is_main_address:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.editAddress'
@@ -106,7 +103,7 @@ class Groups(BaseCategory):
         :param title:
         :param secret_key:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.editCallbackServer'
@@ -117,7 +114,7 @@ class Groups(BaseCategory):
         """
         :param group_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.enableOnline'
@@ -127,14 +124,14 @@ class Groups(BaseCategory):
     def get_banned(self, group_id: int, offset: Optional[int] = None, count: Optional[int] = None, fields: Optional[List[Union[objects.BaseUserGroupFields, str]]] = None, owner_id: Optional[int] = None) -> responses.GroupsGetBanned:
         """
         Returns a list of users on a community blacklist.
-        
+
         :param group_id: Community ID.
         :param offset: Offset needed to return a specific subset of users.
         :param count: Number of users to return.
         :param fields:
         :param owner_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.getBanned'
@@ -144,12 +141,12 @@ class Groups(BaseCategory):
     def get_by_id(self, group_ids: Optional[List[str]] = None, group_id: Optional[str] = None, fields: Optional[List[Union[objects.GroupsFields, str]]] = None) -> responses.GroupsGetById:
         """
         Returns information about communities by their IDs.
-        
+
         :param group_ids: IDs or screen names of communities.
         :param group_id: ID or screen name of the community.
         :param fields: Group fields to return.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.getById'
@@ -159,10 +156,10 @@ class Groups(BaseCategory):
     def get_callback_confirmation_code(self, group_id: int) -> responses.GroupsGetCallbackConfirmationCode:
         """
         Returns Callback API confirmation code for the community.
-        
+
         :param group_id: Community ID.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.getCallbackConfirmationCode'
@@ -174,7 +171,7 @@ class Groups(BaseCategory):
         :param group_id:
         :param server_ids:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.getCallbackServers'
@@ -184,11 +181,11 @@ class Groups(BaseCategory):
     def get_callback_settings(self, group_id: int, server_id: Optional[int] = None) -> responses.GroupsGetCallbackSettings:
         """
         Returns [vk.com/dev/callback_api|Callback API] notifications settings.
-        
+
         :param group_id: Community ID.
         :param server_id: Server ID.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.getCallbackSettings'
@@ -198,10 +195,10 @@ class Groups(BaseCategory):
     def get_long_poll_server(self, group_id: int) -> responses.GroupsGetLongPollServer:
         """
         Returns the data needed to query a Long Poll server for events
-        
+
         :param group_id: Community ID
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.getLongPollServer'
@@ -211,10 +208,10 @@ class Groups(BaseCategory):
     def get_long_poll_settings(self, group_id: int) -> responses.GroupsGetLongPollSettings:
         """
         Returns Long Poll notification settings
-        
+
         :param group_id: Community ID.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.getLongPollSettings'
@@ -230,7 +227,7 @@ class Groups(BaseCategory):
     def get_members(self, group_id: Optional[str] = None, sort: Optional[str] = None, offset: Optional[int] = None, count: Optional[int] = None, fields: Optional[List[Union[objects.UsersFields, str]]] = None, filter_: Optional[str] = None):
         """
         Returns a list of community members.
-        
+
         :param group_id: ID or screen name of the community.
         :param sort: Sort order. Available values: 'id_asc', 'id_desc', 'time_asc', 'time_desc'. 'time_asc' and 'time_desc' are availavle only if the method is called by the group's 'moderator'.
         :param offset: Offset needed to return a specific subset of community members.
@@ -238,7 +235,7 @@ class Groups(BaseCategory):
         :param fields: List of additional fields to be returned. Available values: 'sex, bdate, city, country, photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig, photo_max, photo_max_orig, online, online_mobile, lists, domain, has_mobile, contacts, connections, site, education, universities, schools, can_post, can_see_all_posts, can_see_audio, can_write_private_message, status, last_seen, common_count, relation, relatives, counters'.
         :param filter_: *'friends' – only friends in this community will be returned,, *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = [('filter_', 'filter')]
         method_name = 'groups.getMembers'
@@ -268,13 +265,13 @@ class Groups(BaseCategory):
     def is_member(self, group_id: str, user_id: Optional[int] = None, user_ids: Optional[List[int]] = None, extended: Optional[bool] = None):
         """
         Returns information specifying whether a user is a member of a community.
-        
+
         :param group_id: ID or screen name of the community.
         :param user_id: User ID.
         :param user_ids: User IDs.
         :param extended: '1' — to return an extended response with additional fields. By default: '0'.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.isMember'
@@ -291,7 +288,7 @@ class Groups(BaseCategory):
     def set_callback_settings(self, group_id: int, server_id: Optional[int] = None, api_version: Optional[str] = None, message_new: Optional[bool] = None, message_reply: Optional[bool] = None, message_allow: Optional[bool] = None, message_edit: Optional[bool] = None, message_deny: Optional[bool] = None, message_typing_state: Optional[bool] = None, photo_new: Optional[bool] = None, audio_new: Optional[bool] = None, video_new: Optional[bool] = None, wall_reply_new: Optional[bool] = None, wall_reply_edit: Optional[bool] = None, wall_reply_delete: Optional[bool] = None, wall_reply_restore: Optional[bool] = None, wall_post_new: Optional[bool] = None, wall_repost: Optional[bool] = None, board_post_new: Optional[bool] = None, board_post_edit: Optional[bool] = None, board_post_restore: Optional[bool] = None, board_post_delete: Optional[bool] = None, photo_comment_new: Optional[bool] = None, photo_comment_edit: Optional[bool] = None, photo_comment_delete: Optional[bool] = None, photo_comment_restore: Optional[bool] = None, video_comment_new: Optional[bool] = None, video_comment_edit: Optional[bool] = None, video_comment_delete: Optional[bool] = None, video_comment_restore: Optional[bool] = None, market_comment_new: Optional[bool] = None, market_comment_edit: Optional[bool] = None, market_comment_delete: Optional[bool] = None, market_comment_restore: Optional[bool] = None, poll_vote_new: Optional[bool] = None, group_join: Optional[bool] = None, group_leave: Optional[bool] = None, group_change_settings: Optional[bool] = None, group_change_photo: Optional[bool] = None, group_officers_edit: Optional[bool] = None, user_block: Optional[bool] = None, user_unblock: Optional[bool] = None, lead_forms_new: Optional[bool] = None, like_add: Optional[bool] = None, like_remove: Optional[bool] = None, message_event: Optional[bool] = None) -> responses.BaseOk:
         """
         Allow to set notifications settings for group.
-        
+
         :param group_id: Community ID.
         :param server_id: Server ID.
         :param api_version:
@@ -339,7 +336,7 @@ class Groups(BaseCategory):
         :param like_remove:
         :param message_event:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.setCallbackSettings'
@@ -349,7 +346,7 @@ class Groups(BaseCategory):
     def set_long_poll_settings(self, group_id: int, enabled: Optional[bool] = None, api_version: Optional[str] = None, message_new: Optional[bool] = None, message_reply: Optional[bool] = None, message_allow: Optional[bool] = None, message_deny: Optional[bool] = None, message_edit: Optional[bool] = None, message_typing_state: Optional[bool] = None, photo_new: Optional[bool] = None, audio_new: Optional[bool] = None, video_new: Optional[bool] = None, wall_reply_new: Optional[bool] = None, wall_reply_edit: Optional[bool] = None, wall_reply_delete: Optional[bool] = None, wall_reply_restore: Optional[bool] = None, wall_post_new: Optional[bool] = None, wall_repost: Optional[bool] = None, board_post_new: Optional[bool] = None, board_post_edit: Optional[bool] = None, board_post_restore: Optional[bool] = None, board_post_delete: Optional[bool] = None, photo_comment_new: Optional[bool] = None, photo_comment_edit: Optional[bool] = None, photo_comment_delete: Optional[bool] = None, photo_comment_restore: Optional[bool] = None, video_comment_new: Optional[bool] = None, video_comment_edit: Optional[bool] = None, video_comment_delete: Optional[bool] = None, video_comment_restore: Optional[bool] = None, market_comment_new: Optional[bool] = None, market_comment_edit: Optional[bool] = None, market_comment_delete: Optional[bool] = None, market_comment_restore: Optional[bool] = None, poll_vote_new: Optional[bool] = None, group_join: Optional[bool] = None, group_leave: Optional[bool] = None, group_change_settings: Optional[bool] = None, group_change_photo: Optional[bool] = None, group_officers_edit: Optional[bool] = None, user_block: Optional[bool] = None, user_unblock: Optional[bool] = None, like_add: Optional[bool] = None, like_remove: Optional[bool] = None, message_event: Optional[bool] = None) -> responses.BaseOk:
         """
         Sets Long Poll notification settings
-        
+
         :param group_id: Community ID.
         :param enabled: Sets whether Long Poll is enabled ('0' — disabled, '1' — enabled).
         :param api_version:
@@ -396,7 +393,7 @@ class Groups(BaseCategory):
         :param like_remove:
         :param message_event:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'groups.setLongPollSettings'
