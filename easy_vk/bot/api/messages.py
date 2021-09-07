@@ -11,18 +11,15 @@ except Exception:
 
 
 class Messages(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-
     def create_chat(self, user_ids: Optional[List[int]] = None, title: Optional[str] = None, group_id: Optional[int] = None) -> responses.MessagesCreateChat:
         """
         Creates a chat with several participants.
-        
+
         :param user_ids: IDs of the users to be added to the chat.
         :param title: Chat title.
         :param group_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.createChat'
@@ -48,11 +45,11 @@ class Messages(BaseCategory):
     def delete_chat_photo(self, chat_id: int, group_id: Optional[int] = None) -> responses.MessagesDeleteChatPhoto:
         """
         Deletes a chat's cover picture.
-        
+
         :param chat_id: Chat ID.
         :param group_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.deleteChatPhoto'
@@ -62,12 +59,12 @@ class Messages(BaseCategory):
     def delete_conversation(self, user_id: Optional[int] = None, peer_id: Optional[int] = None, group_id: Optional[int] = None) -> responses.MessagesDeleteConversation:
         """
         Deletes all private messages in a conversation.
-        
+
         :param user_id: User ID. To clear a chat history use 'chat_id'
         :param peer_id: Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param group_id: Group ID (for group messages with user access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.deleteConversation'
@@ -77,7 +74,7 @@ class Messages(BaseCategory):
     def edit(self, peer_id: int, message: Optional[str] = None, lat: Optional[float] = None, long: Optional[float] = None, attachment: Optional[str] = None, keep_forward_messages: Optional[bool] = None, keep_snippets: Optional[bool] = None, group_id: Optional[int] = None, dont_parse_links: Optional[bool] = None, message_id: Optional[int] = None, conversation_message_id: Optional[int] = None, template: Optional[str] = None, keyboard: Optional[str] = None) -> responses.MessagesEdit:
         """
         Edits the message.
-        
+
         :param peer_id: Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param message: (Required if 'attachments' is not set.) Text of the message.
         :param lat: Geographical latitude of a check-in, in degrees (from -90 to 90).
@@ -92,7 +89,7 @@ class Messages(BaseCategory):
         :param template:
         :param keyboard:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.edit'
@@ -102,11 +99,11 @@ class Messages(BaseCategory):
     def edit_chat(self, chat_id: int, title: Optional[str] = None) -> responses.BaseOk:
         """
         Edits the title of a chat.
-        
+
         :param chat_id: Chat ID.
         :param title: New title of the chat.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.editChat'
@@ -116,14 +113,14 @@ class Messages(BaseCategory):
     def get_by_conversation_message_id(self, peer_id: int, conversation_message_ids: List[int], extended: Optional[bool] = None, fields: Optional[List[Union[objects.UsersFields, str]]] = None, group_id: Optional[int] = None) -> responses.MessagesGetByConversationMessageId:
         """
         Returns messages by their IDs within the conversation.
-        
+
         :param peer_id: Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param conversation_message_ids: Conversation message IDs.
         :param extended: Information whether the response should be extended
         :param fields: Profile fields to return.
         :param group_id: Group ID (for group messages with group access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.getByConversationMessageId'
@@ -137,14 +134,14 @@ class Messages(BaseCategory):
     def get_by_id(self, message_ids: List[int], preview_length: Optional[int] = None, extended: Optional[bool] = None, fields: Optional[List[Union[objects.UsersFields, str]]] = None, group_id: Optional[int] = None):
         """
         Returns messages by their IDs.
-        
+
         :param message_ids: Message IDs.
         :param preview_length: Number of characters after which to truncate a previewed message. To preview the full message, specify '0'. "NOTE: Messages are not truncated by default. Messages are truncated by words."
         :param extended: Information whether the response should be extended
         :param fields: Profile fields to return.
         :param group_id: Group ID (for group messages with group access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.getById'
@@ -157,12 +154,12 @@ class Messages(BaseCategory):
     def get_conversation_members(self, peer_id: int, fields: Optional[List[Union[objects.UsersFields, str]]] = None, group_id: Optional[int] = None) -> responses.MessagesGetConversationMembers:
         """
         Returns a list of IDs of users participating in a chat.
-        
+
         :param peer_id: Peer ID.
         :param fields: Profile fields to return.
         :param group_id: Group ID (for group messages with group access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.getConversationMembers'
@@ -172,7 +169,7 @@ class Messages(BaseCategory):
     def get_conversations(self, offset: Optional[int] = None, count: Optional[int] = None, filter_: Optional[str] = None, extended: Optional[bool] = None, start_message_id: Optional[int] = None, fields: Optional[List[Union[objects.BaseUserGroupFields, str]]] = None, group_id: Optional[int] = None) -> responses.MessagesGetConversations:
         """
         Returns a list of the current user's conversations.
-        
+
         :param offset: Offset needed to return a specific subset of conversations.
         :param count: Number of conversations to return.
         :param filter_: Filter to apply: 'all' — all conversations, 'unread' — conversations with unread messages, 'important' — conversations, marked as important (only for community messages), 'unanswered' — conversations, marked as unanswered (only for community messages)
@@ -181,7 +178,7 @@ class Messages(BaseCategory):
         :param fields: Profile and communities fields to return.
         :param group_id: Group ID (for group messages with group access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = [('filter_', 'filter')]
         method_name = 'messages.getConversations'
@@ -195,13 +192,13 @@ class Messages(BaseCategory):
     def get_conversations_by_id(self, peer_ids: List[int], extended: Optional[bool] = None, fields: Optional[List[Union[objects.BaseUserGroupFields, str]]] = None, group_id: Optional[int] = None):
         """
         Returns conversations by their IDs
-        
+
         :param peer_ids: Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param extended: Return extended properties
         :param fields: Profile and communities fields to return.
         :param group_id: Group ID (for group messages with group access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.getConversationsById'
@@ -214,7 +211,7 @@ class Messages(BaseCategory):
     def get_history(self, offset: Optional[int] = None, count: Optional[int] = None, user_id: Optional[int] = None, peer_id: Optional[int] = None, start_message_id: Optional[int] = None, rev: Optional[int] = None, extended: Optional[bool] = None, fields: Optional[List[Union[objects.UsersFields, str]]] = None, group_id: Optional[int] = None) -> responses.MessagesGetHistory:
         """
         Returns message history for the specified user or group chat.
-        
+
         :param offset: Offset needed to return a specific subset of messages.
         :param count: Number of messages to return.
         :param user_id: ID of the user whose message history you want to return.
@@ -225,7 +222,7 @@ class Messages(BaseCategory):
         :param fields: Profile fields to return.
         :param group_id: Group ID (for group messages with group access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.getHistory'
@@ -235,18 +232,18 @@ class Messages(BaseCategory):
     def get_history_attachments(self, peer_id: int, media_type: Optional[str] = None, start_from: Optional[str] = None, count: Optional[int] = None, photo_sizes: Optional[bool] = None, fields: Optional[List[Union[objects.UsersFields, str]]] = None, group_id: Optional[int] = None, preserve_order: Optional[bool] = None, max_forwards_level: Optional[int] = None) -> responses.MessagesGetHistoryAttachments:
         """
         Returns media files from the dialog or group chat.
-        
+
         :param peer_id: Peer ID. ", For group chat: '2000000000 + chat ID' , , For community: '-community ID'"
         :param media_type: Type of media files to return: *'photo',, *'video',, *'audio',, *'doc',, *'link'.,*'market'.,*'wall'.,*'share'
         :param start_from: Message ID to start return results from.
         :param count: Number of objects to return.
         :param photo_sizes: '1' — to return photo sizes in a
-        :param fields: Additional profile [vk.com/dev/fields|fields] to return. 
+        :param fields: Additional profile [vk.com/dev/fields|fields] to return.
         :param group_id: Group ID (for group messages with group access token)
         :param preserve_order:
         :param max_forwards_level:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.getHistoryAttachments'
@@ -259,7 +256,7 @@ class Messages(BaseCategory):
         :param reset: 1 — to generate new link (revoke previous), 0 — to return previous link.
         :param group_id: Group ID
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.getInviteLink'
@@ -269,7 +266,7 @@ class Messages(BaseCategory):
     def get_long_poll_history(self, ts: Optional[int] = None, pts: Optional[int] = None, preview_length: Optional[int] = None, onlines: Optional[bool] = None, fields: Optional[List[Union[objects.UsersFields, str]]] = None, events_limit: Optional[int] = None, msgs_limit: Optional[int] = None, max_msg_id: Optional[int] = None, group_id: Optional[int] = None, lp_version: Optional[int] = None, last_n: Optional[int] = None, credentials: Optional[bool] = None) -> responses.MessagesGetLongPollHistory:
         """
         Returns updates in user's private messages.
-        
+
         :param ts: Last value of the 'ts' parameter returned from the Long Poll server or by using [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
         :param pts: Lsat value of 'pts' parameter returned from the Long Poll server or by using [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
         :param preview_length: Number of characters after which to truncate a previewed message. To preview the full message, specify '0'. "NOTE: Messages are not truncated by default. Messages are truncated by words."
@@ -283,7 +280,7 @@ class Messages(BaseCategory):
         :param last_n:
         :param credentials:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.getLongPollHistory'
@@ -293,12 +290,12 @@ class Messages(BaseCategory):
     def get_long_poll_server(self, need_pts: Optional[bool] = None, group_id: Optional[int] = None, lp_version: Optional[int] = None) -> responses.MessagesGetLongPollServer:
         """
         Returns data required for connection to a Long Poll server.
-        
+
         :param need_pts: '1' — to return the 'pts' field, needed for the [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
         :param group_id: Group ID (for group messages with user access token)
         :param lp_version: Long poll version
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.getLongPollServer'
@@ -308,11 +305,11 @@ class Messages(BaseCategory):
     def is_messages_from_group_allowed(self, group_id: int, user_id: int) -> responses.MessagesIsMessagesFromGroupAllowed:
         """
         Returns information whether sending messages from the community to current user is allowed.
-        
+
         :param group_id: Group ID.
         :param user_id: User ID.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.isMessagesFromGroupAllowed'
@@ -322,12 +319,12 @@ class Messages(BaseCategory):
     def mark_as_answered_conversation(self, peer_id: int, answered: Optional[bool] = None, group_id: Optional[int] = None) -> responses.BaseOk:
         """
         Marks and unmarks conversations as unanswered.
-        
+
         :param peer_id: ID of conversation to mark as important.
         :param answered: '1' — to mark as answered, '0' — to remove the mark
         :param group_id: Group ID (for group messages with group access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.markAsAnsweredConversation'
@@ -337,12 +334,12 @@ class Messages(BaseCategory):
     def mark_as_important_conversation(self, peer_id: int, important: Optional[bool] = None, group_id: Optional[int] = None) -> responses.BaseOk:
         """
         Marks and unmarks conversations as important.
-        
+
         :param peer_id: ID of conversation to mark as important.
         :param important: '1' — to add a star (mark as important), '0' — to remove the star
         :param group_id: Group ID (for group messages with group access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.markAsImportantConversation'
@@ -352,14 +349,14 @@ class Messages(BaseCategory):
     def mark_as_read(self, message_ids: Optional[List[int]] = None, peer_id: Optional[int] = None, start_message_id: Optional[int] = None, group_id: Optional[int] = None, mark_conversation_as_read: Optional[bool] = None) -> responses.BaseOk:
         """
         Marks messages as read.
-        
+
         :param message_ids: IDs of messages to mark as read.
         :param peer_id: Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param start_message_id: Message ID to start from.
         :param group_id: Group ID (for group messages with user access token)
         :param mark_conversation_as_read:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.markAsRead'
@@ -369,11 +366,11 @@ class Messages(BaseCategory):
     def pin(self, peer_id: int, message_id: Optional[int] = None) -> responses.MessagesPin:
         """
         Pin a message.
-        
+
         :param peer_id: Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
         :param message_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.pin'
@@ -383,12 +380,12 @@ class Messages(BaseCategory):
     def remove_chat_user(self, chat_id: int, user_id: Optional[int] = None, member_id: Optional[int] = None) -> responses.BaseOk:
         """
         Allows the current user to leave a chat or, if the current user started the chat, allows the user to remove another user from the chat.
-        
+
         :param chat_id: Chat ID.
         :param user_id: ID of the user to be removed from the chat.
         :param member_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.removeChatUser'
@@ -398,11 +395,11 @@ class Messages(BaseCategory):
     def restore(self, message_id: int, group_id: Optional[int] = None) -> responses.BaseOk:
         """
         Restores a deleted message.
-        
+
         :param message_id: ID of a previously-deleted message to restore.
         :param group_id: Group ID (for group messages with user access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.restore'
@@ -412,7 +409,7 @@ class Messages(BaseCategory):
     def search(self, q: Optional[str] = None, peer_id: Optional[int] = None, date: Optional[int] = None, preview_length: Optional[int] = None, offset: Optional[int] = None, count: Optional[int] = None, extended: Optional[bool] = None, fields: Optional[List[str]] = None, group_id: Optional[int] = None) -> responses.MessagesSearch:
         """
         Returns a list of the current user's private messages that match search criteria.
-        
+
         :param q: Search query string.
         :param peer_id: Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param date: Date to search message before in Unixtime.
@@ -423,7 +420,7 @@ class Messages(BaseCategory):
         :param fields:
         :param group_id: Group ID (for group messages with group access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.search'
@@ -433,14 +430,14 @@ class Messages(BaseCategory):
     def search_conversations(self, q: Optional[str] = None, count: Optional[int] = None, extended: Optional[bool] = None, fields: Optional[List[Union[objects.UsersFields, str]]] = None, group_id: Optional[int] = None) -> responses.MessagesSearchConversations:
         """
         Returns a list of the current user's conversations that match search criteria.
-        
+
         :param q: Search query string.
         :param count: Maximum number of results.
         :param extended: '1' — return extra information about users and communities
         :param fields: Profile fields to return.
         :param group_id: Group ID (for group messages with user access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.searchConversations'
@@ -454,7 +451,7 @@ class Messages(BaseCategory):
     def send(self, user_id: Optional[int] = None, random_id: Optional[int] = None, peer_id: Optional[int] = None, domain: Optional[str] = None, chat_id: Optional[int] = None, user_ids: Optional[List[int]] = None, message: Optional[str] = None, lat: Optional[float] = None, long: Optional[float] = None, attachment: Optional[str] = None, reply_to: Optional[int] = None, forward_messages: Optional[List[int]] = None, sticker_id: Optional[int] = None, group_id: Optional[int] = None, keyboard: Optional[str] = None, payload: Optional[str] = None, dont_parse_links: Optional[bool] = None, disable_mentions: Optional[bool] = None, intent: Optional[str] = None, subscribe_id: Optional[int] = None):
         """
         Sends a message.
-        
+
         :param user_id: User ID (by default — current user).
         :param random_id: Unique identifier to avoid resending the message.
         :param peer_id: Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
@@ -476,7 +473,7 @@ class Messages(BaseCategory):
         :param intent:
         :param subscribe_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.send'
@@ -493,7 +490,7 @@ class Messages(BaseCategory):
         :param peer_id:
         :param event_data:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.sendMessageEventAnswer'
@@ -503,13 +500,13 @@ class Messages(BaseCategory):
     def set_activity(self, user_id: Optional[int] = None, type_: Optional[str] = None, peer_id: Optional[int] = None, group_id: Optional[int] = None) -> responses.BaseOk:
         """
         Changes the status of a user as typing in a conversation.
-        
+
         :param user_id: User ID.
         :param type_: 'typing' — user has started to type.
         :param peer_id: Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
         :param group_id: Group ID (for group messages with group access token)
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = [('type_', 'type')]
         method_name = 'messages.setActivity'
@@ -519,10 +516,10 @@ class Messages(BaseCategory):
     def set_chat_photo(self, file: str) -> responses.MessagesSetChatPhoto:
         """
         Sets a previously-uploaded picture as the cover picture of a chat.
-        
+
         :param file: Upload URL from the 'response' field returned by the [vk.com/dev/photos.getChatUploadServer|photos.getChatUploadServer] method upon successfully uploading an image.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.setChatPhoto'
@@ -534,7 +531,7 @@ class Messages(BaseCategory):
         :param peer_id:
         :param group_id:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'messages.unpin'

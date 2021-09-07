@@ -11,16 +11,13 @@ except Exception:
 
 
 class Utils(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-
     def check_link(self, url: str) -> responses.UtilsCheckLink:
         """
         Checks whether a link is blocked in VK.
-        
+
         :param url: Link to check (e.g., 'http://google.com').
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'utils.checkLink'
@@ -34,7 +31,7 @@ class Utils(BaseCategory):
     def get_link_stats(self, key: str, source: Optional[str] = None, access_key: Optional[str] = None, interval: Optional[str] = None, intervals_count: Optional[int] = None, extended: Optional[bool] = None):
         """
         Returns stats data for shortened link.
-        
+
         :param key: Link key (characters after vk.cc/).
         :param source: Source of scope
         :param access_key: Access key for private link stats.
@@ -42,7 +39,7 @@ class Utils(BaseCategory):
         :param intervals_count: Number of intervals to return.
         :param extended: 1 — to return extended stats data (sex, age, geo). 0 — to return views number only.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'utils.getLinkStats'
@@ -56,7 +53,7 @@ class Utils(BaseCategory):
         """
         Returns the current time of the VK server.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'utils.getServerTime'
@@ -66,11 +63,11 @@ class Utils(BaseCategory):
     def get_short_link(self, url: str, private: Optional[bool] = None) -> responses.UtilsGetShortLink:
         """
         Allows to receive a link shortened via vk.cc.
-        
+
         :param url: URL to be shortened.
         :param private: 1 — private stats, 0 — public stats.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'utils.getShortLink'
@@ -80,10 +77,10 @@ class Utils(BaseCategory):
     def resolve_screen_name(self, screen_name: str) -> responses.UtilsResolveScreenName:
         """
         Detects a type of object (e.g., user, community, application) and its ID by screen name.
-        
+
         :param screen_name: Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = []
         method_name = 'utils.resolveScreenName'

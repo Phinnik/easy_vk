@@ -11,17 +11,14 @@ except Exception:
 
 
 class Appwidgets(BaseCategory):
-    def __init__(self, session, access_token: str, v: str, last_call_timer, delay: float, auto_retry: bool, max_retries: int, timeout: float):
-        super().__init__(session, access_token, v, last_call_timer, delay, auto_retry, max_retries, timeout)
-
     def update(self, code: str, type_: str) -> responses.BaseOk:
         """
         Allows to update community app widget
-        
+
         :param code:
         :param type_:
         """
-    
+
         method_parameters = {k: v for k, v in locals().items() if k not in {'self', 'raw_response'}}
         param_aliases = [('type_', 'type')]
         method_name = 'appWidgets.update'

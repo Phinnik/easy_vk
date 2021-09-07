@@ -1,4 +1,5 @@
 import time
+from easy_vk.bot.api_options import APIOptions
 from easy_vk.exceptions.exceptions import raise_exception, Server
 from typing import Optional, Tuple, List, Dict, Any
 from ctypes import c_longdouble
@@ -43,31 +44,21 @@ def unpack_response(response, response_type):
 
 
 class BaseCategory:
-    def __init__(self, session, access_token: str, v: str, last_call_timer: c_longdouble, delay: float,
-                 auto_retry: bool,
-                 max_retries: int,
-                 timeout: float):
+    def __init__(self, options: APIOptions):
         """
         Base api category class
 
-        :param session: api session
-        :param access_token: api access_token
-        :param v: api version
-        :param delay: delay between api calls
-        :param auto_retry: enables auto retry in calling methods if specific errors occurred
-            e.g. easy_vk.exceptions.exceptions.Server
-        :param max_retries: maximum value of retries. Works only if auto_retry is True
-        :param timeout: time to sleep between retries. Works only if auto_retry is True
+        :param options: api options
         """
 
-        self._last_call_timer = last_call_timer
-        self._session = session
-        self._access_token = access_token
-        self._v = v
-        self._delay = delay
-        self._auto_retry = auto_retry
-        self._max_retries = max_retries
-        self._timeout = timeout
+        self._last_call_timer = options.last_call_timer
+        self._session = options.session
+        self._access_token = options.access_token
+        self._v = options.v
+        self._delay = options.delay
+        self._auto_retry = options.auto_retry
+        self._max_retries = options.max_retries
+        self._timeout = options.timeout
 
     def _call(self, method_name: str, method_parameters: Dict[str, Any], param_aliases: Optional[List[Tuple[str, str]]],
               response_type, retries_count: int = 0):
