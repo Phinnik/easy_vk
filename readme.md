@@ -1,5 +1,5 @@
 
-![example workflow](https://github.com/UmbrellaMalware/easy_vk/actions/workflows/python-app.yml/badge.svg)
+![example workflow](https://github.com/Phinnik/easy_vk/actions/workflows/python-app.yml/badge.svg)
 # easy_vk
 Библиотека в стадии разработки
 
